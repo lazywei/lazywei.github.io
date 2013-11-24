@@ -3,7 +3,7 @@ date: 2013-11-24 16:18:40
 tags: [hexo]
 ---
 
-Here is my basic setting for hexo.
+Here is my basic setting for hexo. You should somehow use your custom value instead (e.g. Don't use `lazywei.github.io` but use `yourname.github.io`).
 
 ### Init
 
@@ -31,6 +31,12 @@ deploy:
 ```
 - Generate static files: `hexo g` or `hexo genereate`.
 - Deploy to github: `hexo deploy`.
+
+### Custom domain
+
+- Create a file named `CNAME` under `source/`
+- Add your domain into the file: `blog.lazywei.com`
+- Add a `CNAME` record point to `lazywei.github.io` to your DNS setting.
 
 ### Workflow
 

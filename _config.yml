@@ -12,7 +12,7 @@ language: zh-TW
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://lazywei.github.io
+url: http://blog.lazywei.com
 root: /
 permalink: :year/:month/:day/:title/
 tag_dir: tags
