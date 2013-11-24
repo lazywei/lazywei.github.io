@@ -62,7 +62,7 @@
     </header>
     <div class="entry">
       
-        <p>Here is my basic setting for hexo.</p>
+        <p>Here is my basic setting for hexo. You should somehow use your custom value instead (e.g. Don&#39;t use <code>lazywei.github.io</code> but use <code>yourname.github.io</code>).</p>
 <h3>Init</h3>
 <ul>
 <li>Add a repo named <code>lazywei.github.io</code> on <a href="https://github.com/" target="_blank">github</a>.</li>
@@ -96,6 +96,12 @@
 <li><p>Generate static files: <code>hexo g</code> or <code>hexo genereate</code>.</p>
 </li>
 <li>Deploy to github: <code>hexo deploy</code>.</li>
+</ul>
+<h3>Custom domain</h3>
+<ul>
+<li>Create a file named <code>CNAME</code> under <code>source/</code></li>
+<li>Add your domain into the file: <code>blog.lazywei.com</code></li>
+<li>Add a <code>CNAME</code> record point to <code>lazywei.github.io</code> to your DNS setting.</li>
 </ul>
 <h3>Workflow</h3>
 <ul>
@@ -162,7 +168,7 @@
   <div class="search">
   <form action="//google.com/search" method="get" accept-charset="utf-8">
     <input type="search" name="q" results="0" placeholder="搜尋">
-    <input type="hidden" name="q" value="site:lazywei.github.io">
+    <input type="hidden" name="q" value="site:blog.lazywei.com">
   </form>
 </div>
 
