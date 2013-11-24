@@ -1,6 +1,6 @@
 title: How do I configure my Hexo blog
 date: 2013-11-24 16:18:40
-tags: [hexo]
+tags: [Hexo]
 ---
 
 Here is my basic setting for hexo. You should somehow use your custom value instead (e.g. Don't use `lazywei.github.io` but use `yourname.github.io`).
