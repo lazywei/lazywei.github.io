@@ -26,8 +26,8 @@ Here is my basic setting for hexo. You should somehow use your custom value inst
 ## Docs: http://zespia.tw/hexo/docs/deploy.html
 deploy:
   type: github
-    repository: https://github.com/lazywei/lazywei.github.io.git
-      branch: master
+  repository: https://github.com/lazywei/lazywei.github.io.git
+  branch: master
 ```
 - Generate static files: `hexo g` or `hexo genereate`.
 - Deploy to github: `hexo deploy`.
