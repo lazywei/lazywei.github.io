@@ -38,6 +38,10 @@
     
       <li><a href="/archives">Archives</a></li>
     
+      <li><a href="/about">About</a></li>
+    
+      <li><a href="https://github.com/lazywei/">Github</a></li>
+    
   </ul>
   <div class="clearfix"></div>
 </nav>
@@ -131,19 +135,9 @@
   <h1 class="title">Comments</h1>
 
   
-      <div id="fb-root"></div>
-<script>
-  (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=1415044482063498";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-</script>
-
-<div class="fb-comments" data-href="http://blog.lazywei.com/2013/11/24/how-do-i-configure-my-hexo-blog/" data-num-posts="5" data-width="840" data-colorscheme="light"></div>
-      
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
   
 </section>
 </div></div>
@@ -184,6 +178,18 @@
 <script src="/js/jquery.imagesloaded.min.js"></script>
 <script src="/js/gallery.js"></script>
 
+
+<script type="text/javascript">
+var disqus_shortname = 'bloglazywei';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
 
 
 
