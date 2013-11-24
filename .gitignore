@@ -4,3 +4,7 @@ db.json
 
 .deploy
 public
+
+debug.log
+
+themes/*
