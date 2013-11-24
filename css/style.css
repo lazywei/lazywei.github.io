@@ -10,7 +10,7 @@
   padding: 0;
 }
 body {
-  background: #eee;
+  background: #f1f1f1;
   color: #444;
   font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;
   font-size: 14px;
@@ -35,10 +35,12 @@ h6 {
   font-family: "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 h1 {
-  font-size: 1.8em;
+  font-size: 30px;
+  font-weight: 1000;
+  line-height: 1.1;
 }
 h2 {
-  font-size: 1.5em;
+  font-size: 1.6em;
 }
 h3 {
   font-size: 1.3em;
@@ -113,13 +115,15 @@ a:hover {
   text-decoration: none;
 }
 #header h1 {
+  padding: 0px 0px 0px 20px;
   font-weight: normal;
-  font-size: 2.5em;
+  font-size: 50px;
   line-height: 1;
 }
 #header h2 {
+  padding: 0px 0px 0px 20px;
   font-weight: normal;
-  font-size: 0.9em;
+  font-size: 20px;
   line-height: 1;
   margin-top: 10px;
 }
@@ -131,13 +135,15 @@ a:hover {
   list-style: none;
 }
 #header #main-nav ul li {
+  padding: 0px 6px 0px 0px;
+  font-size: 20px;
   float: left;
   margin-left: 30px;
 }
 article {
   -webkit-box-shadow: 1px 2px 3px #ddd;
   box-shadow: 1px 2px 3px #ddd;
-  background: #fff;
+  background: #f1f1f1;
 }
 article.page {
   padding-left: 20px;
@@ -292,25 +298,12 @@ article .entry .video-container {
   margin-top: 15px;
 }
 article .entry blockquote {
-  border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
-  font-style: italic;
+  border-left: 5px solid #c7c7c7;
+  font-style: normal;
   font-family: "Georgia", serif;
-  font-size: 1.2em;
-  padding: 0 30px 15px;
-  text-align: center;
-}
-article .entry blockquote footer {
-  border-top: none;
-  font-size: 0.8em;
-  line-height: 1;
-  margin: 20px 0 0;
-  padding-top: 0;
-}
-article .entry blockquote footer cite:before {
-  content: '—';
-  color: #ccc;
-  padding: 0 0.5em;
+  font-size: 14px;
+  padding: 1px 0px 10px 20px;
+  text-align: left;
 }
 article .entry code,
 article .entry pre {
@@ -479,8 +472,8 @@ article footer .addthis iframe {
   margin-top: 0;
 }
 #comment {
-  padding: 20px;
-  background: #fff;
+  padding: 20px 20px 20px 75px;
+  background: #f1f1f1;
   -webkit-box-shadow: 1px 2px 3px #ddd;
   box-shadow: 1px 2px 3px #ddd;
   margin-bottom: 50px;
@@ -555,7 +548,7 @@ article footer .addthis iframe {
   }
 }
 #sidebar .widget {
-  background: #fff;
+  background: #f1f1f1;
   -webkit-box-shadow: 1px 2px 3px #ddd;
   box-shadow: 1px 2px 3px #ddd;
   margin-bottom: 30px;
@@ -592,10 +585,11 @@ article footer .addthis iframe {
   margin-bottom: 30px;
 }
 #sidebar .search input {
-  background: #fff;
+  background: #f1f1f1;
   font-family: "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-style: italic;
+  font-style: normal;
   font-size: 1em;
+  font-weight: bold;
   padding: 10px 15px;
   border: 1px solid #ddd;
   width: 100%;
