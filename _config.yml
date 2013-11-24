@@ -69,13 +69,16 @@ per_page: 10
 pagination_dir: page
 
 # Disqus
-disqus_shortname:
+disqus_shortname: bloglazywei
 
 # Extensions
 ## Plugins: https://github.com/tommy351/hexo/wiki/Plugins
 ## Themes: https://github.com/tommy351/hexo/wiki/Themes
 theme: tyrant
 exclude_generator:
+
+plugins:
+- hexo-generator-sitemap
 
 # Deployment
 ## Docs: http://zespia.tw/hexo/docs/deploy.html
