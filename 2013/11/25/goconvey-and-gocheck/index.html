@@ -3,13 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Bert's blog</title>
+  <title>GoConvey and Gocheck | Bert's blog</title>
   <meta name="author" content="Bert Chang aka lazywei">
+  
+  <meta name="description" content="I currently use GoConvey and Gocheck as my testing framework.
+GoConvey
+GoConvey runs a HTTP server which has a really beautiful Web UI for reviewing t">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+  <meta property="og:title" content="GoConvey and Gocheck"/>
   <meta property="og:site_name" content="Bert's blog"/>
 
   
@@ -45,8 +49,7 @@
 </nav>
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper">
-  <article class="post">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
   
   <div class="post-content">
     <header>
@@ -56,7 +59,7 @@
       
       
   
-    <h1 class="title"><a href="/2013/11/25/goconvey-and-gocheck/">GoConvey and Gocheck</a></h1>
+    <h1 class="title">GoConvey and Gocheck</h1>
   
 
     </header>
@@ -185,42 +188,11 @@
       
         
         
-      
-      <div class="clearfix"></div>
-    </footer>
+  
+  <div class="tags">
+    <a href="/tags/golang/">golang</a>, <a href="/tags/testing/">testing</a>
   </div>
-</article>
 
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2013-11-24T12:38:14.000Z"><a href="/2013/11/24/vim-matlab/">Nov 24 2013</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2013/11/24/vim-matlab/">Vim-matlab</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>TL;NR: Install the plug-in via github: <a href="https://github.com/lazywei/vim-matlab" target="_blank">Vim-Matlab</a>.</p>
-<p>As I use vim daily for everything, I use it for writing Matlab code. However, the default behavior of Vim&#39;s Matlab support is not as well as I expected.</p>
-<p>Fortunately, I found a <a href="http://www.mathworks.com/matlabcentral/fileexchange/21798-editing-matlab-files-in-vim" target="_blank">vim plug-in</a> to improve this. Though this plug-in works pretty well, it isn&#39;t in a version control system (e.g. git), which make it hard to maintain and even install. Therefore, I download it and host it on github, you can then install it through any method you like. Personally, I prefer <a href="https://github.com/gmarik/vundle" target="_blank">Vundle</a>.</p>
-<p>Vim-Matlab: <a href="https://github.com/lazywei/vim-matlab" target="_blank">repo</a></p>
-<p>Features:<br>- Syntax highlighting<br>- Correct indentation<br>- Correct setting to use the <code>matchit.vim</code> script<br>- Tag support<br>- Help file</p>
-<p>Again, I don&#39;t own these codes. I only copy it and host it on github. If there is any concern, please let me know. Thanks!</p>
-
-      
-    </div>
-    <footer>
-      
-        
         
       
       <div class="clearfix"></div>
@@ -229,124 +201,16 @@
 </article>
 
 
+<section id="comment">
+  <h1 class="title">Comments</h1>
 
-  <article class="post">
   
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2013-11-24T08:18:40.000Z"><a href="/2013/11/24/how-do-i-configure-my-hexo-blog/">Nov 24 2013</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2013/11/24/how-do-i-configure-my-hexo-blog/">How do I configure my Hexo blog</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>Here is my basic setting for hexo. You should somehow use your custom value instead (e.g. Don&#39;t use <code>lazywei.github.io</code> but use <code>yourname.github.io</code>).</p>
-<h3>Init</h3>
-<ul>
-<li>Add a repo named <code>lazywei.github.io</code> on <a href="https://github.com/" target="_blank">github</a>.</li>
-<li>Init hexo: <code>hexo init lazywei.github.io</code>.</li>
-</ul>
-<h3>Git</h3>
-<ul>
-<li>Init git: <code>cd lazywei.github.io; git init</code>.</li>
-<li>Use <code>source</code> for default branch name instead of <code>master</code>: <code>git branch -M master source</code>.</li>
-<li>Add github as origin remote <code>git remote add origin git@github.com:lazywei/lazywei.github.io.git</code>.</li>
-<li>Add <code>public</code> and <code>.deploy</code> into <code>.gitignore</code>.</li>
-<li>Commit: <code>git commit -m &#39;Init commit&#39;</code>.</li>
-</ul>
-<h3>Deployment</h3>
-<ul>
-<li><p>Change the deployment section of <code>_config.yml</code> to:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-</pre></td><td class="code"><pre><span class="preprocessor"># Deployment</span>
-<span class="preprocessor">## Docs: http://zespia.tw/hexo/docs/deploy.html</span>
-<span class="label">deploy:</span>
-  type: github
-  repository: https://github<span class="preprocessor">.com</span>/lazywei/lazywei<span class="preprocessor">.github</span><span class="preprocessor">.io</span><span class="preprocessor">.git</span>
-  branch: master
-</pre></td></tr></table></figure>
-</li>
-<li><p>Generate static files: <code>hexo g</code> or <code>hexo genereate</code>.</p>
-</li>
-<li>Deploy to github: <code>hexo deploy</code>.</li>
-</ul>
-<h3>Custom domain</h3>
-<ul>
-<li>Create a file named <code>CNAME</code> under <code>source/</code></li>
-<li>Add your domain into the file: <code>blog.lazywei.com</code></li>
-<li>Add a <code>CNAME</code> record point to <code>lazywei.github.io</code> to your DNS setting.</li>
-</ul>
-<h3>Workflow</h3>
-<ul>
-<li>Write post: <code>hexo new &quot;post title&quot;</code>.</li>
-<li>Commit source.</li>
-<li>Generate static files.</li>
-<li>Deploy to github.</li>
-</ul>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
-</article>
-
-
-
-  <article class="post">
   
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2013-11-24T07:43:51.000Z"><a href="/2013/11/24/hello-world/">Nov 24 2013</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2013/11/24/hello-world/">Hello World</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>Hello, World!<br>This is my very first post generated by <a href="http://zespia.tw/hexo" target="_blank">Hexo</a>.</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-<nav id="pagination">
-  
-  
-  <div class="clearfix"></div>
-</nav></div></div>
+</section>
+</div></div>
     <aside id="sidebar" class="alignright">
   <div class="search">
   <form action="//google.com/search" method="get" accept-charset="utf-8">
@@ -396,7 +260,7 @@ var disqus_shortname = 'bloglazywei';
   var dsq = document.createElement('script');
   dsq.type = 'text/javascript';
   dsq.async = true;
-  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
 }());
 </script>
