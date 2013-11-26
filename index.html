@@ -3,21 +3,23 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Bert's blog</title>
+  <title>Bert's Blog</title>
   <meta name="author" content="Bert Chang aka lazywei">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-  <meta property="og:site_name" content="Bert's blog"/>
+  <meta property="og:site_name" content="Bert's Blog"/>
 
   
     <meta property="og:image" content="undefined"/>
   
 
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
   <link href="/favicon.png" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="Bert's blog" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xml" title="Bert's Blog" type="application/atom+xml">
   <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
@@ -26,8 +28,8 @@
 
 <body>
   <header id="header" class="inner"><div class="alignleft">
-  <h1><a href="/">Bert's blog</a></h1>
-  <h2><a href="/"></a></h2>
+  <h1><a href="/">Bert's Blog</a></h1>
+  <h2 class="subtitle">Hello, World!</h2>
 </div>
 <nav id="main-nav" class="alignright">
   <ul>
@@ -38,12 +40,24 @@
     
       <li><a href="/about">About</a></li>
     
-      <li><a href="https://github.com/lazywei/">Github</a></li>
+
+
+    
+    <li>
+      <a href="https://github.com/lazywei" target="_blank"><i class="fa fa-github-alt fa-2x"></i></a>
+    </li>
+    
+    
+    
+    <li>
+      <a href="https://twitter.com/jrweizhang" target="_blank"><i class="fa fa-twitter fa-2x"></i></a>
+    </li>
     
   </ul>
   <div class="clearfix"></div>
 </nav>
-<div class="clearfix"></div></header>
+<div class="clearfix"></div>
+</header>
   <div id="content" class="inner">
     <div id="main-col" class="alignleft"><div id="wrapper">
   <article class="post">
@@ -341,12 +355,128 @@
 
 
 
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2013-10-28T14:50:18.000Z"><a href="/2013/10/28/xelatex-with-vim-and-texshop/">Oct 28 2013</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2013/10/28/xelatex-with-vim-and-texshop/">XeLaTex with vim and texshop</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2>XeLaTexSince</h2>
+<p>Sometimes I need to write 中文 in my tex file, the most convenient way is to use <a href="http://en.wikipedia.org/wik/XeTeX" target="_blank">XeLaTex</a>.<br>It&#39;s really easy to configure the XeLaTex to deal with 中文, just add the following lines to your tex file:</p>
+<figure class="highlight lang-tex"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="command">\usepackage</span><span class="special">{</span>fontspec,xltxtra,xunicode<span class="special">}</span>
+<span class="command">\setromanfont</span><span class="special">{</span>Apple LiSung Light<span class="special">}</span>
+</pre></td></tr></table></figure>
+
+<p>You can find my template tex file from <a href="https://gist.github.com/lazywei/6606677" target="_blank">here</a></p>
+<h2>Vim</h2>
+<p>There is a omni functional vim plugin for latex: <a href="http://vim-latex.sourceforge.net/" target="_blank">vim-latex</a>. However, it seems too complicated to me. All I need is just some key mappings, and I put the config into a separated plugin: <a href="https://github.com/lazywei/vim-language-specific" target="_blank">vim-language-specific</a>. Then you can use <code>&lt;leader&gt;xe</code> to save file and compile it with xelatex.</p>
+<h2>TexShop</h2>
+<p>I originally used <a href="http://www.xm1math.net/texmaker/" target="_blank">TexMaker</a>. It&#39;s good but it fails on Mavericks (OS X 10.9). Fortunately, I found another awesome software: <a href="http://pages.uoregon.edu/koch/texshop/" target="_blank">TexShop</a>. It is a lightweight but powerful software, and you can configure it to use external editor, which is my favorite. Just check the ‘Auto Updating’ in preference panel. Then you can simply write and compile tex in vim, and view it in TexShop.</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2013-08-25T11:13:50.000Z"><a href="/2013/08/25/install-haskell-on-mac-via-homebrew/">Aug 25 2013</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2013/08/25/install-haskell-on-mac-via-homebrew/">Install Haskell on Mac via homebrew</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>As we install many other packages on mac, we can install <a href="www.haskell.org">Haskell</a> via <a href="http://brew.sh/" target="_blank">Homebrew</a>.<br>First, search the <code>haskell</code>:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="variable">$ </span>brew search haskell
+haskell-platform
+</pre></td></tr></table></figure>
+
+<p>Install:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre>$ brew install haskell-platform
+==&gt; Installing haskell-platform dependency: ghc
+<span class="keyword">...</span>
+</pre></td></tr></table></figure>
+
+<p>Once installed, you should be able to run:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre>$ ghc
+ghc: <span class="literal">no</span> input files
+Usage: For basic information, <span class="keyword">try</span> the `<span class="javascript">--help<span class="string">' option.</span>
+</pre></td></tr></table></figure>
+
+<p>As well as the Haskell interpreter:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+</pre></td><td class="code"><pre>$ ghci
+GHCi, version <span class="number">7.6</span><span class="number">.3</span>: http://www.haskell.org/ghc/  :? <span class="keyword">for</span> help
+Loading package ghc-prim <span class="keyword">...</span> linking <span class="keyword">...</span> done.
+Loading package integer-gmp <span class="keyword">...</span> linking <span class="keyword">...</span> done.
+Loading package base <span class="keyword">...</span> linking <span class="keyword">...</span> done.
+Prelude&gt;
+</pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
 
 <nav id="pagination">
   
   
   <div class="clearfix"></div>
-</nav></div></div>
+</nav>
+</div></div>
     <aside id="sidebar" class="alignright">
   <div class="search">
   <form action="//google.com/search" method="get" accept-charset="utf-8">
@@ -362,15 +492,19 @@
   <h3 class="title">Tags</h3>
   <ul class="entry">
   
+    <li><a href="/tags/Golang/">Golang</a><small>1</small></li>
+  
+    <li><a href="/tags/Haskell/">Haskell</a><small>1</small></li>
+  
     <li><a href="/tags/Hexo/">Hexo</a><small>1</small></li>
+  
+    <li><a href="/tags/Latex/">Latex</a><small>1</small></li>
   
     <li><a href="/tags/Matlab/">Matlab</a><small>1</small></li>
   
-    <li><a href="/tags/Vim/">Vim</a><small>1</small></li>
+    <li><a href="/tags/Testing/">Testing</a><small>1</small></li>
   
-    <li><a href="/tags/golang/">golang</a><small>1</small></li>
-  
-    <li><a href="/tags/testing/">testing</a><small>1</small></li>
+    <li><a href="/tags/Vim/">Vim</a><small>2</small></li>
   
   </ul>
 </div>

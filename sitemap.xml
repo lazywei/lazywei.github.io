@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://blog.lazywei.com/2013/10/28/xelatex-with-vim-and-texshop/</loc>
+    <lastmod>2013-11-26T12:35:09.000Z</lastmod>
+  </url>
+  <url>
     <loc>http://blog.lazywei.com/2013/11/25/goconvey-and-gocheck/</loc>
-    <lastmod>2013-11-25T11:46:36.000Z</lastmod>
+    <lastmod>2013-11-26T12:33:29.000Z</lastmod>
+  </url>
+  <url>
+    <loc>http://blog.lazywei.com/2013/08/25/install-haskell-on-mac-via-homebrew/</loc>
+    <lastmod>2013-11-26T12:33:13.000Z</lastmod>
   </url>
   <url>
     <loc>http://blog.lazywei.com/about/index.html</loc>
