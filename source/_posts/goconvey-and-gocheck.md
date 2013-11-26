@@ -1,6 +1,6 @@
 title: GoConvey and Gocheck
 date: 2013-11-25 19:12:08
-tags: ["golang", "testing"]
+tags: ["Golang", "Testing"]
 ---
 
 I currently use [GoConvey](http://smartystreets.github.io/goconvey/) and [Gocheck](http://labix.org/gocheck) as my testing framework.
