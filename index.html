@@ -66,6 +66,54 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2013-12-02T15:04:27.000Z"><a href="/2013/12/02/zsh-and-tmux-path/">Dec 2 2013</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2013/12/02/zsh-and-tmux-path/">Zsh and Tmux path</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>I got some weird PATH problems since I started using Tmux. I noticed that the PATH with tmux isn&#39;t the same as without tmux. It seems that there are duplicated some paths.</p>
+<p>I use rbenv as my ruby version manager, and the duplicated path broke it. The <code>ruby</code> command will execute system ruby instead of rbenv&#39;s.</p>
+<p>I then found the problem is my <code>zshrc</code> extend PATH in this way:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="title">export</span> PATH=/usr/local/bin:<span class="variable">$PATH</span>
+</pre></td></tr></table></figure>
+
+<p>It means that the PATH will be appended some path to it everytime the <code>zshrc</code> be loaded.</p>
+<p>Therefore, I hard code the path first in the <code>zshrc</code>, and then extend it:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre>export <span class="class">PATH</span>=/<span class="class">Users</span>/lazywei/.rbenv/<span class="method">shims:</span>/<span class="class">Users</span>/lazywei/.rbenv/<span class="method">bin:</span>/usr/<span class="method">bin:</span>/<span class="method">bin:</span>/usr/<span class="method">sbin:</span>/<span class="method">sbin:</span>/usr/local/<span class="method">bin:</span>/opt/<span class="class">X11</span>/<span class="method">bin:</span>/usr/local/go/<span class="method">bin:</span>/usr/texbin
+export <span class="class">PATH</span>=/usr/local/<span class="method">bin:</span><span class="char">$P</span>ATH
+</pre></td></tr></table></figure>
+
+<p>Then the PATH will reset everytime the <code>zshrc</code> got loaded.</p>
+<p>This workaround is dirty but is good enough for me.</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2013-11-25T11:12:08.000Z"><a href="/2013/11/25/goconvey-and-gocheck/">Nov 25 2013</a></time>
       
       
@@ -504,7 +552,11 @@ Prelude&gt;
   
     <li><a href="/tags/Testing/">Testing</a><small>1</small></li>
   
+    <li><a href="/tags/Tmux/">Tmux</a><small>1</small></li>
+  
     <li><a href="/tags/Vim/">Vim</a><small>2</small></li>
+  
+    <li><a href="/tags/Zsh/">Zsh</a><small>1</small></li>
   
   </ul>
 </div>

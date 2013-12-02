@@ -3,13 +3,15 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Latex | Bert's Blog</title>
+  <title>Zsh and Tmux path | Bert's Blog</title>
   <meta name="author" content="Bert Chang aka lazywei">
+  
+  <meta name="description" content="I got some weird PATH problems since I started using Tmux. I noticed that the PATH with tmux isn&amp;#39;t the same as without tmux. It seems that there a">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+  <meta property="og:title" content="Zsh and Tmux path"/>
   <meta property="og:site_name" content="Bert's Blog"/>
 
   
@@ -59,25 +61,68 @@
 <div class="clearfix"></div>
 </header>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper">
-<h2 class="archive-title tag">Latex</h2>
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2013-12-02T15:04:27.000Z"><a href="/2013/12/02/zsh-and-tmux-path/">Dec 2 2013</a></time>
+      
+      
+  
+    <h1 class="title">Zsh and Tmux path</h1>
+  
 
+    </header>
+    <div class="entry">
+      
+        <p>I got some weird PATH problems since I started using Tmux. I noticed that the PATH with tmux isn&#39;t the same as without tmux. It seems that there are duplicated some paths.</p>
+<p>I use rbenv as my ruby version manager, and the duplicated path broke it. The <code>ruby</code> command will execute system ruby instead of rbenv&#39;s.</p>
+<p>I then found the problem is my <code>zshrc</code> extend PATH in this way:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="title">export</span> PATH=/usr/local/bin:<span class="variable">$PATH</span>
+</pre></td></tr></table></figure>
 
-  <div class="archive">
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2013-10-28T14:50:18.000Z"><a href="/2013/10/28/xelatex-with-vim-and-texshop/">Oct 28 2013</a></time>
-            
-              <h1 class="title"><a href="/2013/10/28/xelatex-with-vim-and-texshop/">XeLaTex with vim and texshop</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
+<p>It means that the PATH will be appended some path to it everytime the <code>zshrc</code> be loaded.</p>
+<p>Therefore, I hard code the path first in the <code>zshrc</code>, and then extend it:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre>export <span class="class">PATH</span>=/<span class="class">Users</span>/lazywei/.rbenv/<span class="method">shims:</span>/<span class="class">Users</span>/lazywei/.rbenv/<span class="method">bin:</span>/usr/<span class="method">bin:</span>/<span class="method">bin:</span>/usr/<span class="method">sbin:</span>/<span class="method">sbin:</span>/usr/local/<span class="method">bin:</span>/opt/<span class="class">X11</span>/<span class="method">bin:</span>/usr/local/go/<span class="method">bin:</span>/usr/texbin
+export <span class="class">PATH</span>=/usr/local/<span class="method">bin:</span><span class="char">$P</span>ATH
+</pre></td></tr></table></figure>
+
+<p>Then the PATH will reset everytime the <code>zshrc</code> got loaded.</p>
+<p>This workaround is dirty but is good enough for me.</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/Zsh/">Zsh</a>, <a href="/tags/Tmux/">Tmux</a>
   </div>
+
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">Comments</h1>
+
+  
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+  
+</section>
 </div></div>
     <aside id="sidebar" class="alignright">
   <div class="search">
@@ -136,7 +181,7 @@ var disqus_shortname = 'bloglazywei';
   var dsq = document.createElement('script');
   dsq.type = 'text/javascript';
   dsq.async = true;
-  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
 }());
 </script>
