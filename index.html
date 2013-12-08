@@ -66,6 +66,110 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2013-12-07T08:37:25.000Z"><a href="/2013/12/07/getting-started-with-camlistore-0/">Dec 7 2013</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2013/12/07/getting-started-with-camlistore-0/">Getting started with Camlistore (0)</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <blockquote>
+<p>Camlistore is your personal storage system for life.</p>
+</blockquote>
+<p>If you have never heard about <a href="http://camlistore.org/" target="_blank">Camlistore</a> before, you can checkout the video demo on the website.</p>
+<p>I would like to write down the process of setting up a Camlistore server and how to using it and help more people know how wonderful and useful Camlistore is.</p>
+<h2>Install GO</h2>
+<p>If you haven&#39;t had GO installed, you can use <a href="https://github.com/moovweb/gvm" target="_blank">gvm</a> to install it.<br>Please read the requirement section of its <a href="https://github.com/moovweb/gvm#mac-os-x-requirements" target="_blank">README</a>, and then</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre>bash &lt; <span class="xml"><span class="tag">&lt;<span class="title">(curl</span> <span class="attribute">-s</span> <span class="attribute">https:</span>//<span class="attribute">raw.github.com</span>/<span class="attribute">moovweb</span>/<span class="attribute">gvm</span>/<span class="attribute">master</span>/<span class="attribute">binscripts</span>/<span class="attribute">gvm-installer</span>)
+<span class="attribute">gvm</span> <span class="attribute">install</span> <span class="attribute">go1.2</span>
+<span class="attribute">gvm</span> <span class="attribute">use</span> <span class="attribute">go1.2</span></span>
+</pre></td></tr></table></figure>
+
+<h2>Build Camlistore</h2>
+<p>After installing GO, it&#39;s time to build Camlistore. First, download zip from <a href="http://camlistore.org/download" target="_blank">http://camlistore.org/download</a> or use git clone just like me:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="title">git</span> clone <span class="url">https://github.com/bradfitz/camlistore
+</pre></td></tr></table></figure>
+
+<p>Install:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre>cd camlistore
+<span class="keyword">go</span> run <span class="built_in">make</span>.<span class="keyword">go</span>
+</pre></td></tr></table></figure>
+
+<p>If you use <code>homebrew</code> as your package management on OS X, you may get error when building <code>go-sqlite3</code>:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="code"><pre>camlistore.org/third_party/github.com/mattn/go-sqlite3
+# pkg-config <span class="comment">--cflags sqlite3</span>
+<span class="keyword">Package</span> sqlite3 was <span class="keyword">not</span> found <span class="keyword">in</span> the pkg-config search path.
+Perhaps you should add the directory containing `sqlite3.pc'
+<span class="keyword">to</span> the PKG_CONFIG_PATH environment <span class="keyword">variable</span>
+No <span class="keyword">package</span> <span class="attribute">'sqlite3</span>' found
+<span class="keyword">exit</span> status <span class="number">1</span>
+</pre></td></tr></table></figure>
+
+<p>The solution is use this command instead:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="constant">PKG_CONFIG_PATH</span>=<span class="regexp">/usr/local</span><span class="regexp">/Cellar/sqlite</span><span class="regexp">/*/lib</span><span class="regexp">/pkgconfig/</span> go run make.go
+</pre></td></tr></table></figure>
+
+<p>You can find more detail on <a href="https://github.com/mattn/go-sqlite3/issues/45" target="_blank">https://github.com/mattn/go-sqlite3/issues/45</a>.</p>
+<h2>Run and initialize Camlistore</h2>
+<p>Now you can start the camlistore server by</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="string">.</span><span class="comment">/bin/camlistored
+</pre></td></tr></table></figure>
+
+<p>It will then generate server configuration file, at <code>$HOME/.config/camlistore/server-config.json</code>, and a new secret keyring: <code>$HOME/.config/camlistore/identify-secring.gpg</code>.<br>You should then see the following message after starting the camlistore server:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>Generated <span class="keyword">new</span> identity <span class="keyword">with</span> keyId <span class="string">"1427D50D"</span>
+</pre></td></tr></table></figure>
+
+<p>Use this key to initialize client command tools:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="string">.</span><span class="comment">/bin/camput</span> <span class="comment">init</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">gpgkey</span> <span class="comment">1427D50D
+</pre></td></tr></table></figure>
+
+<p>The client configuration file is located at</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>$HOME/<span class="variable">.config</span>/camlistore/client-config<span class="variable">.json</span>
+</pre></td></tr></table></figure>
+
+<p>I will write about the basic usage in next post in this series.</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2013-12-05T02:18:17.000Z"><a href="/2013/12/05/iloveck101---parallel-downloading-beauties/">Dec 5 2013</a></time>
       
       
@@ -581,7 +685,9 @@ Prelude&gt;
   <h3 class="title">Tags</h3>
   <ul class="entry">
   
-    <li><a href="/tags/Golang/">Golang</a><small>2</small></li>
+    <li><a href="/tags/Camlistore/">Camlistore</a><small>1</small></li>
+  
+    <li><a href="/tags/Golang/">Golang</a><small>3</small></li>
   
     <li><a href="/tags/Haskell/">Haskell</a><small>1</small></li>
   
@@ -609,6 +715,10 @@ Prelude&gt;
   <ul class="entry">
     
       <li>
+        <a href="/2013/12/07/getting-started-with-camlistore-0/">Getting started with Camlistore (0)</a>
+      </li>
+    
+      <li>
         <a href="/2013/12/05/iloveck101---parallel-downloading-beauties/">iloveck101 - parallel downloading beauties</a>
       </li>
     
@@ -622,10 +732,6 @@ Prelude&gt;
     
       <li>
         <a href="/2013/11/24/vim-matlab/">Vim-matlab</a>
-      </li>
-    
-      <li>
-        <a href="/2013/11/24/how-do-i-configure-my-hexo-blog/">How do I configure my Hexo blog</a>
       </li>
     
   </ul>
