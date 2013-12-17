@@ -66,6 +66,102 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2013-12-17T12:45:52.000Z"><a href="/2013/12/17/go-bindings-for-opencv-go-opencv/">Dec 17 2013</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2013/12/17/go-bindings-for-opencv-go-opencv/">Go bindings for OpenCV go-opencv</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>I would like to introduce a golang package: <a href="https://github.com/lazywei/go-opencv" target="_blank">go-opencv</a>.</p>
+<p>The <a href="https://code.google.com/p/go-opencv" target="_blank">original project</a> is created by @chaishushan and is hosted on Google code. However, it seems that it has been abandoned. Therefore, I choose to fork this project and host it on Github. Furthermore, I think Github is more popular nowadays, and it&#39;s easier to fork/contribute on github than on Google code.</p>
+<h2>Introduction</h2>
+<p><strong>go-opencv</strong> is a Golang binding for <a href="http://opencv.org/" target="_blank">OpenCV</a>, which is used for computer vision.</p>
+<h2>Requirement</h2>
+<p>Before using go-opencv, you should install OpenCV first. On Mac OS X, you can use homebrew:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="title">brew</span> install opencv
+</pre></td></tr></table></figure>
+
+<p>On Ubuntu,</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>su<span class="operator"><span class="keyword">do</span> apt-<span class="keyword">get</span> install libopencv-dev
+</pre></td></tr></table></figure>
+
+<h2>Installation</h2>
+<p>Please use <code>go get -u</code> to get the latest version of go-opencv:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="title">go</span> get -u github.com/lazywei/go-opencv
+</pre></td></tr></table></figure>
+
+<h2>Simple Usage</h2>
+<p>Here is a simple image resizing example for go-opencv:</p>
+<figure class="highlight lang-go"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td><td class="code"><pre><span class="keyword">package</span> main
+
+<span class="keyword">import</span> opencv <span class="string">"github.com/lazywei/go-opencv/opencv"</span>
+
+<span class="keyword">func</span> main() {
+	filename := <span class="string">"bert.jpg"</span>
+	srcImg := opencv.LoadImage(filename)
+	<span class="keyword">if</span> srcImg == <span class="constant">nil</span> {
+		<span class="built_in">panic</span>(<span class="string">"LoadImage fail"</span>)
+	}
+	<span class="keyword">defer</span> srcImg.Release()
+	resized1 := opencv.Resize(srcImg,<span class="number"> 400</span>,<span class="number"> 0</span>,<span class="number"> 0</span>)
+	resized2 := opencv.Resize(srcImg,<span class="number"> 300</span>,<span class="number"> 500</span>,<span class="number"> 0</span>)
+	resized3 := opencv.Resize(srcImg,<span class="number"> 300</span>,<span class="number"> 500</span>,<span class="number"> 2</span>)
+	opencv.SaveImage(<span class="string">"resized1.jpg"</span>, resized1,<span class="number"> 0</span>)
+	opencv.SaveImage(<span class="string">"resized2.jpg"</span>, resized2,<span class="number"> 0</span>)
+	opencv.SaveImage(<span class="string">"resized3.jpg"</span>, resized3,<span class="number"> 0</span>)
+}
+</pre></td></tr></table></figure>
+
+<p>You can find more samples on: <a href="https://github.com/lazywei/go-opencv/tree/master/samples" target="_blank">https://github.com/lazywei/go-opencv/tree/master/samples</a></p>
+<h2>Contributing</h2>
+<p>The most important reason I fork and host this project on Github is that I want to make it simple for others to help maintain/develop this project. Therefore, please feel free to open a pull request anytime you want to commit your change. Also, I need some help to make the API document more detail. Please let me know if there is any concern, you can ping me on Github(@lazywei) or on Twitter(@jrweizhang).</p>
+<p>Thanks!</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2013-12-07T08:37:25.000Z"><a href="/2013/12/07/getting-started-with-camlistore-0/">Dec 7 2013</a></time>
       
       
@@ -682,37 +778,12 @@ Prelude&gt;
 
   
 <div class="widget tag">
-  <h3 class="title">Tags</h3>
-  <ul class="entry">
-  
-    <li><a href="/tags/Camlistore/">Camlistore</a><small>1</small></li>
-  
-    <li><a href="/tags/Golang/">Golang</a><small>3</small></li>
-  
-    <li><a href="/tags/Haskell/">Haskell</a><small>1</small></li>
-  
-    <li><a href="/tags/Hexo/">Hexo</a><small>1</small></li>
-  
-    <li><a href="/tags/Latex/">Latex</a><small>1</small></li>
-  
-    <li><a href="/tags/Matlab/">Matlab</a><small>1</small></li>
-  
-    <li><a href="/tags/Testing/">Testing</a><small>1</small></li>
-  
-    <li><a href="/tags/Tmux/">Tmux</a><small>1</small></li>
-  
-    <li><a href="/tags/Vim/">Vim</a><small>2</small></li>
-  
-    <li><a href="/tags/Zsh/">Zsh</a><small>1</small></li>
-  
-  </ul>
-</div>
-
-
-  
-<div class="widget tag">
   <h3 class="title">Recent Posts</h3>
   <ul class="entry">
+    
+      <li>
+        <a href="/2013/12/17/go-bindings-for-opencv-go-opencv/">Go bindings for OpenCV go-opencv</a>
+      </li>
     
       <li>
         <a href="/2013/12/07/getting-started-with-camlistore-0/">Getting started with Camlistore (0)</a>
@@ -730,10 +801,37 @@ Prelude&gt;
         <a href="/2013/11/25/goconvey-and-gocheck/">GoConvey and Gocheck</a>
       </li>
     
-      <li>
-        <a href="/2013/11/24/vim-matlab/">Vim-matlab</a>
-      </li>
-    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Tags</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/Camlistore/">Camlistore</a><small>1</small></li>
+  
+    <li><a href="/tags/Golang/">Golang</a><small>4</small></li>
+  
+    <li><a href="/tags/Haskell/">Haskell</a><small>1</small></li>
+  
+    <li><a href="/tags/Hexo/">Hexo</a><small>1</small></li>
+  
+    <li><a href="/tags/Latex/">Latex</a><small>1</small></li>
+  
+    <li><a href="/tags/Matlab/">Matlab</a><small>1</small></li>
+  
+    <li><a href="/tags/OpenCV/">OpenCV</a><small>1</small></li>
+  
+    <li><a href="/tags/Testing/">Testing</a><small>1</small></li>
+  
+    <li><a href="/tags/Tmux/">Tmux</a><small>1</small></li>
+  
+    <li><a href="/tags/Vim/">Vim</a><small>2</small></li>
+  
+    <li><a href="/tags/Zsh/">Zsh</a><small>1</small></li>
+  
   </ul>
 </div>
 
