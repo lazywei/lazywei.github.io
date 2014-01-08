@@ -3,16 +3,16 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Zsh and Tmux path | Bert's Blog</title>
+  <title>Zsh and Tmux path | Bert&#39;s Blog</title>
   <meta name="author" content="Bert Chang aka lazywei">
   
-  <meta name="description" content="I got some weird PATH problems since I started using Tmux. I noticed that the PATH with tmux isn&amp;#39;t the same as without tmux. It seems that there a">
+  <meta name="description" content="I got some weird PATH problems since I started using Tmux. I noticed that the PATH with tmux isn’t the same as without tmux. It seems that there are d">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   <meta property="og:title" content="Zsh and Tmux path"/>
-  <meta property="og:site_name" content="Bert's Blog"/>
+  <meta property="og:site_name" content="Bert&#39;s Blog"/>
 
   
     <meta property="og:image" content="undefined"/>
@@ -21,7 +21,7 @@
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
   <link href="/favicon.png" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="Bert's Blog" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xml" title="Bert&#39;s Blog" type="application/atom+xml">
   <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
@@ -30,7 +30,7 @@
 
 <body>
   <header id="header" class="inner"><div class="alignleft">
-  <h1><a href="/">Bert's Blog</a></h1>
+  <h1><a href="/">Bert&#39;s Blog</a></h1>
   <h2 class="subtitle">Hello, World!</h2>
 </div>
 <nav id="main-nav" class="alignright">
@@ -63,6 +63,18 @@
   <div id="content" class="inner">
     <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
   
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
   <div class="post-content">
     <header>
       
@@ -77,19 +89,19 @@
     </header>
     <div class="entry">
       
-        <p>I got some weird PATH problems since I started using Tmux. I noticed that the PATH with tmux isn&#39;t the same as without tmux. It seems that there are duplicated some paths.</p>
-<p>I use rbenv as my ruby version manager, and the duplicated path broke it. The <code>ruby</code> command will execute system ruby instead of rbenv&#39;s.</p>
+        <p>I got some weird PATH problems since I started using Tmux. I noticed that the PATH with tmux isn’t the same as without tmux. It seems that there are duplicated some paths.</p>
+<p>I use rbenv as my ruby version manager, and the duplicated path broke it. The <code>ruby</code> command will execute system ruby instead of rbenv’s.</p>
 <p>I then found the problem is my <code>zshrc</code> extend PATH in this way:</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="title">export</span> PATH=/usr/local/bin:<span class="variable">$PATH</span>
+</pre></td><td class="code"><pre><span class="keyword">export</span> PATH=/usr/local/bin:<span class="variable">$PATH</span>
 </pre></td></tr></table></figure>
 
 <p>It means that the PATH will be appended some path to it everytime the <code>zshrc</code> be loaded.</p>
 <p>Therefore, I hard code the path first in the <code>zshrc</code>, and then extend it:</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
-</pre></td><td class="code"><pre>export <span class="class">PATH</span>=/<span class="class">Users</span>/lazywei/.rbenv/<span class="method">shims:</span>/<span class="class">Users</span>/lazywei/.rbenv/<span class="method">bin:</span>/usr/<span class="method">bin:</span>/<span class="method">bin:</span>/usr/<span class="method">sbin:</span>/<span class="method">sbin:</span>/usr/local/<span class="method">bin:</span>/opt/<span class="class">X11</span>/<span class="method">bin:</span>/usr/local/go/<span class="method">bin:</span>/usr/texbin
-export <span class="class">PATH</span>=/usr/local/<span class="method">bin:</span><span class="char">$P</span>ATH
+</pre></td><td class="code"><pre><span class="reserved">export</span> PATH=<span class="regexp">/Users/lazywei/</span>.rbenv<span class="regexp">/shims:/Users/lazywei/</span>.rbenv/<span class="attribute">bin</span>:/usr/<span class="attribute">bin</span>:/<span class="attribute">bin</span>:/usr/<span class="attribute">sbin</span>:/<span class="attribute">sbin</span>:/usr/local/<span class="attribute">bin</span>:/opt/X11/<span class="attribute">bin</span>:/usr/local/go/<span class="attribute">bin</span>:/usr/texbin
+<span class="reserved">export</span> PATH=/usr/local/<span class="attribute">bin</span>:$PATH
 </pre></td></tr></table></figure>
 
 <p>Then the PATH will reset everytime the <code>zshrc</code> got loaded.</p>
@@ -140,6 +152,10 @@ export <span class="class">PATH</span>=/usr/local/<span class="method">bin:</spa
   <ul class="entry">
     
       <li>
+        <a href="/2014/01/08/install-scikit-learn-with-conda/">Install scikit-learn with Conda</a>
+      </li>
+    
+      <li>
         <a href="/2013/12/17/go-bindings-for-opencv-go-opencv/">Go bindings for OpenCV: go-opencv</a>
       </li>
     
@@ -153,10 +169,6 @@ export <span class="class">PATH</span>=/usr/local/<span class="method">bin:</spa
     
       <li>
         <a href="/2013/12/02/zsh-and-tmux-path/">Zsh and Tmux path</a>
-      </li>
-    
-      <li>
-        <a href="/2013/11/25/goconvey-and-gocheck/">GoConvey and Gocheck</a>
       </li>
     
   </ul>
@@ -178,9 +190,13 @@ export <span class="class">PATH</span>=/usr/local/<span class="method">bin:</spa
   
     <li><a href="/tags/Latex/">Latex</a><small>1</small></li>
   
+    <li><a href="/tags/Machine Learning/">Machine Learning</a><small>1</small></li>
+  
     <li><a href="/tags/Matlab/">Matlab</a><small>1</small></li>
   
     <li><a href="/tags/OpenCV/">OpenCV</a><small>1</small></li>
+  
+    <li><a href="/tags/Python/">Python</a><small>1</small></li>
   
     <li><a href="/tags/Testing/">Testing</a><small>1</small></li>
   
@@ -198,7 +214,7 @@ export <span class="class">PATH</span>=/usr/local/<span class="method">bin:</spa
   </div>
   <footer id="footer" class="inner"><div class="alignleft">
   
-  &copy; 2013 Bert Chang aka lazywei
+  &copy; 2014 Bert Chang aka lazywei
   
 </div>
 <div class="clearfix"></div></footer>

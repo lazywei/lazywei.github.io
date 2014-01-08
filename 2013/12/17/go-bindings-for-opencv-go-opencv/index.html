@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Go bindings for OpenCV: go-opencv | Bert's Blog</title>
+  <title>Go bindings for OpenCV: go-opencv | Bert&#39;s Blog</title>
   <meta name="author" content="Bert Chang aka lazywei">
   
   <meta name="description" content="I would like to introduce a golang package: go-opencv.
@@ -13,7 +13,7 @@ The original project is created by @chaishushan and is hosted on Google code. Ho
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   <meta property="og:title" content="Go bindings for OpenCV: go-opencv"/>
-  <meta property="og:site_name" content="Bert's Blog"/>
+  <meta property="og:site_name" content="Bert&#39;s Blog"/>
 
   
     <meta property="og:image" content="undefined"/>
@@ -22,7 +22,7 @@ The original project is created by @chaishushan and is hosted on Google code. Ho
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
   <link href="/favicon.png" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="Bert's Blog" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xml" title="Bert&#39;s Blog" type="application/atom+xml">
   <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
@@ -31,7 +31,7 @@ The original project is created by @chaishushan and is hosted on Google code. Ho
 
 <body>
   <header id="header" class="inner"><div class="alignleft">
-  <h1><a href="/">Bert's Blog</a></h1>
+  <h1><a href="/">Bert&#39;s Blog</a></h1>
   <h2 class="subtitle">Hello, World!</h2>
 </div>
 <nav id="main-nav" class="alignright">
@@ -64,6 +64,18 @@ The original project is created by @chaishushan and is hosted on Google code. Ho
   <div id="content" class="inner">
     <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
   
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
   <div class="post-content">
     <header>
       
@@ -79,10 +91,10 @@ The original project is created by @chaishushan and is hosted on Google code. Ho
     <div class="entry">
       
         <p>I would like to introduce a golang package: <a href="https://github.com/lazywei/go-opencv" target="_blank">go-opencv</a>.</p>
-<p>The <a href="https://code.google.com/p/go-opencv" target="_blank">original project</a> is created by @chaishushan and is hosted on Google code. However, it seems that it has been abandoned. Therefore, I choose to fork this project and host it on Github. Furthermore, I think Github is more popular nowadays, and it&#39;s easier to fork/contribute on github than on Google code.</p>
-<h2>Introduction</h2>
+<p>The <a href="https://code.google.com/p/go-opencv" target="_blank">original project</a> is created by @chaishushan and is hosted on Google code. However, it seems that it has been abandoned. Therefore, I choose to fork this project and host it on Github. Furthermore, I think Github is more popular nowadays, and it’s easier to fork/contribute on github than on Google code.</p>
+<h2 id="Introduction">Introduction</h2>
 <p><strong><a href="https://github.com/lazywei/go-opencv" target="_blank">go-opencv</a></strong> is a Golang binding for <a href="http://opencv.org/" target="_blank">OpenCV</a>, which is used for computer vision.</p>
-<h2>Requirement</h2>
+<h2 id="Requirement">Requirement</h2>
 <p>Before using <a href="https://github.com/lazywei/go-opencv" target="_blank">go-opencv</a>, you should install OpenCV first. On Mac OS X, you can use homebrew:</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 </pre></td><td class="code"><pre><span class="title">brew</span> install opencv
@@ -90,16 +102,16 @@ The original project is created by @chaishushan and is hosted on Google code. Ho
 
 <p>On Ubuntu,</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>su<span class="operator"><span class="keyword">do</span> apt-<span class="keyword">get</span> install libopencv-dev
+</pre></td><td class="code"><pre><span class="comment">sudo</span> <span class="comment">apt</span><span class="literal">-</span><span class="comment">get</span> <span class="comment">install</span> <span class="comment">libopencv</span><span class="literal">-</span><span class="comment">dev</span>
 </pre></td></tr></table></figure>
 
-<h2>Installation</h2>
+<h2 id="Installation">Installation</h2>
 <p>Please use <code>go get -u</code> to get the latest version of <a href="https://github.com/lazywei/go-opencv" target="_blank">go-opencv</a>:</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="title">go</span> get -u github.com/lazywei/go-opencv
+</pre></td><td class="code"><pre><span class="comment">go</span> <span class="comment">get</span> <span class="literal">-</span><span class="comment">u</span> <span class="comment">github</span><span class="string">.</span><span class="comment">com/lazywei/go</span><span class="literal">-</span><span class="comment">opencv</span>
 </pre></td></tr></table></figure>
 
-<h2>Simple Usage</h2>
+<h2 id="Simple_Usage">Simple Usage</h2>
 <p>Here is a simple image resizing example for <a href="https://github.com/lazywei/go-opencv" target="_blank">go-opencv</a>:</p>
 <figure class="highlight lang-go"><table><tr><td class="gutter"><pre>1
 2
@@ -140,7 +152,7 @@ The original project is created by @chaishushan and is hosted on Google code. Ho
 </pre></td></tr></table></figure>
 
 <p>You can find more samples on: <a href="https://github.com/lazywei/go-opencv/tree/master/samples" target="_blank">https://github.com/lazywei/go-opencv/tree/master/samples</a></p>
-<h2>Contributing</h2>
+<h2 id="Contributing">Contributing</h2>
 <p>The most important reason I fork and host this project on Github is that I want to make it simple for others to help maintain/develop this project. Therefore, please feel free to open a pull request anytime you want to commit your change. Also, I need some help to make the API document more detail. Please let me know if there is any concern, you can ping me on Github(@lazywei) or on Twitter(@jrweizhang).</p>
 <p>Thanks!</p>
 
@@ -189,6 +201,10 @@ The original project is created by @chaishushan and is hosted on Google code. Ho
   <ul class="entry">
     
       <li>
+        <a href="/2014/01/08/install-scikit-learn-with-conda/">Install scikit-learn with Conda</a>
+      </li>
+    
+      <li>
         <a href="/2013/12/17/go-bindings-for-opencv-go-opencv/">Go bindings for OpenCV: go-opencv</a>
       </li>
     
@@ -202,10 +218,6 @@ The original project is created by @chaishushan and is hosted on Google code. Ho
     
       <li>
         <a href="/2013/12/02/zsh-and-tmux-path/">Zsh and Tmux path</a>
-      </li>
-    
-      <li>
-        <a href="/2013/11/25/goconvey-and-gocheck/">GoConvey and Gocheck</a>
       </li>
     
   </ul>
@@ -227,9 +239,13 @@ The original project is created by @chaishushan and is hosted on Google code. Ho
   
     <li><a href="/tags/Latex/">Latex</a><small>1</small></li>
   
+    <li><a href="/tags/Machine Learning/">Machine Learning</a><small>1</small></li>
+  
     <li><a href="/tags/Matlab/">Matlab</a><small>1</small></li>
   
     <li><a href="/tags/OpenCV/">OpenCV</a><small>1</small></li>
+  
+    <li><a href="/tags/Python/">Python</a><small>1</small></li>
   
     <li><a href="/tags/Testing/">Testing</a><small>1</small></li>
   
@@ -247,7 +263,7 @@ The original project is created by @chaishushan and is hosted on Google code. Ho
   </div>
   <footer id="footer" class="inner"><div class="alignleft">
   
-  &copy; 2013 Bert Chang aka lazywei
+  &copy; 2014 Bert Chang aka lazywei
   
 </div>
 <div class="clearfix"></div></footer>

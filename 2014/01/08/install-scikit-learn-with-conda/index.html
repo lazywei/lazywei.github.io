@@ -3,13 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2013/8 | Bert&#39;s Blog</title>
+  <title>Install scikit-learn with Conda | Bert&#39;s Blog</title>
   <meta name="author" content="Bert Chang aka lazywei">
+  
+  <meta name="description" content="Conda is a powerful package manager tool for python, while scikit-learn is a awesome machine learning libraries written in python.
+
+Download Conda: ht">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+  <meta property="og:title" content="Install scikit-learn with Conda"/>
   <meta property="og:site_name" content="Bert&#39;s Blog"/>
 
   
@@ -59,25 +63,96 @@
 <div class="clearfix"></div>
 </header>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper">
-<h2 class="archive-title">2013/8</h2>
-
-
-  <div class="archive">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
     
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2013-08-25T11:13:50.000Z"><a href="/2013/08/25/install-haskell-on-mac-via-homebrew/">Aug 25 2013</a></time>
-            
-              <h1 class="title"><a href="/2013/08/25/install-haskell-on-mac-via-homebrew/">Install Haskell on Mac via homebrew</a></h1>
-            
-          </header>
-        </div>
-      </article>
+      <img src="">
     
   </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-01-08T14:10:55.000Z"><a href="/2014/01/08/install-scikit-learn-with-conda/">Jan 8 2014</a></time>
+      
+      
+  
+    <h1 class="title">Install scikit-learn with Conda</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p><a href="http://docs.continuum.io/conda/" target="_blank">Conda</a> is a powerful package manager tool for python, while <a href="http://scikit-learn.org/" target="_blank">scikit-learn</a> is a awesome machine learning libraries written in python.</p>
+<ul>
+<li>Download Conda: <a href="https://store.continuum.io/cshop/anaconda/" target="_blank">https://store.continuum.io/cshop/anaconda/</a></li>
+</ul>
+<p>After installing it, there will be a <code>anaconda</code> folder in your directory. You can choose add that directory into your <code>PATH</code>. I don’t, however, because I don’t want to override my brewed python.</p>
+<p>Remember to update your conda:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>~<span class="regexp">/anaconda/bin</span><span class="regexp">/conda update conda</span>
+</pre></td></tr></table></figure>
+
+<ul>
+<li>Create environment:</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="comment">~/anaconda/bin/conda</span> <span class="comment">create</span> <span class="literal">-</span><span class="comment">n</span> <span class="comment">py3k</span> <span class="comment">python=3</span><span class="string">.</span><span class="comment">3</span> <span class="comment">anaconda</span>
+</pre></td></tr></table></figure>
+
+<p>You can, of course, use <code>conda</code> directly if you added <code>anaconda/bin</code> into your <code>PATH</code>.</p>
+<ul>
+<li>Activate the environment:</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="built_in">source</span> ~/anaconda/bin/activate py3k
+</pre></td></tr></table></figure>
+
+<ul>
+<li>Install <code>scikit-learn</code>:</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="comment">~/anaconda/bin/conda</span> <span class="comment">install</span> <span class="comment">scikit</span><span class="literal">-</span><span class="comment">learn</span>
+</pre></td></tr></table></figure>
+
+<p>I’m confused with whether should I use this approach to install <code>scikit-learn</code> or not? Should I use <code>pip</code> instead?</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/Python/">Python</a>, <a href="/tags/Machine Learning/">Machine Learning</a>
+  </div>
+
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">Comments</h1>
+
+  
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+  
+</section>
 </div></div>
     <aside id="sidebar" class="alignright">
   <div class="search">
@@ -173,7 +248,7 @@ var disqus_shortname = 'bloglazywei';
   var dsq = document.createElement('script');
   dsq.type = 'text/javascript';
   dsq.async = true;
-  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
 }());
 </script>

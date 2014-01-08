@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Bert's Blog</title>
+  <title>Bert&#39;s Blog</title>
   <meta name="author" content="Bert Chang aka lazywei">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-  <meta property="og:site_name" content="Bert's Blog"/>
+  <meta property="og:site_name" content="Bert&#39;s Blog"/>
 
   
     <meta property="og:image" content="undefined"/>
@@ -19,7 +19,7 @@
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
   <link href="/favicon.png" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="Bert's Blog" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xml" title="Bert&#39;s Blog" type="application/atom+xml">
   <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
@@ -28,7 +28,7 @@
 
 <body>
   <header id="header" class="inner"><div class="alignleft">
-  <h1><a href="/">Bert's Blog</a></h1>
+  <h1><a href="/">Bert&#39;s Blog</a></h1>
   <h2 class="subtitle">Hello, World!</h2>
 </div>
 <nav id="main-nav" class="alignright">
@@ -62,6 +62,94 @@
     <div id="main-col" class="alignleft"><div id="wrapper">
   <article class="post">
   
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-01-08T14:10:55.000Z"><a href="/2014/01/08/install-scikit-learn-with-conda/">Jan 8 2014</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/01/08/install-scikit-learn-with-conda/">Install scikit-learn with Conda</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p><a href="http://docs.continuum.io/conda/" target="_blank">Conda</a> is a powerful package manager tool for python, while <a href="http://scikit-learn.org/" target="_blank">scikit-learn</a> is a awesome machine learning libraries written in python.</p>
+<ul>
+<li>Download Conda: <a href="https://store.continuum.io/cshop/anaconda/" target="_blank">https://store.continuum.io/cshop/anaconda/</a></li>
+</ul>
+<p>After installing it, there will be a <code>anaconda</code> folder in your directory. You can choose add that directory into your <code>PATH</code>. I don’t, however, because I don’t want to override my brewed python.</p>
+<p>Remember to update your conda:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>~<span class="regexp">/anaconda/bin</span><span class="regexp">/conda update conda</span>
+</pre></td></tr></table></figure>
+
+<ul>
+<li>Create environment:</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="comment">~/anaconda/bin/conda</span> <span class="comment">create</span> <span class="literal">-</span><span class="comment">n</span> <span class="comment">py3k</span> <span class="comment">python=3</span><span class="string">.</span><span class="comment">3</span> <span class="comment">anaconda</span>
+</pre></td></tr></table></figure>
+
+<p>You can, of course, use <code>conda</code> directly if you added <code>anaconda/bin</code> into your <code>PATH</code>.</p>
+<ul>
+<li>Activate the environment:</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="built_in">source</span> ~/anaconda/bin/activate py3k
+</pre></td></tr></table></figure>
+
+<ul>
+<li>Install <code>scikit-learn</code>:</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="comment">~/anaconda/bin/conda</span> <span class="comment">install</span> <span class="comment">scikit</span><span class="literal">-</span><span class="comment">learn</span>
+</pre></td></tr></table></figure>
+
+<p>I’m confused with whether should I use this approach to install <code>scikit-learn</code> or not? Should I use <code>pip</code> instead?</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
   <div class="post-content">
     <header>
       
@@ -77,10 +165,10 @@
     <div class="entry">
       
         <p>I would like to introduce a golang package: <a href="https://github.com/lazywei/go-opencv" target="_blank">go-opencv</a>.</p>
-<p>The <a href="https://code.google.com/p/go-opencv" target="_blank">original project</a> is created by @chaishushan and is hosted on Google code. However, it seems that it has been abandoned. Therefore, I choose to fork this project and host it on Github. Furthermore, I think Github is more popular nowadays, and it&#39;s easier to fork/contribute on github than on Google code.</p>
-<h2>Introduction</h2>
+<p>The <a href="https://code.google.com/p/go-opencv" target="_blank">original project</a> is created by @chaishushan and is hosted on Google code. However, it seems that it has been abandoned. Therefore, I choose to fork this project and host it on Github. Furthermore, I think Github is more popular nowadays, and it’s easier to fork/contribute on github than on Google code.</p>
+<h2 id="Introduction">Introduction</h2>
 <p><strong><a href="https://github.com/lazywei/go-opencv" target="_blank">go-opencv</a></strong> is a Golang binding for <a href="http://opencv.org/" target="_blank">OpenCV</a>, which is used for computer vision.</p>
-<h2>Requirement</h2>
+<h2 id="Requirement">Requirement</h2>
 <p>Before using <a href="https://github.com/lazywei/go-opencv" target="_blank">go-opencv</a>, you should install OpenCV first. On Mac OS X, you can use homebrew:</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 </pre></td><td class="code"><pre><span class="title">brew</span> install opencv
@@ -88,16 +176,16 @@
 
 <p>On Ubuntu,</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>su<span class="operator"><span class="keyword">do</span> apt-<span class="keyword">get</span> install libopencv-dev
+</pre></td><td class="code"><pre><span class="comment">sudo</span> <span class="comment">apt</span><span class="literal">-</span><span class="comment">get</span> <span class="comment">install</span> <span class="comment">libopencv</span><span class="literal">-</span><span class="comment">dev</span>
 </pre></td></tr></table></figure>
 
-<h2>Installation</h2>
+<h2 id="Installation">Installation</h2>
 <p>Please use <code>go get -u</code> to get the latest version of <a href="https://github.com/lazywei/go-opencv" target="_blank">go-opencv</a>:</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="title">go</span> get -u github.com/lazywei/go-opencv
+</pre></td><td class="code"><pre><span class="comment">go</span> <span class="comment">get</span> <span class="literal">-</span><span class="comment">u</span> <span class="comment">github</span><span class="string">.</span><span class="comment">com/lazywei/go</span><span class="literal">-</span><span class="comment">opencv</span>
 </pre></td></tr></table></figure>
 
-<h2>Simple Usage</h2>
+<h2 id="Simple_Usage">Simple Usage</h2>
 <p>Here is a simple image resizing example for <a href="https://github.com/lazywei/go-opencv" target="_blank">go-opencv</a>:</p>
 <figure class="highlight lang-go"><table><tr><td class="gutter"><pre>1
 2
@@ -138,7 +226,7 @@
 </pre></td></tr></table></figure>
 
 <p>You can find more samples on: <a href="https://github.com/lazywei/go-opencv/tree/master/samples" target="_blank">https://github.com/lazywei/go-opencv/tree/master/samples</a></p>
-<h2>Contributing</h2>
+<h2 id="Contributing">Contributing</h2>
 <p>The most important reason I fork and host this project on Github is that I want to make it simple for others to help maintain/develop this project. Therefore, please feel free to open a pull request anytime you want to commit your change. Also, I need some help to make the API document more detail. Please let me know if there is any concern, you can ping me on Github(@lazywei) or on Twitter(@jrweizhang).</p>
 <p>Thanks!</p>
 
@@ -157,6 +245,18 @@
 
 
   <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
   
   <div class="post-content">
     <header>
@@ -177,27 +277,27 @@
 </blockquote>
 <p>If you have never heard about <a href="http://camlistore.org/" target="_blank">Camlistore</a> before, you can checkout the video demo on the website.</p>
 <p>I would like to write down the process of setting up a Camlistore server and how to using it and help more people know how wonderful and useful Camlistore is.</p>
-<h2>Install GO</h2>
-<p>If you haven&#39;t had GO installed, you can use <a href="https://github.com/moovweb/gvm" target="_blank">gvm</a> to install it.<br>Please read the requirement section of its <a href="https://github.com/moovweb/gvm#mac-os-x-requirements" target="_blank">README</a>, and then</p>
+<h2 id="Install_GO">Install GO</h2>
+<p>If you haven’t had GO installed, you can use <a href="https://github.com/moovweb/gvm" target="_blank">gvm</a> to install it.<br>Please read the requirement section of its <a href="https://github.com/moovweb/gvm#mac-os-x-requirements" target="_blank">README</a>, and then</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
-</pre></td><td class="code"><pre>bash &lt; <span class="xml"><span class="tag">&lt;<span class="title">(curl</span> <span class="attribute">-s</span> <span class="attribute">https:</span>//<span class="attribute">raw.github.com</span>/<span class="attribute">moovweb</span>/<span class="attribute">gvm</span>/<span class="attribute">master</span>/<span class="attribute">binscripts</span>/<span class="attribute">gvm-installer</span>)
-<span class="attribute">gvm</span> <span class="attribute">install</span> <span class="attribute">go1.2</span>
-<span class="attribute">gvm</span> <span class="attribute">use</span> <span class="attribute">go1.2</span></span>
+</pre></td><td class="code"><pre>bash &lt; &lt;(curl -s <span class="symbol">https:</span>/<span class="regexp">/raw.github.com/moovweb</span><span class="regexp">/gvm/master</span><span class="regexp">/binscripts/gvm</span>-installer)
+gvm install go1.<span class="number">2</span>
+gvm use go1.<span class="number">2</span>
 </pre></td></tr></table></figure>
 
-<h2>Build Camlistore</h2>
-<p>After installing GO, it&#39;s time to build Camlistore. First, download zip from <a href="http://camlistore.org/download" target="_blank">http://camlistore.org/download</a> or use git clone just like me:</p>
+<h2 id="Build_Camlistore">Build Camlistore</h2>
+<p>After installing GO, it’s time to build Camlistore. First, download zip from <a href="http://camlistore.org/download" target="_blank">http://camlistore.org/download</a> or use git clone just like me:</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="title">git</span> clone <span class="url">https://github.com/bradfitz/camlistore
+</pre></td><td class="code"><pre>git <span class="keyword">clone</span> https:<span class="comment">//github.com/bradfitz/camlistore</span>
 </pre></td></tr></table></figure>
 
 <p>Install:</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
-</pre></td><td class="code"><pre>cd camlistore
-<span class="keyword">go</span> run <span class="built_in">make</span>.<span class="keyword">go</span>
+</pre></td><td class="code"><pre><span class="title">cd</span> camlistore
+<span class="title">go</span> run make.go
 </pre></td></tr></table></figure>
 
 <p>If you use <code>homebrew</code> as your package management on OS X, you may get error when building <code>go-sqlite3</code>:</p>
@@ -223,10 +323,10 @@ No <span class="keyword">package</span> <span class="attribute">'sqlite3</span>'
 </pre></td></tr></table></figure>
 
 <p>You can find more detail on <a href="https://github.com/mattn/go-sqlite3/issues/45" target="_blank">https://github.com/mattn/go-sqlite3/issues/45</a>.</p>
-<h2>Run and initialize Camlistore</h2>
+<h2 id="Run_and_initialize_Camlistore">Run and initialize Camlistore</h2>
 <p>Now you can start the camlistore server by</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="string">.</span><span class="comment">/bin/camlistored
+</pre></td><td class="code"><pre>.<span class="regexp">/bin/camlistored</span>
 </pre></td></tr></table></figure>
 
 <p>It will then generate server configuration file, at <code>$HOME/.config/camlistore/server-config.json</code>, and a new secret keyring: <code>$HOME/.config/camlistore/identify-secring.gpg</code>.<br>You should then see the following message after starting the camlistore server:</p>
@@ -236,12 +336,12 @@ No <span class="keyword">package</span> <span class="attribute">'sqlite3</span>'
 
 <p>Use this key to initialize client command tools:</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="string">.</span><span class="comment">/bin/camput</span> <span class="comment">init</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">gpgkey</span> <span class="comment">1427D50D
+</pre></td><td class="code"><pre><span class="string">.</span><span class="comment">/bin/camput</span> <span class="comment">init</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">gpgkey</span> <span class="comment">1427D50D</span>
 </pre></td></tr></table></figure>
 
 <p>The client configuration file is located at</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>$HOME/<span class="variable">.config</span>/camlistore/client-config<span class="variable">.json</span>
+</pre></td><td class="code"><pre>$HOME/<span class="preprocessor">.config</span>/camlistore/client-config<span class="preprocessor">.json</span>
 </pre></td></tr></table></figure>
 
 <p>I will write about the basic usage in next post in this series.</p>
@@ -262,6 +362,18 @@ No <span class="keyword">package</span> <span class="attribute">'sqlite3</span>'
 
   <article class="post">
   
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
   <div class="post-content">
     <header>
       
@@ -276,16 +388,16 @@ No <span class="keyword">package</span> <span class="attribute">'sqlite3</span>'
     </header>
     <div class="entry">
       
-        <p>@tzangms wrote an amazing python script few days ago, <a href="https://github.com/tzangms/iloveck101" target="_blank">iloveck101</a>. It is a tool for downloading all the images in the post of CK101 卡提諾論壇 (e.g. <a href="http://ck101.com/thread-2864249-1-1.html" target="_blank">http://ck101.com/thread-2864249-1-1.html</a>). Then we don&#39;t need to wait for the lazy image loading and those annoying ads.</p>
+        <p>@tzangms wrote an amazing python script few days ago, <a href="https://github.com/tzangms/iloveck101" target="_blank">iloveck101</a>. It is a tool for downloading all the images in the post of CK101 卡提諾論壇 (e.g. <a href="http://ck101.com/thread-2864249-1-1.html" target="_blank">http://ck101.com/thread-2864249-1-1.html</a>). Then we don’t need to wait for the lazy image loading and those annoying ads.</p>
 <p>As soon as @tzangms release this cool tool, there are many others clone in other languages show up. For example, there is a node.js version: <a href="https://github.com/clonn/iloveck101" target="_blank">https://github.com/clonn/iloveck101</a>.</p>
 <p>I also rewrite it in golang: <a href="https://github.com/lazywei/iloveck101" target="_blank">https://github.com/lazywei/iloveck101</a>. Thanks goroutine, this version allows you to download images parallely.</p>
-<h3>Install</h3>
+<h3 id="Install">Install</h3>
 <p><code>go get github.com/lazywei/iloveck101</code></p>
-<h3>Usage</h3>
+<h3 id="Usage">Usage</h3>
 <p><code>iloveck101 -u [url] -w [workers number]</code></p>
-<h3>Example</h3>
+<h3 id="Example">Example</h3>
 <p><code>iloveck101 -u http://ck101.com/thread-2864249-1-1.html -w 50</code></p>
-<p>Then it will create a folder in <code>~/Pictures/iloveck101</code> which contains all the beauties&#39; images :)</p>
+<p>Then it will create a folder in <code>~/Pictures/iloveck101</code> which contains all the beauties’ images :)</p>
 
       
     </div>
@@ -303,6 +415,18 @@ No <span class="keyword">package</span> <span class="attribute">'sqlite3</span>'
 
   <article class="post">
   
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
   <div class="post-content">
     <header>
       
@@ -317,19 +441,19 @@ No <span class="keyword">package</span> <span class="attribute">'sqlite3</span>'
     </header>
     <div class="entry">
       
-        <p>I got some weird PATH problems since I started using Tmux. I noticed that the PATH with tmux isn&#39;t the same as without tmux. It seems that there are duplicated some paths.</p>
-<p>I use rbenv as my ruby version manager, and the duplicated path broke it. The <code>ruby</code> command will execute system ruby instead of rbenv&#39;s.</p>
+        <p>I got some weird PATH problems since I started using Tmux. I noticed that the PATH with tmux isn’t the same as without tmux. It seems that there are duplicated some paths.</p>
+<p>I use rbenv as my ruby version manager, and the duplicated path broke it. The <code>ruby</code> command will execute system ruby instead of rbenv’s.</p>
 <p>I then found the problem is my <code>zshrc</code> extend PATH in this way:</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="title">export</span> PATH=/usr/local/bin:<span class="variable">$PATH</span>
+</pre></td><td class="code"><pre><span class="keyword">export</span> PATH=/usr/local/bin:<span class="variable">$PATH</span>
 </pre></td></tr></table></figure>
 
 <p>It means that the PATH will be appended some path to it everytime the <code>zshrc</code> be loaded.</p>
 <p>Therefore, I hard code the path first in the <code>zshrc</code>, and then extend it:</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
-</pre></td><td class="code"><pre>export <span class="class">PATH</span>=/<span class="class">Users</span>/lazywei/.rbenv/<span class="method">shims:</span>/<span class="class">Users</span>/lazywei/.rbenv/<span class="method">bin:</span>/usr/<span class="method">bin:</span>/<span class="method">bin:</span>/usr/<span class="method">sbin:</span>/<span class="method">sbin:</span>/usr/local/<span class="method">bin:</span>/opt/<span class="class">X11</span>/<span class="method">bin:</span>/usr/local/go/<span class="method">bin:</span>/usr/texbin
-export <span class="class">PATH</span>=/usr/local/<span class="method">bin:</span><span class="char">$P</span>ATH
+</pre></td><td class="code"><pre><span class="reserved">export</span> PATH=<span class="regexp">/Users/lazywei/</span>.rbenv<span class="regexp">/shims:/Users/lazywei/</span>.rbenv/<span class="attribute">bin</span>:/usr/<span class="attribute">bin</span>:/<span class="attribute">bin</span>:/usr/<span class="attribute">sbin</span>:/<span class="attribute">sbin</span>:/usr/local/<span class="attribute">bin</span>:/opt/X11/<span class="attribute">bin</span>:/usr/local/go/<span class="attribute">bin</span>:/usr/texbin
+<span class="reserved">export</span> PATH=/usr/local/<span class="attribute">bin</span>:$PATH
 </pre></td></tr></table></figure>
 
 <p>Then the PATH will reset everytime the <code>zshrc</code> got loaded.</p>
@@ -351,6 +475,18 @@ export <span class="class">PATH</span>=/usr/local/<span class="method">bin:</spa
 
   <article class="post">
   
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
   <div class="post-content">
     <header>
       
@@ -366,14 +502,14 @@ export <span class="class">PATH</span>=/usr/local/<span class="method">bin:</spa
     <div class="entry">
       
         <p>I currently use <a href="http://smartystreets.github.io/goconvey/" target="_blank">GoConvey</a> and <a href="http://labix.org/gocheck" target="_blank">Gocheck</a> as my testing framework.</p>
-<h2>GoConvey</h2>
+<h2 id="GoConvey">GoConvey</h2>
 <p>GoConvey runs a HTTP server which has a really beautiful Web UI for reviewing testing results. The most important is that it will re-run the tests every time you change and save the files. In other words, it will watch any change of you files and run tests when need.</p>
-<h2>Gocheck</h2>
-<p>Though GoConvey has a nice Web UI, it doesn&#39;t provide something like <code>SetupTest()</code>, which will be used to set common settings and will be called in every test case. Fortunately, there is a richer testing framework, Gocheck. Gocheck provides many useful features (e.g. fixtures, useful assertions and checks), and can be integrated with GoConvy.</p>
-<h2>Examples</h2>
+<h2 id="Gocheck">Gocheck</h2>
+<p>Though GoConvey has a nice Web UI, it doesn’t provide something like <code>SetupTest()</code>, which will be used to set common settings and will be called in every test case. Fortunately, there is a richer testing framework, Gocheck. Gocheck provides many useful features (e.g. fixtures, useful assertions and checks), and can be integrated with GoConvy.</p>
+<h2 id="Examples">Examples</h2>
 <p>Here are some simple examples that how to use these two wonderful testing framework together. You should run <code>goconvey</code> in terminal and open <code>http://localhost:8080</code> first.</p>
 <ul>
-<li>Use GoConvey&#39;s <code>Convey</code> and Gocheck&#39;s <code>Suite</code>:</li>
+<li>Use GoConvey’s <code>Convey</code> and Gocheck’s <code>Suite</code>:</li>
 </ul>
 <figure class="highlight lang-go"><table><tr><td class="gutter"><pre>1
 2
@@ -430,7 +566,7 @@ export <span class="class">PATH</span>=/usr/local/<span class="method">bin:</spa
 </pre></td></tr></table></figure>
 
 <ul>
-<li>Use Gocheck‘s assertions, and use GoConvey’s Web UI only:</li>
+<li>Use Gocheck’s assertions, and use GoConvey’s Web UI only:</li>
 </ul>
 <figure class="highlight lang-go"><table><tr><td class="gutter"><pre>1
 2
@@ -498,6 +634,18 @@ export <span class="class">PATH</span>=/usr/local/<span class="method">bin:</spa
 
   <article class="post">
   
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
   <div class="post-content">
     <header>
       
@@ -513,11 +661,18 @@ export <span class="class">PATH</span>=/usr/local/<span class="method">bin:</spa
     <div class="entry">
       
         <p>TL;NR: Install the plug-in via github: <a href="https://github.com/lazywei/vim-matlab" target="_blank">Vim-Matlab</a>.</p>
-<p>As I use vim daily for everything, I use it for writing Matlab code. However, the default behavior of Vim&#39;s Matlab support is not as well as I expected.</p>
-<p>Fortunately, I found a <a href="http://www.mathworks.com/matlabcentral/fileexchange/21798-editing-matlab-files-in-vim" target="_blank">vim plug-in</a> to improve this. Though this plug-in works pretty well, it isn&#39;t in a version control system (e.g. git), which make it hard to maintain and even install. Therefore, I download it and host it on github, you can then install it through any method you like. Personally, I prefer <a href="https://github.com/gmarik/vundle" target="_blank">Vundle</a>.</p>
+<p>As I use vim daily for everything, I use it for writing Matlab code. However, the default behavior of Vim’s Matlab support is not as well as I expected.</p>
+<p>Fortunately, I found a <a href="http://www.mathworks.com/matlabcentral/fileexchange/21798-editing-matlab-files-in-vim" target="_blank">vim plug-in</a> to improve this. Though this plug-in works pretty well, it isn’t in a version control system (e.g. git), which make it hard to maintain and even install. Therefore, I download it and host it on github, you can then install it through any method you like. Personally, I prefer <a href="https://github.com/gmarik/vundle" target="_blank">Vundle</a>.</p>
 <p>Vim-Matlab: <a href="https://github.com/lazywei/vim-matlab" target="_blank">repo</a></p>
-<p>Features:<br>- Syntax highlighting<br>- Correct indentation<br>- Correct setting to use the <code>matchit.vim</code> script<br>- Tag support<br>- Help file</p>
-<p>Again, I don&#39;t own these codes. I only copy it and host it on github. If there is any concern, please let me know. Thanks!</p>
+<p>Features:</p>
+<ul>
+<li>Syntax highlighting</li>
+<li>Correct indentation</li>
+<li>Correct setting to use the <code>matchit.vim</code> script</li>
+<li>Tag support</li>
+<li>Help file</li>
+</ul>
+<p>Again, I don’t own these codes. I only copy it and host it on github. If there is any concern, please let me know. Thanks!</p>
 
       
     </div>
@@ -535,6 +690,18 @@ export <span class="class">PATH</span>=/usr/local/<span class="method">bin:</spa
 
   <article class="post">
   
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
   <div class="post-content">
     <header>
       
@@ -549,13 +716,13 @@ export <span class="class">PATH</span>=/usr/local/<span class="method">bin:</spa
     </header>
     <div class="entry">
       
-        <p>Here is my basic setting for hexo. You should somehow use your custom value instead (e.g. Don&#39;t use <code>lazywei.github.io</code> but use <code>yourname.github.io</code>).</p>
-<h3>Init</h3>
+        <p>Here is my basic setting for hexo. You should somehow use your custom value instead (e.g. Don’t use <code>lazywei.github.io</code> but use <code>yourname.github.io</code>).</p>
+<h3 id="Init">Init</h3>
 <ul>
 <li>Add a repo named <code>lazywei.github.io</code> on <a href="https://github.com/" target="_blank">github</a>.</li>
 <li>Init hexo: <code>hexo init lazywei.github.io</code>.</li>
 </ul>
-<h3>Git</h3>
+<h3 id="Git">Git</h3>
 <ul>
 <li>Init git: <code>cd lazywei.github.io; git init</code>.</li>
 <li>Use <code>source</code> for default branch name instead of <code>master</code>: <code>git branch -M master source</code>.</li>
@@ -563,7 +730,7 @@ export <span class="class">PATH</span>=/usr/local/<span class="method">bin:</spa
 <li>Add <code>public</code> and <code>.deploy</code> into <code>.gitignore</code>.</li>
 <li>Commit: <code>git commit -m &#39;Init commit&#39;</code>.</li>
 </ul>
-<h3>Deployment</h3>
+<h3 id="Deployment">Deployment</h3>
 <ul>
 <li><p>Change the deployment section of <code>_config.yml</code> to:</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
@@ -584,13 +751,13 @@ export <span class="class">PATH</span>=/usr/local/<span class="method">bin:</spa
 </li>
 <li>Deploy to github: <code>hexo deploy</code>.</li>
 </ul>
-<h3>Custom domain</h3>
+<h3 id="Custom_domain">Custom domain</h3>
 <ul>
 <li>Create a file named <code>CNAME</code> under <code>source/</code></li>
 <li>Add your domain into the file: <code>blog.lazywei.com</code></li>
 <li>Add a <code>CNAME</code> record point to <code>lazywei.github.io</code> to your DNS setting.</li>
 </ul>
-<h3>Workflow</h3>
+<h3 id="Workflow">Workflow</h3>
 <ul>
 <li>Write post: <code>hexo new &quot;post title&quot;</code>.</li>
 <li>Commit source.</li>
@@ -613,6 +780,18 @@ export <span class="class">PATH</span>=/usr/local/<span class="method">bin:</spa
 
 
   <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
   
   <div class="post-content">
     <header>
@@ -646,6 +825,18 @@ export <span class="class">PATH</span>=/usr/local/<span class="method">bin:</spa
 
   <article class="post">
   
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
   <div class="post-content">
     <header>
       
@@ -660,8 +851,8 @@ export <span class="class">PATH</span>=/usr/local/<span class="method">bin:</spa
     </header>
     <div class="entry">
       
-        <h2>XeLaTexSince</h2>
-<p>Sometimes I need to write 中文 in my tex file, the most convenient way is to use <a href="http://en.wikipedia.org/wik/XeTeX" target="_blank">XeLaTex</a>.<br>It&#39;s really easy to configure the XeLaTex to deal with 中文, just add the following lines to your tex file:</p>
+        <h2 id="XeLaTexSince">XeLaTexSince</h2>
+<p>Sometimes I need to write 中文 in my tex file, the most convenient way is to use <a href="http://en.wikipedia.org/wik/XeTeX" target="_blank">XeLaTex</a>.<br>It’s really easy to configure the XeLaTex to deal with 中文, just add the following lines to your tex file:</p>
 <figure class="highlight lang-tex"><table><tr><td class="gutter"><pre>1
 2
 </pre></td><td class="code"><pre><span class="command">\usepackage</span><span class="special">{</span>fontspec,xltxtra,xunicode<span class="special">}</span>
@@ -669,81 +860,10 @@ export <span class="class">PATH</span>=/usr/local/<span class="method">bin:</spa
 </pre></td></tr></table></figure>
 
 <p>You can find my template tex file from <a href="https://gist.github.com/lazywei/6606677" target="_blank">here</a></p>
-<h2>Vim</h2>
+<h2 id="Vim">Vim</h2>
 <p>There is a omni functional vim plugin for latex: <a href="http://vim-latex.sourceforge.net/" target="_blank">vim-latex</a>. However, it seems too complicated to me. All I need is just some key mappings, and I put the config into a separated plugin: <a href="https://github.com/lazywei/vim-language-specific" target="_blank">vim-language-specific</a>. Then you can use <code>&lt;leader&gt;xe</code> to save file and compile it with xelatex.</p>
-<h2>TexShop</h2>
-<p>I originally used <a href="http://www.xm1math.net/texmaker/" target="_blank">TexMaker</a>. It&#39;s good but it fails on Mavericks (OS X 10.9). Fortunately, I found another awesome software: <a href="http://pages.uoregon.edu/koch/texshop/" target="_blank">TexShop</a>. It is a lightweight but powerful software, and you can configure it to use external editor, which is my favorite. Just check the ‘Auto Updating’ in preference panel. Then you can simply write and compile tex in vim, and view it in TexShop.</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2013-08-25T11:13:50.000Z"><a href="/2013/08/25/install-haskell-on-mac-via-homebrew/">Aug 25 2013</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2013/08/25/install-haskell-on-mac-via-homebrew/">Install Haskell on Mac via homebrew</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>As we install many other packages on mac, we can install <a href="www.haskell.org">Haskell</a> via <a href="http://brew.sh/" target="_blank">Homebrew</a>.<br>First, search the <code>haskell</code>:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-</pre></td><td class="code"><pre><span class="variable">$ </span>brew search haskell
-haskell-platform
-</pre></td></tr></table></figure>
-
-<p>Install:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-</pre></td><td class="code"><pre>$ brew install haskell-platform
-==&gt; Installing haskell-platform dependency: ghc
-<span class="keyword">...</span>
-</pre></td></tr></table></figure>
-
-<p>Once installed, you should be able to run:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-</pre></td><td class="code"><pre>$ ghc
-ghc: <span class="literal">no</span> input files
-Usage: For basic information, <span class="keyword">try</span> the `<span class="javascript">--help<span class="string">' option.</span>
-</pre></td></tr></table></figure>
-
-<p>As well as the Haskell interpreter:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-</pre></td><td class="code"><pre>$ ghci
-GHCi, version <span class="number">7.6</span><span class="number">.3</span>: http://www.haskell.org/ghc/  :? <span class="keyword">for</span> help
-Loading package ghc-prim <span class="keyword">...</span> linking <span class="keyword">...</span> done.
-Loading package integer-gmp <span class="keyword">...</span> linking <span class="keyword">...</span> done.
-Loading package base <span class="keyword">...</span> linking <span class="keyword">...</span> done.
-Prelude&gt;
-</pre></td></tr></table></figure>
-
+<h2 id="TexShop">TexShop</h2>
+<p>I originally used <a href="http://www.xm1math.net/texmaker/" target="_blank">TexMaker</a>. It’s good but it fails on Mavericks (OS X 10.9). Fortunately, I found another awesome software: <a href="http://pages.uoregon.edu/koch/texshop/" target="_blank">TexShop</a>. It is a lightweight but powerful software, and you can configure it to use external editor, which is my favorite. Just check the ‘Auto Updating’ in preference panel. Then you can simply write and compile tex in vim, and view it in TexShop.</p>
 
       
     </div>
@@ -762,6 +882,8 @@ Prelude&gt;
 
 <nav id="pagination">
   
+  
+    <a href="/page/2/" class="alignright next">Next</a>
   
   <div class="clearfix"></div>
 </nav>
@@ -782,6 +904,10 @@ Prelude&gt;
   <ul class="entry">
     
       <li>
+        <a href="/2014/01/08/install-scikit-learn-with-conda/">Install scikit-learn with Conda</a>
+      </li>
+    
+      <li>
         <a href="/2013/12/17/go-bindings-for-opencv-go-opencv/">Go bindings for OpenCV: go-opencv</a>
       </li>
     
@@ -795,10 +921,6 @@ Prelude&gt;
     
       <li>
         <a href="/2013/12/02/zsh-and-tmux-path/">Zsh and Tmux path</a>
-      </li>
-    
-      <li>
-        <a href="/2013/11/25/goconvey-and-gocheck/">GoConvey and Gocheck</a>
       </li>
     
   </ul>
@@ -820,9 +942,13 @@ Prelude&gt;
   
     <li><a href="/tags/Latex/">Latex</a><small>1</small></li>
   
+    <li><a href="/tags/Machine Learning/">Machine Learning</a><small>1</small></li>
+  
     <li><a href="/tags/Matlab/">Matlab</a><small>1</small></li>
   
     <li><a href="/tags/OpenCV/">OpenCV</a><small>1</small></li>
+  
+    <li><a href="/tags/Python/">Python</a><small>1</small></li>
   
     <li><a href="/tags/Testing/">Testing</a><small>1</small></li>
   
@@ -840,7 +966,7 @@ Prelude&gt;
   </div>
   <footer id="footer" class="inner"><div class="alignleft">
   
-  &copy; 2013 Bert Chang aka lazywei
+  &copy; 2014 Bert Chang aka lazywei
   
 </div>
 <div class="clearfix"></div></footer>
