@@ -3,15 +3,16 @@
 <head>
   <meta charset="utf-8">
   
-  <title>iloveck101 - parallel downloading beauties | Bert&#39;s Blog</title>
+  <title>Monit and golang web server | Bert&#39;s Blog</title>
   <meta name="author" content="Bert Chang aka lazywei">
   
-  <meta name="description" content="@tzangms wrote an amazing python script few days ago, iloveck101. It is a tool for downloading all the images in the post of CK101 卡提諾論壇 (e.g. http://">
+  <meta name="description" content="I wrote a golang web server, and I want to use monit to monitor it. If you haven’t heard monit yet, you can check it out here: Monit.
+The main problem">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="iloveck101 - parallel downloading beauties"/>
+  <meta property="og:title" content="Monit and golang web server"/>
   <meta property="og:site_name" content="Bert&#39;s Blog"/>
 
   
@@ -79,26 +80,74 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2013-12-05T02:18:17.000Z"><a href="/2013/12/05/iloveck101---parallel-downloading-beauties/">Dec 5 2013</a></time>
+        <time datetime="2014-01-27T07:33:40.000Z"><a href="/2014/01/27/monit-and-golang-web-server/">Jan 27 2014</a></time>
       
       
   
-    <h1 class="title">iloveck101 - parallel downloading beauties</h1>
+    <h1 class="title">Monit and golang web server</h1>
   
 
     </header>
     <div class="entry">
       
-        <p>@tzangms wrote an amazing python script few days ago, <a href="https://github.com/tzangms/iloveck101" target="_blank">iloveck101</a>. It is a tool for downloading all the images in the post of CK101 卡提諾論壇 (e.g. <a href="http://ck101.com/thread-2864249-1-1.html" target="_blank">http://ck101.com/thread-2864249-1-1.html</a>). Then we don’t need to wait for the lazy image loading and those annoying ads.</p>
-<p>As soon as @tzangms release this cool tool, there are many others clone in other languages show up. For example, there is a node.js version: <a href="https://github.com/clonn/iloveck101" target="_blank">https://github.com/clonn/iloveck101</a>.</p>
-<p>I also rewrite it in golang: <a href="https://github.com/lazywei/iloveck101" target="_blank">https://github.com/lazywei/iloveck101</a>. Thanks goroutine, this version allows you to download images parallely.</p>
-<h3 id="Install">Install</h3>
-<p><code>go get github.com/lazywei/iloveck101</code></p>
-<h3 id="Usage">Usage</h3>
-<p><code>iloveck101 -u [url] -w [workers number]</code></p>
-<h3 id="Example">Example</h3>
-<p><code>iloveck101 -u http://ck101.com/thread-2864249-1-1.html -w 50</code></p>
-<p>Then it will create a folder in <code>~/Pictures/iloveck101</code> which contains all the beauties’ images :)</p>
+        <p>I wrote a golang web server, and I want to use monit to monitor it. If you haven’t heard monit yet, you can check it out here: <a href="http://mmonit.com/monit/" target="_blank">Monit</a>.</p>
+<p>The main problem is that my golang web server is not daemonable. So, the first step is to write a wrapper for monit.</p>
+<h3 id="Wrapper_for_monit">Wrapper for monit</h3>
+<p>Suppose we use <code>go build -o ./my_server</code> to build our server, then we will have a executable binary at <code>./my_server</code>.</p>
+<p>In the wrapper, we should echo PID to a file so monit can use the PID to monitor the process.</p>
+<figure class="highlight lang-bash"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="code"><pre><span class="shebang">#!/bin/bash
+</span>
+<span class="keyword">case</span> <span class="variable">$1</span> <span class="keyword">in</span>
+  start)
+    <span class="built_in">cd</span> /home/deploy/<span class="built_in">source</span>/current;
+    <span class="built_in">echo</span> $$ &gt; /home/deploy/<span class="built_in">source</span>/shared/pids/my_server.pid;
+    <span class="keyword">exec</span> /home/deploy/<span class="built_in">source</span>/current/my_server &gt; /tmp/my_server.out <span class="number">2</span>&gt;&<span class="number">1</span>;
+    ;;
+  stop)
+    kill `cat /home/deploy/<span class="built_in">source</span>/shared/pids/my_server.pid`;;
+  *)
+  <span class="built_in">echo</span> <span class="string">"usage: knife-knife-server-daemon {start|stop}"</span> ;;
+<span class="keyword">esac</span>
+<span class="keyword">exit</span> <span class="number">0</span>
+</pre></td></tr></table></figure>
+
+<p>The reason I use <code>/home/deploy/source/current/my_server &gt; /tmp/my_server.out 2&gt;&amp;1</code> is because I want to redirect the output of <code>my_server</code> to <code>/tmp/my_server.out</code> so that I can use it to debug.</p>
+<h3 id="Make_sure_your_wrapper_work">Make sure your wrapper work</h3>
+<p>After creating the wrapper, you should be able to use <code>your_wrapper.sh start</code> to run your process. Then press <code>ctrl</code> + <code>z</code> to pause the program and get back to the shell. Secondly, use <code>bg</code> to run it in background. Now you can use <code>ps aux | grep my_server</code> and <code>cat /home/deploy/source/shared/pids/my_server.pid</code> to check there is nothing weird.</p>
+<h3 id="Monit_configuration">Monit configuration</h3>
+<p>This step is relatively simple.</p>
+<p>The configuration file should locate at <code>/etc/monit/conf.d/my_server.monitrc</code></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre>check process my_server <span class="keyword">with</span> pidfile /home/deploy/source/<span class="keyword">shared</span>/pids/my_server.pid
+  start = <span class="string">"/home/deploy/source/current/my_wrapper.sh start"</span>
+  <span class="keyword">stop</span> = <span class="string">"/home/deploy/source/current/my_wrapper.sh stop"</span>
+</pre></td></tr></table></figure>
+
+<h3 id="Finale">Finale</h3>
+<p>Simply use <code>monit reload</code>, <code>monit start my_server</code> and <code>monit summary</code> to make sure everything is all right.</p>
+<h3 id="Troubleshooting">Troubleshooting</h3>
+<p>I spent a lot of time on fix a weird bug. I can use wrapper to run the process. However, when I use <code>monit start my_server</code> the process can’t be executed. It turns out the problem is I have:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>bufio<span class="preprocessor">.NewScanner</span>(os<span class="preprocessor">.Stdin</span>)
+</pre></td></tr></table></figure>
+
+<p>and the process will waiting the standard input. This will make monit wait for the process until timeout. After removing this line, everything works fine.</p>
 
       
     </div>
@@ -108,7 +157,7 @@
         
   
   <div class="tags">
-    <a href="/tags/Golang/">Golang</a>
+    <a href="/tags/Linux/">Linux</a>, <a href="/tags/Golang/">Golang</a>, <a href="/tags/Monit/">Monit</a>
   </div>
 
         

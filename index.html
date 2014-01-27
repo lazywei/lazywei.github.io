@@ -78,6 +78,107 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2014-01-27T07:33:40.000Z"><a href="/2014/01/27/monit-and-golang-web-server/">Jan 27 2014</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/01/27/monit-and-golang-web-server/">Monit and golang web server</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>I wrote a golang web server, and I want to use monit to monitor it. If you haven’t heard monit yet, you can check it out here: <a href="http://mmonit.com/monit/" target="_blank">Monit</a>.</p>
+<p>The main problem is that my golang web server is not daemonable. So, the first step is to write a wrapper for monit.</p>
+<h3 id="Wrapper_for_monit">Wrapper for monit</h3>
+<p>Suppose we use <code>go build -o ./my_server</code> to build our server, then we will have a executable binary at <code>./my_server</code>.</p>
+<p>In the wrapper, we should echo PID to a file so monit can use the PID to monitor the process.</p>
+<figure class="highlight lang-bash"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="code"><pre><span class="shebang">#!/bin/bash
+</span>
+<span class="keyword">case</span> <span class="variable">$1</span> <span class="keyword">in</span>
+  start)
+    <span class="built_in">cd</span> /home/deploy/<span class="built_in">source</span>/current;
+    <span class="built_in">echo</span> $$ &gt; /home/deploy/<span class="built_in">source</span>/shared/pids/my_server.pid;
+    <span class="keyword">exec</span> /home/deploy/<span class="built_in">source</span>/current/my_server &gt; /tmp/my_server.out <span class="number">2</span>&gt;&<span class="number">1</span>;
+    ;;
+  stop)
+    kill `cat /home/deploy/<span class="built_in">source</span>/shared/pids/my_server.pid`;;
+  *)
+  <span class="built_in">echo</span> <span class="string">"usage: knife-knife-server-daemon {start|stop}"</span> ;;
+<span class="keyword">esac</span>
+<span class="keyword">exit</span> <span class="number">0</span>
+</pre></td></tr></table></figure>
+
+<p>The reason I use <code>/home/deploy/source/current/my_server &gt; /tmp/my_server.out 2&gt;&amp;1</code> is because I want to redirect the output of <code>my_server</code> to <code>/tmp/my_server.out</code> so that I can use it to debug.</p>
+<h3 id="Make_sure_your_wrapper_work">Make sure your wrapper work</h3>
+<p>After creating the wrapper, you should be able to use <code>your_wrapper.sh start</code> to run your process. Then press <code>ctrl</code> + <code>z</code> to pause the program and get back to the shell. Secondly, use <code>bg</code> to run it in background. Now you can use <code>ps aux | grep my_server</code> and <code>cat /home/deploy/source/shared/pids/my_server.pid</code> to check there is nothing weird.</p>
+<h3 id="Monit_configuration">Monit configuration</h3>
+<p>This step is relatively simple.</p>
+<p>The configuration file should locate at <code>/etc/monit/conf.d/my_server.monitrc</code></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre>check process my_server <span class="keyword">with</span> pidfile /home/deploy/source/<span class="keyword">shared</span>/pids/my_server.pid
+  start = <span class="string">"/home/deploy/source/current/my_wrapper.sh start"</span>
+  <span class="keyword">stop</span> = <span class="string">"/home/deploy/source/current/my_wrapper.sh stop"</span>
+</pre></td></tr></table></figure>
+
+<h3 id="Finale">Finale</h3>
+<p>Simply use <code>monit reload</code>, <code>monit start my_server</code> and <code>monit summary</code> to make sure everything is all right.</p>
+<h3 id="Troubleshooting">Troubleshooting</h3>
+<p>I spent a lot of time on fix a weird bug. I can use wrapper to run the process. However, when I use <code>monit start my_server</code> the process can’t be executed. It turns out the problem is I have:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>bufio<span class="preprocessor">.NewScanner</span>(os<span class="preprocessor">.Stdin</span>)
+</pre></td></tr></table></figure>
+
+<p>and the process will waiting the standard input. This will make monit wait for the process until timeout. After removing this line, everything works fine.</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2014-01-08T14:10:55.000Z"><a href="/2014/01/08/install-scikit-learn-with-conda/">Jan 8 2014</a></time>
       
       
@@ -823,62 +924,6 @@ No <span class="keyword">package</span> <span class="attribute">'sqlite3</span>'
 
 
 
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2013-10-28T14:50:18.000Z"><a href="/2013/10/28/xelatex-with-vim-and-texshop/">Oct 28 2013</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2013/10/28/xelatex-with-vim-and-texshop/">XeLaTex with vim and texshop</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h2 id="XeLaTexSince">XeLaTexSince</h2>
-<p>Sometimes I need to write 中文 in my tex file, the most convenient way is to use <a href="http://en.wikipedia.org/wik/XeTeX" target="_blank">XeLaTex</a>.<br>It’s really easy to configure the XeLaTex to deal with 中文, just add the following lines to your tex file:</p>
-<figure class="highlight lang-tex"><table><tr><td class="gutter"><pre>1
-2
-</pre></td><td class="code"><pre><span class="command">\usepackage</span><span class="special">{</span>fontspec,xltxtra,xunicode<span class="special">}</span>
-<span class="command">\setromanfont</span><span class="special">{</span>Apple LiSung Light<span class="special">}</span>
-</pre></td></tr></table></figure>
-
-<p>You can find my template tex file from <a href="https://gist.github.com/lazywei/6606677" target="_blank">here</a></p>
-<h2 id="Vim">Vim</h2>
-<p>There is a omni functional vim plugin for latex: <a href="http://vim-latex.sourceforge.net/" target="_blank">vim-latex</a>. However, it seems too complicated to me. All I need is just some key mappings, and I put the config into a separated plugin: <a href="https://github.com/lazywei/vim-language-specific" target="_blank">vim-language-specific</a>. Then you can use <code>&lt;leader&gt;xe</code> to save file and compile it with xelatex.</p>
-<h2 id="TexShop">TexShop</h2>
-<p>I originally used <a href="http://www.xm1math.net/texmaker/" target="_blank">TexMaker</a>. It’s good but it fails on Mavericks (OS X 10.9). Fortunately, I found another awesome software: <a href="http://pages.uoregon.edu/koch/texshop/" target="_blank">TexShop</a>. It is a lightweight but powerful software, and you can configure it to use external editor, which is my favorite. Just check the ‘Auto Updating’ in preference panel. Then you can simply write and compile tex in vim, and view it in TexShop.</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
 
 <nav id="pagination">
   
@@ -904,6 +949,10 @@ No <span class="keyword">package</span> <span class="attribute">'sqlite3</span>'
   <ul class="entry">
     
       <li>
+        <a href="/2014/01/27/monit-and-golang-web-server/">Monit and golang web server</a>
+      </li>
+    
+      <li>
         <a href="/2014/01/08/install-scikit-learn-with-conda/">Install scikit-learn with Conda</a>
       </li>
     
@@ -919,10 +968,6 @@ No <span class="keyword">package</span> <span class="attribute">'sqlite3</span>'
         <a href="/2013/12/05/iloveck101---parallel-downloading-beauties/">iloveck101 - parallel downloading beauties</a>
       </li>
     
-      <li>
-        <a href="/2013/12/02/zsh-and-tmux-path/">Zsh and Tmux path</a>
-      </li>
-    
   </ul>
 </div>
 
@@ -934,7 +979,7 @@ No <span class="keyword">package</span> <span class="attribute">'sqlite3</span>'
   
     <li><a href="/tags/Camlistore/">Camlistore</a><small>1</small></li>
   
-    <li><a href="/tags/Golang/">Golang</a><small>4</small></li>
+    <li><a href="/tags/Golang/">Golang</a><small>5</small></li>
   
     <li><a href="/tags/Haskell/">Haskell</a><small>1</small></li>
   
@@ -942,9 +987,13 @@ No <span class="keyword">package</span> <span class="attribute">'sqlite3</span>'
   
     <li><a href="/tags/Latex/">Latex</a><small>1</small></li>
   
+    <li><a href="/tags/Linux/">Linux</a><small>1</small></li>
+  
     <li><a href="/tags/Machine Learning/">Machine Learning</a><small>1</small></li>
   
     <li><a href="/tags/Matlab/">Matlab</a><small>1</small></li>
+  
+    <li><a href="/tags/Monit/">Monit</a><small>1</small></li>
   
     <li><a href="/tags/OpenCV/">OpenCV</a><small>1</small></li>
   

@@ -78,6 +78,62 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2013-10-28T14:50:18.000Z"><a href="/2013/10/28/xelatex-with-vim-and-texshop/">Oct 28 2013</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2013/10/28/xelatex-with-vim-and-texshop/">XeLaTex with vim and texshop</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="XeLaTexSince">XeLaTexSince</h2>
+<p>Sometimes I need to write 中文 in my tex file, the most convenient way is to use <a href="http://en.wikipedia.org/wik/XeTeX" target="_blank">XeLaTex</a>.<br>It’s really easy to configure the XeLaTex to deal with 中文, just add the following lines to your tex file:</p>
+<figure class="highlight lang-tex"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="command">\usepackage</span><span class="special">{</span>fontspec,xltxtra,xunicode<span class="special">}</span>
+<span class="command">\setromanfont</span><span class="special">{</span>Apple LiSung Light<span class="special">}</span>
+</pre></td></tr></table></figure>
+
+<p>You can find my template tex file from <a href="https://gist.github.com/lazywei/6606677" target="_blank">here</a></p>
+<h2 id="Vim">Vim</h2>
+<p>There is a omni functional vim plugin for latex: <a href="http://vim-latex.sourceforge.net/" target="_blank">vim-latex</a>. However, it seems too complicated to me. All I need is just some key mappings, and I put the config into a separated plugin: <a href="https://github.com/lazywei/vim-language-specific" target="_blank">vim-language-specific</a>. Then you can use <code>&lt;leader&gt;xe</code> to save file and compile it with xelatex.</p>
+<h2 id="TexShop">TexShop</h2>
+<p>I originally used <a href="http://www.xm1math.net/texmaker/" target="_blank">TexMaker</a>. It’s good but it fails on Mavericks (OS X 10.9). Fortunately, I found another awesome software: <a href="http://pages.uoregon.edu/koch/texshop/" target="_blank">TexShop</a>. It is a lightweight but powerful software, and you can configure it to use external editor, which is my favorite. Just check the ‘Auto Updating’ in preference panel. Then you can simply write and compile tex in vim, and view it in TexShop.</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2013-08-25T11:13:50.000Z"><a href="/2013/08/25/install-haskell-on-mac-via-homebrew/">Aug 25 2013</a></time>
       
       
@@ -168,6 +224,10 @@ Prelude&gt;
   <ul class="entry">
     
       <li>
+        <a href="/2014/01/27/monit-and-golang-web-server/">Monit and golang web server</a>
+      </li>
+    
+      <li>
         <a href="/2014/01/08/install-scikit-learn-with-conda/">Install scikit-learn with Conda</a>
       </li>
     
@@ -183,10 +243,6 @@ Prelude&gt;
         <a href="/2013/12/05/iloveck101---parallel-downloading-beauties/">iloveck101 - parallel downloading beauties</a>
       </li>
     
-      <li>
-        <a href="/2013/12/02/zsh-and-tmux-path/">Zsh and Tmux path</a>
-      </li>
-    
   </ul>
 </div>
 
@@ -198,7 +254,7 @@ Prelude&gt;
   
     <li><a href="/tags/Camlistore/">Camlistore</a><small>1</small></li>
   
-    <li><a href="/tags/Golang/">Golang</a><small>4</small></li>
+    <li><a href="/tags/Golang/">Golang</a><small>5</small></li>
   
     <li><a href="/tags/Haskell/">Haskell</a><small>1</small></li>
   
@@ -206,9 +262,13 @@ Prelude&gt;
   
     <li><a href="/tags/Latex/">Latex</a><small>1</small></li>
   
+    <li><a href="/tags/Linux/">Linux</a><small>1</small></li>
+  
     <li><a href="/tags/Machine Learning/">Machine Learning</a><small>1</small></li>
   
     <li><a href="/tags/Matlab/">Matlab</a><small>1</small></li>
+  
+    <li><a href="/tags/Monit/">Monit</a><small>1</small></li>
   
     <li><a href="/tags/OpenCV/">OpenCV</a><small>1</small></li>
   
