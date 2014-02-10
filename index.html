@@ -78,6 +78,69 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2014-02-10T03:32:00.000Z"><a href="/2014/02/10/use-direnv-to-manage-your-golang-projects/">Feb 10 2014</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/02/10/use-direnv-to-manage-your-golang-projects/">Use direnv to manage your golang projects</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>I used to put all my golang projects in to a directory so I only needed a single <code>GOPATH</code> and <code>PATH</code> configuration in my <code>.zshrc</code>.
+However, this makes things complicated. There are too many projects in <code>GOPATH/src</code>, and it&#39;s hard to manage them.</p>
+<p>Fortunately, I found <a href="https://github.com/zimbatm/direnv" target="_blank">direnv</a>. For more detail, please read its README. I&#39;m going to show how I use direnv to help me organize my golang projects.</p>
+<ol>
+<li>Install direnv</li>
+<li><code>mkdir ~/GoProjects</code> and <code>cd ~/GoProjects</code></li>
+<li><code>mkdir demo_project</code> and <code>cd demo_project</code></li>
+<li><code>direnv edit .</code></li>
+<li><p>Now direnv will open <code>.envrc</code> in your <code>$EDITOR</code>. We can then put</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="keyword">export</span> GOPATH=<span class="variable">$PWD</span>
+<span class="keyword">export</span> PATH=<span class="variable">$PWD</span>/bin:<span class="variable">$PATH</span>
+</pre></td></tr></table></figure>
+
+<p>into this files.</p>
+</li>
+<li><code>go get ...</code></li>
+</ol>
+<p>Now <code>~/GoProjects/demo_project</code> is an independent workspace, enjoy it. Repeat the above steps to organize your projects.</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2014-01-27T07:33:40.000Z"><a href="/2014/01/27/monit-and-golang-web-server/">Jan 27 2014</a></time>
       
       
@@ -88,12 +151,12 @@
     </header>
     <div class="entry">
       
-        <p>I wrote a golang web server, and I want to use monit to monitor it. If you haven’t heard monit yet, you can check it out here: <a href="http://mmonit.com/monit/" target="_blank">Monit</a>.</p>
+        <p>I wrote a golang web server, and I want to use monit to monitor it. If you haven&#39;t heard monit yet, you can check it out here: <a href="http://mmonit.com/monit/" target="_blank">Monit</a>.</p>
 <p>The main problem is that my golang web server is not daemonable. So, the first step is to write a wrapper for monit.</p>
-<h3 id="Wrapper_for_monit">Wrapper for monit</h3>
+<h2 id="wrapper-for-monit">Wrapper for monit</h2>
 <p>Suppose we use <code>go build -o ./my_server</code> to build our server, then we will have a executable binary at <code>./my_server</code>.</p>
 <p>In the wrapper, we should echo PID to a file so monit can use the PID to monitor the process.</p>
-<figure class="highlight lang-bash"><table><tr><td class="gutter"><pre>1
+<figure class="highlight bash"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -124,9 +187,9 @@
 </pre></td></tr></table></figure>
 
 <p>The reason I use <code>/home/deploy/source/current/my_server &gt; /tmp/my_server.out 2&gt;&amp;1</code> is because I want to redirect the output of <code>my_server</code> to <code>/tmp/my_server.out</code> so that I can use it to debug.</p>
-<h3 id="Make_sure_your_wrapper_work">Make sure your wrapper work</h3>
+<h2 id="make-sure-your-wrapper-work">Make sure your wrapper work</h2>
 <p>After creating the wrapper, you should be able to use <code>your_wrapper.sh start</code> to run your process. Then press <code>ctrl</code> + <code>z</code> to pause the program and get back to the shell. Secondly, use <code>bg</code> to run it in background. Now you can use <code>ps aux | grep my_server</code> and <code>cat /home/deploy/source/shared/pids/my_server.pid</code> to check there is nothing weird.</p>
-<h3 id="Monit_configuration">Monit configuration</h3>
+<h2 id="monit-configuration">Monit configuration</h2>
 <p>This step is relatively simple.</p>
 <p>The configuration file should locate at <code>/etc/monit/conf.d/my_server.monitrc</code></p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
@@ -137,10 +200,10 @@
   <span class="keyword">stop</span> = <span class="string">"/home/deploy/source/current/my_wrapper.sh stop"</span>
 </pre></td></tr></table></figure>
 
-<h3 id="Finale">Finale</h3>
+<h2 id="finale">Finale</h2>
 <p>Simply use <code>monit reload</code>, <code>monit start my_server</code> and <code>monit summary</code> to make sure everything is all right.</p>
-<h3 id="Troubleshooting">Troubleshooting</h3>
-<p>I spent a lot of time on fix a weird bug. I can use wrapper to run the process. However, when I use <code>monit start my_server</code> the process can’t be executed. It turns out the problem is I have:</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p>I spent a lot of time on fix a weird bug. I can use wrapper to run the process. However, when I use <code>monit start my_server</code> the process can&#39;t be executed. It turns out the problem is I have:</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 </pre></td><td class="code"><pre>bufio<span class="preprocessor">.NewScanner</span>(os<span class="preprocessor">.Stdin</span>)
 </pre></td></tr></table></figure>
@@ -193,7 +256,7 @@
 <ul>
 <li>Download Conda: <a href="https://store.continuum.io/cshop/anaconda/" target="_blank">https://store.continuum.io/cshop/anaconda/</a></li>
 </ul>
-<p>After installing it, there will be a <code>anaconda</code> folder in your directory. You can choose add that directory into your <code>PATH</code>. I don’t, however, because I don’t want to override my brewed python.</p>
+<p>After installing it, there will be a <code>anaconda</code> folder in your directory. You can choose add that directory into your <code>PATH</code>. I don&#39;t, however, because I don&#39;t want to override my brewed python.</p>
 <p>Remember to update your conda:</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 </pre></td><td class="code"><pre>~<span class="regexp">/anaconda/bin</span><span class="regexp">/conda update conda</span>
@@ -203,7 +266,7 @@
 <li>Create environment:</li>
 </ul>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="comment">~/anaconda/bin/conda</span> <span class="comment">create</span> <span class="literal">-</span><span class="comment">n</span> <span class="comment">py3k</span> <span class="comment">python=3</span><span class="string">.</span><span class="comment">3</span> <span class="comment">anaconda</span>
+</pre></td><td class="code"><pre><span class="attribute">~/anaconda/bin/conda create -n py3k python</span>=<span class="string">3.3 anaconda</span>
 </pre></td></tr></table></figure>
 
 <p>You can, of course, use <code>conda</code> directly if you added <code>anaconda/bin</code> into your <code>PATH</code>.</p>
@@ -218,10 +281,10 @@
 <li>Install <code>scikit-learn</code>:</li>
 </ul>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="comment">~/anaconda/bin/conda</span> <span class="comment">install</span> <span class="comment">scikit</span><span class="literal">-</span><span class="comment">learn</span>
+</pre></td><td class="code"><pre>~<span class="regexp">/anaconda/bin</span><span class="regexp">/conda install scikit-learn</span>
 </pre></td></tr></table></figure>
 
-<p>I’m confused with whether should I use this approach to install <code>scikit-learn</code> or not? Should I use <code>pip</code> instead?</p>
+<p>I&#39;m confused with whether should I use this approach to install <code>scikit-learn</code> or not? Should I use <code>pip</code> instead?</p>
 
       
     </div>
@@ -266,29 +329,29 @@
     <div class="entry">
       
         <p>I would like to introduce a golang package: <a href="https://github.com/lazywei/go-opencv" target="_blank">go-opencv</a>.</p>
-<p>The <a href="https://code.google.com/p/go-opencv" target="_blank">original project</a> is created by @chaishushan and is hosted on Google code. However, it seems that it has been abandoned. Therefore, I choose to fork this project and host it on Github. Furthermore, I think Github is more popular nowadays, and it’s easier to fork/contribute on github than on Google code.</p>
-<h2 id="Introduction">Introduction</h2>
+<p>The <a href="https://code.google.com/p/go-opencv" target="_blank">original project</a> is created by @chaishushan and is hosted on Google code. However, it seems that it has been abandoned. Therefore, I choose to fork this project and host it on Github. Furthermore, I think Github is more popular nowadays, and it&#39;s easier to fork/contribute on github than on Google code.</p>
+<h2 id="introduction">Introduction</h2>
 <p><strong><a href="https://github.com/lazywei/go-opencv" target="_blank">go-opencv</a></strong> is a Golang binding for <a href="http://opencv.org/" target="_blank">OpenCV</a>, which is used for computer vision.</p>
-<h2 id="Requirement">Requirement</h2>
+<h2 id="requirement">Requirement</h2>
 <p>Before using <a href="https://github.com/lazywei/go-opencv" target="_blank">go-opencv</a>, you should install OpenCV first. On Mac OS X, you can use homebrew:</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="title">brew</span> install opencv
+</pre></td><td class="code"><pre>brew <span class="keyword">install</span> opencv
 </pre></td></tr></table></figure>
 
 <p>On Ubuntu,</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="comment">sudo</span> <span class="comment">apt</span><span class="literal">-</span><span class="comment">get</span> <span class="comment">install</span> <span class="comment">libopencv</span><span class="literal">-</span><span class="comment">dev</span>
+</pre></td><td class="code"><pre>sudo apt<span class="attribute">-get</span> install libopencv<span class="attribute">-dev</span>
 </pre></td></tr></table></figure>
 
-<h2 id="Installation">Installation</h2>
+<h2 id="installation">Installation</h2>
 <p>Please use <code>go get -u</code> to get the latest version of <a href="https://github.com/lazywei/go-opencv" target="_blank">go-opencv</a>:</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="comment">go</span> <span class="comment">get</span> <span class="literal">-</span><span class="comment">u</span> <span class="comment">github</span><span class="string">.</span><span class="comment">com/lazywei/go</span><span class="literal">-</span><span class="comment">opencv</span>
+</pre></td><td class="code"><pre>go get <span class="attribute">-u</span> github<span class="built_in">.</span>com/lazywei/go<span class="attribute">-opencv</span>
 </pre></td></tr></table></figure>
 
-<h2 id="Simple_Usage">Simple Usage</h2>
+<h2 id="simple-usage">Simple Usage</h2>
 <p>Here is a simple image resizing example for <a href="https://github.com/lazywei/go-opencv" target="_blank">go-opencv</a>:</p>
-<figure class="highlight lang-go"><table><tr><td class="gutter"><pre>1
+<figure class="highlight go"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -327,7 +390,7 @@
 </pre></td></tr></table></figure>
 
 <p>You can find more samples on: <a href="https://github.com/lazywei/go-opencv/tree/master/samples" target="_blank">https://github.com/lazywei/go-opencv/tree/master/samples</a></p>
-<h2 id="Contributing">Contributing</h2>
+<h2 id="contributing">Contributing</h2>
 <p>The most important reason I fork and host this project on Github is that I want to make it simple for others to help maintain/develop this project. Therefore, please feel free to open a pull request anytime you want to commit your change. Also, I need some help to make the API document more detail. Please let me know if there is any concern, you can ping me on Github(@lazywei) or on Twitter(@jrweizhang).</p>
 <p>Thanks!</p>
 
@@ -378,8 +441,9 @@
 </blockquote>
 <p>If you have never heard about <a href="http://camlistore.org/" target="_blank">Camlistore</a> before, you can checkout the video demo on the website.</p>
 <p>I would like to write down the process of setting up a Camlistore server and how to using it and help more people know how wonderful and useful Camlistore is.</p>
-<h2 id="Install_GO">Install GO</h2>
-<p>If you haven’t had GO installed, you can use <a href="https://github.com/moovweb/gvm" target="_blank">gvm</a> to install it.<br>Please read the requirement section of its <a href="https://github.com/moovweb/gvm#mac-os-x-requirements" target="_blank">README</a>, and then</p>
+<h2 id="install-go">Install GO</h2>
+<p>If you haven&#39;t had GO installed, you can use <a href="https://github.com/moovweb/gvm" target="_blank">gvm</a> to install it.
+Please read the requirement section of its <a href="https://github.com/moovweb/gvm#mac-os-x-requirements" target="_blank">README</a>, and then</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
@@ -388,8 +452,8 @@ gvm install go1.<span class="number">2</span>
 gvm use go1.<span class="number">2</span>
 </pre></td></tr></table></figure>
 
-<h2 id="Build_Camlistore">Build Camlistore</h2>
-<p>After installing GO, it’s time to build Camlistore. First, download zip from <a href="http://camlistore.org/download" target="_blank">http://camlistore.org/download</a> or use git clone just like me:</p>
+<h2 id="build-camlistore">Build Camlistore</h2>
+<p>After installing GO, it&#39;s time to build Camlistore. First, download zip from <a href="http://camlistore.org/download" target="_blank">http://camlistore.org/download</a> or use git clone just like me:</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 </pre></td><td class="code"><pre>git <span class="keyword">clone</span> https:<span class="comment">//github.com/bradfitz/camlistore</span>
 </pre></td></tr></table></figure>
@@ -397,8 +461,8 @@ gvm use go1.<span class="number">2</span>
 <p>Install:</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
-</pre></td><td class="code"><pre><span class="title">cd</span> camlistore
-<span class="title">go</span> run make.go
+</pre></td><td class="code"><pre>cd camlistore
+<span class="keyword">go</span> run <span class="built_in">make</span>.<span class="keyword">go</span>
 </pre></td></tr></table></figure>
 
 <p>If you use <code>homebrew</code> as your package management on OS X, you may get error when building <code>go-sqlite3</code>:</p>
@@ -424,13 +488,14 @@ No <span class="keyword">package</span> <span class="attribute">'sqlite3</span>'
 </pre></td></tr></table></figure>
 
 <p>You can find more detail on <a href="https://github.com/mattn/go-sqlite3/issues/45" target="_blank">https://github.com/mattn/go-sqlite3/issues/45</a>.</p>
-<h2 id="Run_and_initialize_Camlistore">Run and initialize Camlistore</h2>
+<h2 id="run-and-initialize-camlistore">Run and initialize Camlistore</h2>
 <p>Now you can start the camlistore server by</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>.<span class="regexp">/bin/camlistored</span>
+</pre></td><td class="code"><pre>./bin/camlistored
 </pre></td></tr></table></figure>
 
-<p>It will then generate server configuration file, at <code>$HOME/.config/camlistore/server-config.json</code>, and a new secret keyring: <code>$HOME/.config/camlistore/identify-secring.gpg</code>.<br>You should then see the following message after starting the camlistore server:</p>
+<p>It will then generate server configuration file, at <code>$HOME/.config/camlistore/server-config.json</code>, and a new secret keyring: <code>$HOME/.config/camlistore/identify-secring.gpg</code>.
+You should then see the following message after starting the camlistore server:</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 </pre></td><td class="code"><pre>Generated <span class="keyword">new</span> identity <span class="keyword">with</span> keyId <span class="string">"1427D50D"</span>
 </pre></td></tr></table></figure>
@@ -489,16 +554,16 @@ No <span class="keyword">package</span> <span class="attribute">'sqlite3</span>'
     </header>
     <div class="entry">
       
-        <p>@tzangms wrote an amazing python script few days ago, <a href="https://github.com/tzangms/iloveck101" target="_blank">iloveck101</a>. It is a tool for downloading all the images in the post of CK101 卡提諾論壇 (e.g. <a href="http://ck101.com/thread-2864249-1-1.html" target="_blank">http://ck101.com/thread-2864249-1-1.html</a>). Then we don’t need to wait for the lazy image loading and those annoying ads.</p>
+        <p>@tzangms wrote an amazing python script few days ago, <a href="https://github.com/tzangms/iloveck101" target="_blank">iloveck101</a>. It is a tool for downloading all the images in the post of CK101 卡提諾論壇 (e.g. <a href="http://ck101.com/thread-2864249-1-1.html" target="_blank">http://ck101.com/thread-2864249-1-1.html</a>). Then we don&#39;t need to wait for the lazy image loading and those annoying ads.</p>
 <p>As soon as @tzangms release this cool tool, there are many others clone in other languages show up. For example, there is a node.js version: <a href="https://github.com/clonn/iloveck101" target="_blank">https://github.com/clonn/iloveck101</a>.</p>
 <p>I also rewrite it in golang: <a href="https://github.com/lazywei/iloveck101" target="_blank">https://github.com/lazywei/iloveck101</a>. Thanks goroutine, this version allows you to download images parallely.</p>
-<h3 id="Install">Install</h3>
+<h3 id="install">Install</h3>
 <p><code>go get github.com/lazywei/iloveck101</code></p>
-<h3 id="Usage">Usage</h3>
+<h3 id="usage">Usage</h3>
 <p><code>iloveck101 -u [url] -w [workers number]</code></p>
-<h3 id="Example">Example</h3>
+<h3 id="example">Example</h3>
 <p><code>iloveck101 -u http://ck101.com/thread-2864249-1-1.html -w 50</code></p>
-<p>Then it will create a folder in <code>~/Pictures/iloveck101</code> which contains all the beauties’ images :)</p>
+<p>Then it will create a folder in <code>~/Pictures/iloveck101</code> which contains all the beauties&#39; images :)</p>
 
       
     </div>
@@ -542,8 +607,8 @@ No <span class="keyword">package</span> <span class="attribute">'sqlite3</span>'
     </header>
     <div class="entry">
       
-        <p>I got some weird PATH problems since I started using Tmux. I noticed that the PATH with tmux isn’t the same as without tmux. It seems that there are duplicated some paths.</p>
-<p>I use rbenv as my ruby version manager, and the duplicated path broke it. The <code>ruby</code> command will execute system ruby instead of rbenv’s.</p>
+        <p>I got some weird PATH problems since I started using Tmux. I noticed that the PATH with tmux isn&#39;t the same as without tmux. It seems that there are duplicated some paths.</p>
+<p>I use rbenv as my ruby version manager, and the duplicated path broke it. The <code>ruby</code> command will execute system ruby instead of rbenv&#39;s.</p>
 <p>I then found the problem is my <code>zshrc</code> extend PATH in this way:</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 </pre></td><td class="code"><pre><span class="keyword">export</span> PATH=/usr/local/bin:<span class="variable">$PATH</span>
@@ -553,8 +618,8 @@ No <span class="keyword">package</span> <span class="attribute">'sqlite3</span>'
 <p>Therefore, I hard code the path first in the <code>zshrc</code>, and then extend it:</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
-</pre></td><td class="code"><pre><span class="reserved">export</span> PATH=<span class="regexp">/Users/lazywei/</span>.rbenv<span class="regexp">/shims:/Users/lazywei/</span>.rbenv/<span class="attribute">bin</span>:/usr/<span class="attribute">bin</span>:/<span class="attribute">bin</span>:/usr/<span class="attribute">sbin</span>:/<span class="attribute">sbin</span>:/usr/local/<span class="attribute">bin</span>:/opt/X11/<span class="attribute">bin</span>:/usr/local/go/<span class="attribute">bin</span>:/usr/texbin
-<span class="reserved">export</span> PATH=/usr/local/<span class="attribute">bin</span>:$PATH
+</pre></td><td class="code"><pre>export PATH=<span class="regexp">/Users/</span>lazywei/.rbenv/shims:<span class="regexp">/Users/</span>lazywei/.rbenv/bin:<span class="regexp">/usr/</span>bin:<span class="regexp">/bin:/</span>usr/sbin:<span class="regexp">/sbin:/</span>usr/local/bin:<span class="regexp">/opt/</span>X11/bin:<span class="regexp">/usr/</span>local/go/bin:<span class="regexp">/usr/</span>texbin
+export PATH=<span class="regexp">/usr/</span>local/bin:$PATH
 </pre></td></tr></table></figure>
 
 <p>Then the PATH will reset everytime the <code>zshrc</code> got loaded.</p>
@@ -603,16 +668,16 @@ No <span class="keyword">package</span> <span class="attribute">'sqlite3</span>'
     <div class="entry">
       
         <p>I currently use <a href="http://smartystreets.github.io/goconvey/" target="_blank">GoConvey</a> and <a href="http://labix.org/gocheck" target="_blank">Gocheck</a> as my testing framework.</p>
-<h2 id="GoConvey">GoConvey</h2>
+<h2 id="goconvey">GoConvey</h2>
 <p>GoConvey runs a HTTP server which has a really beautiful Web UI for reviewing testing results. The most important is that it will re-run the tests every time you change and save the files. In other words, it will watch any change of you files and run tests when need.</p>
-<h2 id="Gocheck">Gocheck</h2>
-<p>Though GoConvey has a nice Web UI, it doesn’t provide something like <code>SetupTest()</code>, which will be used to set common settings and will be called in every test case. Fortunately, there is a richer testing framework, Gocheck. Gocheck provides many useful features (e.g. fixtures, useful assertions and checks), and can be integrated with GoConvy.</p>
-<h2 id="Examples">Examples</h2>
+<h2 id="gocheck">Gocheck</h2>
+<p>Though GoConvey has a nice Web UI, it doesn&#39;t provide something like <code>SetupTest()</code>, which will be used to set common settings and will be called in every test case. Fortunately, there is a richer testing framework, Gocheck. Gocheck provides many useful features (e.g. fixtures, useful assertions and checks), and can be integrated with GoConvy.</p>
+<h2 id="examples">Examples</h2>
 <p>Here are some simple examples that how to use these two wonderful testing framework together. You should run <code>goconvey</code> in terminal and open <code>http://localhost:8080</code> first.</p>
 <ul>
-<li>Use GoConvey’s <code>Convey</code> and Gocheck’s <code>Suite</code>:</li>
+<li>Use GoConvey&#39;s <code>Convey</code> and Gocheck&#39;s <code>Suite</code>:</li>
 </ul>
-<figure class="highlight lang-go"><table><tr><td class="gutter"><pre>1
+<figure class="highlight go"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -667,9 +732,9 @@ No <span class="keyword">package</span> <span class="attribute">'sqlite3</span>'
 </pre></td></tr></table></figure>
 
 <ul>
-<li>Use Gocheck’s assertions, and use GoConvey’s Web UI only:</li>
+<li>Use Gocheck&#39;s assertions, and use GoConvey&#39;s Web UI only:</li>
 </ul>
-<figure class="highlight lang-go"><table><tr><td class="gutter"><pre>1
+<figure class="highlight go"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -762,8 +827,8 @@ No <span class="keyword">package</span> <span class="attribute">'sqlite3</span>'
     <div class="entry">
       
         <p>TL;NR: Install the plug-in via github: <a href="https://github.com/lazywei/vim-matlab" target="_blank">Vim-Matlab</a>.</p>
-<p>As I use vim daily for everything, I use it for writing Matlab code. However, the default behavior of Vim’s Matlab support is not as well as I expected.</p>
-<p>Fortunately, I found a <a href="http://www.mathworks.com/matlabcentral/fileexchange/21798-editing-matlab-files-in-vim" target="_blank">vim plug-in</a> to improve this. Though this plug-in works pretty well, it isn’t in a version control system (e.g. git), which make it hard to maintain and even install. Therefore, I download it and host it on github, you can then install it through any method you like. Personally, I prefer <a href="https://github.com/gmarik/vundle" target="_blank">Vundle</a>.</p>
+<p>As I use vim daily for everything, I use it for writing Matlab code. However, the default behavior of Vim&#39;s Matlab support is not as well as I expected.</p>
+<p>Fortunately, I found a <a href="http://www.mathworks.com/matlabcentral/fileexchange/21798-editing-matlab-files-in-vim" target="_blank">vim plug-in</a> to improve this. Though this plug-in works pretty well, it isn&#39;t in a version control system (e.g. git), which make it hard to maintain and even install. Therefore, I download it and host it on github, you can then install it through any method you like. Personally, I prefer <a href="https://github.com/gmarik/vundle" target="_blank">Vundle</a>.</p>
 <p>Vim-Matlab: <a href="https://github.com/lazywei/vim-matlab" target="_blank">repo</a></p>
 <p>Features:</p>
 <ul>
@@ -773,7 +838,7 @@ No <span class="keyword">package</span> <span class="attribute">'sqlite3</span>'
 <li>Tag support</li>
 <li>Help file</li>
 </ul>
-<p>Again, I don’t own these codes. I only copy it and host it on github. If there is any concern, please let me know. Thanks!</p>
+<p>Again, I don&#39;t own these codes. I only copy it and host it on github. If there is any concern, please let me know. Thanks!</p>
 
       
     </div>
@@ -817,13 +882,13 @@ No <span class="keyword">package</span> <span class="attribute">'sqlite3</span>'
     </header>
     <div class="entry">
       
-        <p>Here is my basic setting for hexo. You should somehow use your custom value instead (e.g. Don’t use <code>lazywei.github.io</code> but use <code>yourname.github.io</code>).</p>
-<h3 id="Init">Init</h3>
+        <p>Here is my basic setting for hexo. You should somehow use your custom value instead (e.g. Don&#39;t use <code>lazywei.github.io</code> but use <code>yourname.github.io</code>).</p>
+<h3 id="init">Init</h3>
 <ul>
 <li>Add a repo named <code>lazywei.github.io</code> on <a href="https://github.com/" target="_blank">github</a>.</li>
 <li>Init hexo: <code>hexo init lazywei.github.io</code>.</li>
 </ul>
-<h3 id="Git">Git</h3>
+<h3 id="git">Git</h3>
 <ul>
 <li>Init git: <code>cd lazywei.github.io; git init</code>.</li>
 <li>Use <code>source</code> for default branch name instead of <code>master</code>: <code>git branch -M master source</code>.</li>
@@ -831,7 +896,7 @@ No <span class="keyword">package</span> <span class="attribute">'sqlite3</span>'
 <li>Add <code>public</code> and <code>.deploy</code> into <code>.gitignore</code>.</li>
 <li>Commit: <code>git commit -m &#39;Init commit&#39;</code>.</li>
 </ul>
-<h3 id="Deployment">Deployment</h3>
+<h3 id="deployment">Deployment</h3>
 <ul>
 <li><p>Change the deployment section of <code>_config.yml</code> to:</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
@@ -852,63 +917,19 @@ No <span class="keyword">package</span> <span class="attribute">'sqlite3</span>'
 </li>
 <li>Deploy to github: <code>hexo deploy</code>.</li>
 </ul>
-<h3 id="Custom_domain">Custom domain</h3>
+<h3 id="custom-domain">Custom domain</h3>
 <ul>
 <li>Create a file named <code>CNAME</code> under <code>source/</code></li>
 <li>Add your domain into the file: <code>blog.lazywei.com</code></li>
 <li>Add a <code>CNAME</code> record point to <code>lazywei.github.io</code> to your DNS setting.</li>
 </ul>
-<h3 id="Workflow">Workflow</h3>
+<h3 id="workflow">Workflow</h3>
 <ul>
 <li>Write post: <code>hexo new &quot;post title&quot;</code>.</li>
 <li>Commit source.</li>
 <li>Generate static files.</li>
 <li>Deploy to github.</li>
 </ul>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2013-11-24T07:43:51.000Z"><a href="/2013/11/24/hello-world/">Nov 24 2013</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2013/11/24/hello-world/">Hello World</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>Hello, World!<br>This is my very first post generated by <a href="http://zespia.tw/hexo" target="_blank">Hexo</a>.</p>
 
       
     </div>
@@ -949,6 +970,10 @@ No <span class="keyword">package</span> <span class="attribute">'sqlite3</span>'
   <ul class="entry">
     
       <li>
+        <a href="/2014/02/10/use-direnv-to-manage-your-golang-projects/">Use direnv to manage your golang projects</a>
+      </li>
+    
+      <li>
         <a href="/2014/01/27/monit-and-golang-web-server/">Monit and golang web server</a>
       </li>
     
@@ -962,10 +987,6 @@ No <span class="keyword">package</span> <span class="attribute">'sqlite3</span>'
     
       <li>
         <a href="/2013/12/07/getting-started-with-camlistore-0/">Getting started with Camlistore (0)</a>
-      </li>
-    
-      <li>
-        <a href="/2013/12/05/iloveck101---parallel-downloading-beauties/">iloveck101 - parallel downloading beauties</a>
       </li>
     
   </ul>
@@ -1006,6 +1027,10 @@ No <span class="keyword">package</span> <span class="attribute">'sqlite3</span>'
     <li><a href="/tags/Vim/">Vim</a><small>2</small></li>
   
     <li><a href="/tags/Zsh/">Zsh</a><small>1</small></li>
+  
+    <li><a href="/tags/direnv/">direnv</a><small>1</small></li>
+  
+    <li><a href="/tags/golang/">golang</a><small>1</small></li>
   
   </ul>
 </div>

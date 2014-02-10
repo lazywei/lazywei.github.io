@@ -7,7 +7,8 @@
   <meta name="author" content="Bert Chang aka lazywei">
   
   <meta name="description" content="XeLaTexSince
-Sometimes I need to write 中文 in my tex file, the most convenient way is to use XeLaTex.It’s really easy to configure the XeLaTex to deal ">
+Sometimes I need to write 中文 in my tex file, the most convenient way is to use XeLaTex.
+It&#39;s really easy to configure the XeLaTex to ">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -90,19 +91,20 @@ Sometimes I need to write 中文 in my tex file, the most convenient way is to u
     </header>
     <div class="entry">
       
-        <h2 id="XeLaTexSince">XeLaTexSince</h2>
-<p>Sometimes I need to write 中文 in my tex file, the most convenient way is to use <a href="http://en.wikipedia.org/wik/XeTeX" target="_blank">XeLaTex</a>.<br>It’s really easy to configure the XeLaTex to deal with 中文, just add the following lines to your tex file:</p>
-<figure class="highlight lang-tex"><table><tr><td class="gutter"><pre>1
+        <h2 id="xelatexsince">XeLaTexSince</h2>
+<p>Sometimes I need to write 中文 in my tex file, the most convenient way is to use <a href="http://en.wikipedia.org/wik/XeTeX" target="_blank">XeLaTex</a>.
+It&#39;s really easy to configure the XeLaTex to deal with 中文, just add the following lines to your tex file:</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre>1
 2
 </pre></td><td class="code"><pre><span class="command">\usepackage</span><span class="special">{</span>fontspec,xltxtra,xunicode<span class="special">}</span>
 <span class="command">\setromanfont</span><span class="special">{</span>Apple LiSung Light<span class="special">}</span>
 </pre></td></tr></table></figure>
 
 <p>You can find my template tex file from <a href="https://gist.github.com/lazywei/6606677" target="_blank">here</a></p>
-<h2 id="Vim">Vim</h2>
+<h2 id="vim">Vim</h2>
 <p>There is a omni functional vim plugin for latex: <a href="http://vim-latex.sourceforge.net/" target="_blank">vim-latex</a>. However, it seems too complicated to me. All I need is just some key mappings, and I put the config into a separated plugin: <a href="https://github.com/lazywei/vim-language-specific" target="_blank">vim-language-specific</a>. Then you can use <code>&lt;leader&gt;xe</code> to save file and compile it with xelatex.</p>
-<h2 id="TexShop">TexShop</h2>
-<p>I originally used <a href="http://www.xm1math.net/texmaker/" target="_blank">TexMaker</a>. It’s good but it fails on Mavericks (OS X 10.9). Fortunately, I found another awesome software: <a href="http://pages.uoregon.edu/koch/texshop/" target="_blank">TexShop</a>. It is a lightweight but powerful software, and you can configure it to use external editor, which is my favorite. Just check the ‘Auto Updating’ in preference panel. Then you can simply write and compile tex in vim, and view it in TexShop.</p>
+<h2 id="texshop">TexShop</h2>
+<p>I originally used <a href="http://www.xm1math.net/texmaker/" target="_blank">TexMaker</a>. It&#39;s good but it fails on Mavericks (OS X 10.9). Fortunately, I found another awesome software: <a href="http://pages.uoregon.edu/koch/texshop/" target="_blank">TexShop</a>. It is a lightweight but powerful software, and you can configure it to use external editor, which is my favorite. Just check the &#39;Auto Updating&#39; in preference panel. Then you can simply write and compile tex in vim, and view it in TexShop.</p>
 
       
     </div>
@@ -149,6 +151,10 @@ Sometimes I need to write 中文 in my tex file, the most convenient way is to u
   <ul class="entry">
     
       <li>
+        <a href="/2014/02/10/use-direnv-to-manage-your-golang-projects/">Use direnv to manage your golang projects</a>
+      </li>
+    
+      <li>
         <a href="/2014/01/27/monit-and-golang-web-server/">Monit and golang web server</a>
       </li>
     
@@ -162,10 +168,6 @@ Sometimes I need to write 中文 in my tex file, the most convenient way is to u
     
       <li>
         <a href="/2013/12/07/getting-started-with-camlistore-0/">Getting started with Camlistore (0)</a>
-      </li>
-    
-      <li>
-        <a href="/2013/12/05/iloveck101---parallel-downloading-beauties/">iloveck101 - parallel downloading beauties</a>
       </li>
     
   </ul>
@@ -206,6 +208,10 @@ Sometimes I need to write 中文 in my tex file, the most convenient way is to u
     <li><a href="/tags/Vim/">Vim</a><small>2</small></li>
   
     <li><a href="/tags/Zsh/">Zsh</a><small>1</small></li>
+  
+    <li><a href="/tags/direnv/">direnv</a><small>1</small></li>
+  
+    <li><a href="/tags/golang/">golang</a><small>1</small></li>
   
   </ul>
 </div>

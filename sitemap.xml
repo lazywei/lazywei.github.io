@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://blog.lazywei.com/2014/02/10/use-direnv-to-manage-your-golang-projects/</loc>
+    <lastmod>2014-02-10T03:44:58.000Z</lastmod>
+  </url>
+  <url>
+    <loc>http://blog.lazywei.com/about/index.html</loc>
+    <lastmod>2014-02-08T03:48:42.000Z</lastmod>
+  </url>
+  <url>
     <loc>http://blog.lazywei.com/2014/01/27/monit-and-golang-web-server/</loc>
-    <lastmod>2014-01-27T07:33:40.000Z</lastmod>
+    <lastmod>2014-02-08T03:38:30.000Z</lastmod>
   </url>
   <url>
     <loc>http://blog.lazywei.com/2014/01/08/install-scikit-learn-with-conda/</loc>
@@ -35,10 +43,6 @@
   <url>
     <loc>http://blog.lazywei.com/2013/08/25/install-haskell-on-mac-via-homebrew/</loc>
     <lastmod>2013-11-26T12:33:13.000Z</lastmod>
-  </url>
-  <url>
-    <loc>http://blog.lazywei.com/about/index.html</loc>
-    <lastmod>2013-11-24T14:41:47.000Z</lastmod>
   </url>
   <url>
     <loc>http://blog.lazywei.com/2013/11/24/vim-matlab/</loc>

@@ -6,8 +6,8 @@
   <title>Monit and golang web server | Bert&#39;s Blog</title>
   <meta name="author" content="Bert Chang aka lazywei">
   
-  <meta name="description" content="I wrote a golang web server, and I want to use monit to monitor it. If you haven’t heard monit yet, you can check it out here: Monit.
-The main problem">
+  <meta name="description" content="I wrote a golang web server, and I want to use monit to monitor it. If you haven&#39;t heard monit yet, you can check it out here: Monit.
+The main pro">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -90,12 +90,12 @@ The main problem">
     </header>
     <div class="entry">
       
-        <p>I wrote a golang web server, and I want to use monit to monitor it. If you haven’t heard monit yet, you can check it out here: <a href="http://mmonit.com/monit/" target="_blank">Monit</a>.</p>
+        <p>I wrote a golang web server, and I want to use monit to monitor it. If you haven&#39;t heard monit yet, you can check it out here: <a href="http://mmonit.com/monit/" target="_blank">Monit</a>.</p>
 <p>The main problem is that my golang web server is not daemonable. So, the first step is to write a wrapper for monit.</p>
-<h3 id="Wrapper_for_monit">Wrapper for monit</h3>
+<h2 id="wrapper-for-monit">Wrapper for monit</h2>
 <p>Suppose we use <code>go build -o ./my_server</code> to build our server, then we will have a executable binary at <code>./my_server</code>.</p>
 <p>In the wrapper, we should echo PID to a file so monit can use the PID to monitor the process.</p>
-<figure class="highlight lang-bash"><table><tr><td class="gutter"><pre>1
+<figure class="highlight bash"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -126,9 +126,9 @@ The main problem">
 </pre></td></tr></table></figure>
 
 <p>The reason I use <code>/home/deploy/source/current/my_server &gt; /tmp/my_server.out 2&gt;&amp;1</code> is because I want to redirect the output of <code>my_server</code> to <code>/tmp/my_server.out</code> so that I can use it to debug.</p>
-<h3 id="Make_sure_your_wrapper_work">Make sure your wrapper work</h3>
+<h2 id="make-sure-your-wrapper-work">Make sure your wrapper work</h2>
 <p>After creating the wrapper, you should be able to use <code>your_wrapper.sh start</code> to run your process. Then press <code>ctrl</code> + <code>z</code> to pause the program and get back to the shell. Secondly, use <code>bg</code> to run it in background. Now you can use <code>ps aux | grep my_server</code> and <code>cat /home/deploy/source/shared/pids/my_server.pid</code> to check there is nothing weird.</p>
-<h3 id="Monit_configuration">Monit configuration</h3>
+<h2 id="monit-configuration">Monit configuration</h2>
 <p>This step is relatively simple.</p>
 <p>The configuration file should locate at <code>/etc/monit/conf.d/my_server.monitrc</code></p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
@@ -139,10 +139,10 @@ The main problem">
   <span class="keyword">stop</span> = <span class="string">"/home/deploy/source/current/my_wrapper.sh stop"</span>
 </pre></td></tr></table></figure>
 
-<h3 id="Finale">Finale</h3>
+<h2 id="finale">Finale</h2>
 <p>Simply use <code>monit reload</code>, <code>monit start my_server</code> and <code>monit summary</code> to make sure everything is all right.</p>
-<h3 id="Troubleshooting">Troubleshooting</h3>
-<p>I spent a lot of time on fix a weird bug. I can use wrapper to run the process. However, when I use <code>monit start my_server</code> the process can’t be executed. It turns out the problem is I have:</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p>I spent a lot of time on fix a weird bug. I can use wrapper to run the process. However, when I use <code>monit start my_server</code> the process can&#39;t be executed. It turns out the problem is I have:</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 </pre></td><td class="code"><pre>bufio<span class="preprocessor">.NewScanner</span>(os<span class="preprocessor">.Stdin</span>)
 </pre></td></tr></table></figure>
@@ -194,6 +194,10 @@ The main problem">
   <ul class="entry">
     
       <li>
+        <a href="/2014/02/10/use-direnv-to-manage-your-golang-projects/">Use direnv to manage your golang projects</a>
+      </li>
+    
+      <li>
         <a href="/2014/01/27/monit-and-golang-web-server/">Monit and golang web server</a>
       </li>
     
@@ -207,10 +211,6 @@ The main problem">
     
       <li>
         <a href="/2013/12/07/getting-started-with-camlistore-0/">Getting started with Camlistore (0)</a>
-      </li>
-    
-      <li>
-        <a href="/2013/12/05/iloveck101---parallel-downloading-beauties/">iloveck101 - parallel downloading beauties</a>
       </li>
     
   </ul>
@@ -251,6 +251,10 @@ The main problem">
     <li><a href="/tags/Vim/">Vim</a><small>2</small></li>
   
     <li><a href="/tags/Zsh/">Zsh</a><small>1</small></li>
+  
+    <li><a href="/tags/direnv/">direnv</a><small>1</small></li>
+  
+    <li><a href="/tags/golang/">golang</a><small>1</small></li>
   
   </ul>
 </div>

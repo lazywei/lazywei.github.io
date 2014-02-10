@@ -96,8 +96,9 @@ If you have never heard about Camlistore before, you can checkout the video demo
 </blockquote>
 <p>If you have never heard about <a href="http://camlistore.org/" target="_blank">Camlistore</a> before, you can checkout the video demo on the website.</p>
 <p>I would like to write down the process of setting up a Camlistore server and how to using it and help more people know how wonderful and useful Camlistore is.</p>
-<h2 id="Install_GO">Install GO</h2>
-<p>If you haven’t had GO installed, you can use <a href="https://github.com/moovweb/gvm" target="_blank">gvm</a> to install it.<br>Please read the requirement section of its <a href="https://github.com/moovweb/gvm#mac-os-x-requirements" target="_blank">README</a>, and then</p>
+<h2 id="install-go">Install GO</h2>
+<p>If you haven&#39;t had GO installed, you can use <a href="https://github.com/moovweb/gvm" target="_blank">gvm</a> to install it.
+Please read the requirement section of its <a href="https://github.com/moovweb/gvm#mac-os-x-requirements" target="_blank">README</a>, and then</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
@@ -106,8 +107,8 @@ gvm install go1.<span class="number">2</span>
 gvm use go1.<span class="number">2</span>
 </pre></td></tr></table></figure>
 
-<h2 id="Build_Camlistore">Build Camlistore</h2>
-<p>After installing GO, it’s time to build Camlistore. First, download zip from <a href="http://camlistore.org/download" target="_blank">http://camlistore.org/download</a> or use git clone just like me:</p>
+<h2 id="build-camlistore">Build Camlistore</h2>
+<p>After installing GO, it&#39;s time to build Camlistore. First, download zip from <a href="http://camlistore.org/download" target="_blank">http://camlistore.org/download</a> or use git clone just like me:</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 </pre></td><td class="code"><pre>git <span class="keyword">clone</span> https:<span class="comment">//github.com/bradfitz/camlistore</span>
 </pre></td></tr></table></figure>
@@ -115,8 +116,8 @@ gvm use go1.<span class="number">2</span>
 <p>Install:</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
-</pre></td><td class="code"><pre><span class="title">cd</span> camlistore
-<span class="title">go</span> run make.go
+</pre></td><td class="code"><pre>cd camlistore
+<span class="keyword">go</span> run <span class="built_in">make</span>.<span class="keyword">go</span>
 </pre></td></tr></table></figure>
 
 <p>If you use <code>homebrew</code> as your package management on OS X, you may get error when building <code>go-sqlite3</code>:</p>
@@ -142,13 +143,14 @@ No <span class="keyword">package</span> <span class="attribute">'sqlite3</span>'
 </pre></td></tr></table></figure>
 
 <p>You can find more detail on <a href="https://github.com/mattn/go-sqlite3/issues/45" target="_blank">https://github.com/mattn/go-sqlite3/issues/45</a>.</p>
-<h2 id="Run_and_initialize_Camlistore">Run and initialize Camlistore</h2>
+<h2 id="run-and-initialize-camlistore">Run and initialize Camlistore</h2>
 <p>Now you can start the camlistore server by</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>.<span class="regexp">/bin/camlistored</span>
+</pre></td><td class="code"><pre>./bin/camlistored
 </pre></td></tr></table></figure>
 
-<p>It will then generate server configuration file, at <code>$HOME/.config/camlistore/server-config.json</code>, and a new secret keyring: <code>$HOME/.config/camlistore/identify-secring.gpg</code>.<br>You should then see the following message after starting the camlistore server:</p>
+<p>It will then generate server configuration file, at <code>$HOME/.config/camlistore/server-config.json</code>, and a new secret keyring: <code>$HOME/.config/camlistore/identify-secring.gpg</code>.
+You should then see the following message after starting the camlistore server:</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 </pre></td><td class="code"><pre>Generated <span class="keyword">new</span> identity <span class="keyword">with</span> keyId <span class="string">"1427D50D"</span>
 </pre></td></tr></table></figure>
@@ -210,6 +212,10 @@ No <span class="keyword">package</span> <span class="attribute">'sqlite3</span>'
   <ul class="entry">
     
       <li>
+        <a href="/2014/02/10/use-direnv-to-manage-your-golang-projects/">Use direnv to manage your golang projects</a>
+      </li>
+    
+      <li>
         <a href="/2014/01/27/monit-and-golang-web-server/">Monit and golang web server</a>
       </li>
     
@@ -223,10 +229,6 @@ No <span class="keyword">package</span> <span class="attribute">'sqlite3</span>'
     
       <li>
         <a href="/2013/12/07/getting-started-with-camlistore-0/">Getting started with Camlistore (0)</a>
-      </li>
-    
-      <li>
-        <a href="/2013/12/05/iloveck101---parallel-downloading-beauties/">iloveck101 - parallel downloading beauties</a>
       </li>
     
   </ul>
@@ -267,6 +269,10 @@ No <span class="keyword">package</span> <span class="attribute">'sqlite3</span>'
     <li><a href="/tags/Vim/">Vim</a><small>2</small></li>
   
     <li><a href="/tags/Zsh/">Zsh</a><small>1</small></li>
+  
+    <li><a href="/tags/direnv/">direnv</a><small>1</small></li>
+  
+    <li><a href="/tags/golang/">golang</a><small>1</small></li>
   
   </ul>
 </div>

@@ -6,7 +6,7 @@
   <title>Zsh and Tmux path | Bert&#39;s Blog</title>
   <meta name="author" content="Bert Chang aka lazywei">
   
-  <meta name="description" content="I got some weird PATH problems since I started using Tmux. I noticed that the PATH with tmux isn’t the same as without tmux. It seems that there are d">
+  <meta name="description" content="I got some weird PATH problems since I started using Tmux. I noticed that the PATH with tmux isn&#39;t the same as without tmux. It seems that there a">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -89,8 +89,8 @@
     </header>
     <div class="entry">
       
-        <p>I got some weird PATH problems since I started using Tmux. I noticed that the PATH with tmux isn’t the same as without tmux. It seems that there are duplicated some paths.</p>
-<p>I use rbenv as my ruby version manager, and the duplicated path broke it. The <code>ruby</code> command will execute system ruby instead of rbenv’s.</p>
+        <p>I got some weird PATH problems since I started using Tmux. I noticed that the PATH with tmux isn&#39;t the same as without tmux. It seems that there are duplicated some paths.</p>
+<p>I use rbenv as my ruby version manager, and the duplicated path broke it. The <code>ruby</code> command will execute system ruby instead of rbenv&#39;s.</p>
 <p>I then found the problem is my <code>zshrc</code> extend PATH in this way:</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 </pre></td><td class="code"><pre><span class="keyword">export</span> PATH=/usr/local/bin:<span class="variable">$PATH</span>
@@ -100,8 +100,8 @@
 <p>Therefore, I hard code the path first in the <code>zshrc</code>, and then extend it:</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
-</pre></td><td class="code"><pre><span class="reserved">export</span> PATH=<span class="regexp">/Users/lazywei/</span>.rbenv<span class="regexp">/shims:/Users/lazywei/</span>.rbenv/<span class="attribute">bin</span>:/usr/<span class="attribute">bin</span>:/<span class="attribute">bin</span>:/usr/<span class="attribute">sbin</span>:/<span class="attribute">sbin</span>:/usr/local/<span class="attribute">bin</span>:/opt/X11/<span class="attribute">bin</span>:/usr/local/go/<span class="attribute">bin</span>:/usr/texbin
-<span class="reserved">export</span> PATH=/usr/local/<span class="attribute">bin</span>:$PATH
+</pre></td><td class="code"><pre>export PATH=<span class="regexp">/Users/</span>lazywei/.rbenv/shims:<span class="regexp">/Users/</span>lazywei/.rbenv/bin:<span class="regexp">/usr/</span>bin:<span class="regexp">/bin:/</span>usr/sbin:<span class="regexp">/sbin:/</span>usr/local/bin:<span class="regexp">/opt/</span>X11/bin:<span class="regexp">/usr/</span>local/go/bin:<span class="regexp">/usr/</span>texbin
+export PATH=<span class="regexp">/usr/</span>local/bin:$PATH
 </pre></td></tr></table></figure>
 
 <p>Then the PATH will reset everytime the <code>zshrc</code> got loaded.</p>
@@ -152,6 +152,10 @@
   <ul class="entry">
     
       <li>
+        <a href="/2014/02/10/use-direnv-to-manage-your-golang-projects/">Use direnv to manage your golang projects</a>
+      </li>
+    
+      <li>
         <a href="/2014/01/27/monit-and-golang-web-server/">Monit and golang web server</a>
       </li>
     
@@ -165,10 +169,6 @@
     
       <li>
         <a href="/2013/12/07/getting-started-with-camlistore-0/">Getting started with Camlistore (0)</a>
-      </li>
-    
-      <li>
-        <a href="/2013/12/05/iloveck101---parallel-downloading-beauties/">iloveck101 - parallel downloading beauties</a>
       </li>
     
   </ul>
@@ -209,6 +209,10 @@
     <li><a href="/tags/Vim/">Vim</a><small>2</small></li>
   
     <li><a href="/tags/Zsh/">Zsh</a><small>1</small></li>
+  
+    <li><a href="/tags/direnv/">direnv</a><small>1</small></li>
+  
+    <li><a href="/tags/golang/">golang</a><small>1</small></li>
   
   </ul>
 </div>
