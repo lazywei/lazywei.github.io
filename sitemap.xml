@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://blog.lazywei.com/2014/02/23/godir-with-direnv-for-golang-projects/</loc>
+    <lastmod>2014-02-23T04:40:05.000Z</lastmod>
+  </url>
+  <url>
     <loc>http://blog.lazywei.com/2014/02/10/use-direnv-to-manage-your-golang-projects/</loc>
     <lastmod>2014-02-10T03:44:58.000Z</lastmod>
   </url>

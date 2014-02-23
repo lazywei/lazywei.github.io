@@ -3,13 +3,15 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2013/11 | Bert&#39;s Blog</title>
+  <title>Godir with direnv for golang projects | Bert&#39;s Blog</title>
   <meta name="author" content="Bert Chang aka lazywei">
+  
+  <meta name="description" content="Last time, I described how I use direnv to manage my multiple golang projects (link). It&#39;s convenient to me, but repeating the steps everytime is ">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+  <meta property="og:title" content="Godir with direnv for golang projects"/>
   <meta property="og:site_name" content="Bert&#39;s Blog"/>
 
   
@@ -59,61 +61,82 @@
 <div class="clearfix"></div>
 </header>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper">
-<h2 class="archive-title">2013/11</h2>
-
-
-  <div class="archive">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
     
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2013-11-25T11:12:08.000Z"><a href="/2013/11/25/goconvey-and-gocheck/">Nov 25 2013</a></time>
-            
-              <h1 class="title"><a href="/2013/11/25/goconvey-and-gocheck/">GoConvey and Gocheck</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2013-11-24T12:38:14.000Z"><a href="/2013/11/24/vim-matlab/">Nov 24 2013</a></time>
-            
-              <h1 class="title"><a href="/2013/11/24/vim-matlab/">Vim-matlab</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2013-11-24T08:18:40.000Z"><a href="/2013/11/24/how-do-i-configure-my-hexo-blog/">Nov 24 2013</a></time>
-            
-              <h1 class="title"><a href="/2013/11/24/how-do-i-configure-my-hexo-blog/">How do I configure my Hexo blog</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2013-11-24T07:43:51.000Z"><a href="/2013/11/24/hello-world/">Nov 24 2013</a></time>
-            
-              <h1 class="title"><a href="/2013/11/24/hello-world/">Hello World</a></h1>
-            
-          </header>
-        </div>
-      </article>
+      <img src="">
     
   </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-02-23T04:24:29.000Z"><a href="/2014/02/23/godir-with-direnv-for-golang-projects/">Feb 23 2014</a></time>
+      
+      
+  
+    <h1 class="title">Godir with direnv for golang projects</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>Last time, I described how I use <code>direnv</code> to manage my multiple golang projects (<a href="http://blog.lazywei.com/2014/02/10/use-direnv-to-manage-your-golang-projects/">link</a>). It&#39;s convenient to me, but repeating the steps everytime is somehow annoying.</p>
+<p>Therefore, I&#39;d like to show my script to do those steps automatically today.
+I puts the shell script <a href="https://github.com/lazywei/dotfiles/blob/master/bin/godir" target="_blank">here</a>.
+You can download it into your <code>~/bin</code> and then add your <code>~/bin</code> to your <code>$PATH</code>.</p>
+<p>Usage:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>godir project_name
+</pre></td></tr></table></figure>
+
+<p>What the script does are the following things:</p>
+<ul>
+<li>create a folder named <code>project_name</code></li>
+<li>add direnv settings</li>
+<li>create src folder</li>
+</ul>
+<p>There are, however, other problems need to deal with.</p>
+<p>First, you should create a special project (e.g. <code>tools</code>), and add it to your <code>$PATH</code>. Then you can put general tools like <a href="https://github.com/nsf/gocode" target="_blank">gocode</a>, <a href="https://github.com/dinedal/textql" target="_blank">textql</a> into this folder.</p>
+<p>Second, some useful packages like <a href="https://github.com/davecgh/go-spew" target="_blank">go-spew</a> should be installed in every projects. I think I will write some code to do it automatically next time.</p>
+<p>Third, the <code>src</code> folder (<code>$PWD/src/github.com/lazywei</code>) is fixed now. I will make it more convenient for other to use. But for now, you should change it manually.</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/golang/">golang</a>, <a href="/tags/direnv/">direnv</a>
+  </div>
+
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">Comments</h1>
+
+  
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+  
+</section>
 </div></div>
     <aside id="sidebar" class="alignright">
   <div class="search">
@@ -217,7 +240,7 @@ var disqus_shortname = 'bloglazywei';
   var dsq = document.createElement('script');
   dsq.type = 'text/javascript';
   dsq.async = true;
-  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
 }());
 </script>

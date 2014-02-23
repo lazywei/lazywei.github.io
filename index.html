@@ -78,6 +78,68 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2014-02-23T04:24:29.000Z"><a href="/2014/02/23/godir-with-direnv-for-golang-projects/">Feb 23 2014</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/02/23/godir-with-direnv-for-golang-projects/">Godir with direnv for golang projects</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>Last time, I described how I use <code>direnv</code> to manage my multiple golang projects (<a href="http://blog.lazywei.com/2014/02/10/use-direnv-to-manage-your-golang-projects/">link</a>). It&#39;s convenient to me, but repeating the steps everytime is somehow annoying.</p>
+<p>Therefore, I&#39;d like to show my script to do those steps automatically today.
+I puts the shell script <a href="https://github.com/lazywei/dotfiles/blob/master/bin/godir" target="_blank">here</a>.
+You can download it into your <code>~/bin</code> and then add your <code>~/bin</code> to your <code>$PATH</code>.</p>
+<p>Usage:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>godir project_name
+</pre></td></tr></table></figure>
+
+<p>What the script does are the following things:</p>
+<ul>
+<li>create a folder named <code>project_name</code></li>
+<li>add direnv settings</li>
+<li>create src folder</li>
+</ul>
+<p>There are, however, other problems need to deal with.</p>
+<p>First, you should create a special project (e.g. <code>tools</code>), and add it to your <code>$PATH</code>. Then you can put general tools like <a href="https://github.com/nsf/gocode" target="_blank">gocode</a>, <a href="https://github.com/dinedal/textql" target="_blank">textql</a> into this folder.</p>
+<p>Second, some useful packages like <a href="https://github.com/davecgh/go-spew" target="_blank">go-spew</a> should be installed in every projects. I think I will write some code to do it automatically next time.</p>
+<p>Third, the <code>src</code> folder (<code>$PWD/src/github.com/lazywei</code>) is fixed now. I will make it more convenient for other to use. But for now, you should change it manually.</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2014-02-10T03:32:00.000Z"><a href="/2014/02/10/use-direnv-to-manage-your-golang-projects/">Feb 10 2014</a></time>
       
       
@@ -854,97 +916,6 @@ export PATH=<span class="regexp">/usr/</span>local/bin:$PATH
 
 
 
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2013-11-24T08:18:40.000Z"><a href="/2013/11/24/how-do-i-configure-my-hexo-blog/">Nov 24 2013</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2013/11/24/how-do-i-configure-my-hexo-blog/">How do I configure my Hexo blog</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>Here is my basic setting for hexo. You should somehow use your custom value instead (e.g. Don&#39;t use <code>lazywei.github.io</code> but use <code>yourname.github.io</code>).</p>
-<h3 id="init">Init</h3>
-<ul>
-<li>Add a repo named <code>lazywei.github.io</code> on <a href="https://github.com/" target="_blank">github</a>.</li>
-<li>Init hexo: <code>hexo init lazywei.github.io</code>.</li>
-</ul>
-<h3 id="git">Git</h3>
-<ul>
-<li>Init git: <code>cd lazywei.github.io; git init</code>.</li>
-<li>Use <code>source</code> for default branch name instead of <code>master</code>: <code>git branch -M master source</code>.</li>
-<li>Add github as origin remote <code>git remote add origin git@github.com:lazywei/lazywei.github.io.git</code>.</li>
-<li>Add <code>public</code> and <code>.deploy</code> into <code>.gitignore</code>.</li>
-<li>Commit: <code>git commit -m &#39;Init commit&#39;</code>.</li>
-</ul>
-<h3 id="deployment">Deployment</h3>
-<ul>
-<li><p>Change the deployment section of <code>_config.yml</code> to:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-</pre></td><td class="code"><pre><span class="preprocessor"># Deployment</span>
-<span class="preprocessor">## Docs: http://zespia.tw/hexo/docs/deploy.html</span>
-<span class="label">deploy:</span>
-  type: github
-  repository: https://github<span class="preprocessor">.com</span>/lazywei/lazywei<span class="preprocessor">.github</span><span class="preprocessor">.io</span><span class="preprocessor">.git</span>
-  branch: master
-</pre></td></tr></table></figure>
-</li>
-<li><p>Generate static files: <code>hexo g</code> or <code>hexo genereate</code>.</p>
-</li>
-<li>Deploy to github: <code>hexo deploy</code>.</li>
-</ul>
-<h3 id="custom-domain">Custom domain</h3>
-<ul>
-<li>Create a file named <code>CNAME</code> under <code>source/</code></li>
-<li>Add your domain into the file: <code>blog.lazywei.com</code></li>
-<li>Add a <code>CNAME</code> record point to <code>lazywei.github.io</code> to your DNS setting.</li>
-</ul>
-<h3 id="workflow">Workflow</h3>
-<ul>
-<li>Write post: <code>hexo new &quot;post title&quot;</code>.</li>
-<li>Commit source.</li>
-<li>Generate static files.</li>
-<li>Deploy to github.</li>
-</ul>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
 
 <nav id="pagination">
   
@@ -970,6 +941,10 @@ export PATH=<span class="regexp">/usr/</span>local/bin:$PATH
   <ul class="entry">
     
       <li>
+        <a href="/2014/02/23/godir-with-direnv-for-golang-projects/">Godir with direnv for golang projects</a>
+      </li>
+    
+      <li>
         <a href="/2014/02/10/use-direnv-to-manage-your-golang-projects/">Use direnv to manage your golang projects</a>
       </li>
     
@@ -983,10 +958,6 @@ export PATH=<span class="regexp">/usr/</span>local/bin:$PATH
     
       <li>
         <a href="/2013/12/17/go-bindings-for-opencv-go-opencv/">Go bindings for OpenCV: go-opencv</a>
-      </li>
-    
-      <li>
-        <a href="/2013/12/07/getting-started-with-camlistore-0/">Getting started with Camlistore (0)</a>
       </li>
     
   </ul>
@@ -1028,9 +999,9 @@ export PATH=<span class="regexp">/usr/</span>local/bin:$PATH
   
     <li><a href="/tags/Zsh/">Zsh</a><small>1</small></li>
   
-    <li><a href="/tags/direnv/">direnv</a><small>1</small></li>
+    <li><a href="/tags/direnv/">direnv</a><small>2</small></li>
   
-    <li><a href="/tags/golang/">golang</a><small>1</small></li>
+    <li><a href="/tags/golang/">golang</a><small>2</small></li>
   
   </ul>
 </div>
