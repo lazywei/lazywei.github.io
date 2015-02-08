@@ -3,8 +3,8 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Be Lazier
-subtitle: Hello, World!
+title: Lazier
+subtitle: It's just a joke
 description:
 author: lazywei
 email:
@@ -13,7 +13,7 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://lazywei.github.io
+url: http://lazier.cwchang.me
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -64,7 +64,21 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://github.com/hexojs/hexo/wiki/Plugins
 ## Themes: https://github.com/hexojs/hexo/wiki/Themes
-theme: landscape
+theme: simplecho
+
+# RSS Feed
+# https://github.com/hexojs/hexo-generator-feed
+feed:
+  type: atom
+  path: atom.xml
+  limit: 0
+
+archive: 1
+category: 1
+tag: 1
+
+# Disqus
+disqus_shortname: lazier
 
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html

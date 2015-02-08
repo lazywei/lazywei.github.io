@@ -9,6 +9,7 @@
     "hexo-deployer-git": "0.0.3",
     "hexo-generator-archive": "*",
     "hexo-generator-category": "*",
+    "hexo-generator-feed": "1.0.0",
     "hexo-generator-index": "*",
     "hexo-generator-tag": "*",
     "hexo-renderer-ejs": "*",
