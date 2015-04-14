@@ -1,6 +1,6 @@
 title: "Customized Go Testing with Ginkgo"
 date: 2015-04-06 11:43:09
-tags:
+tags: ["golang", "testing", "dev"]
 ---
 
 
