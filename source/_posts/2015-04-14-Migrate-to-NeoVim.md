@@ -18,5 +18,6 @@ Vim 一直以來都是我最喜愛的編輯器，其實我唯一在用的編輯�
 2. NeoVim 有不一樣的 clipboard 處理方式，可以輕鬆跟 system share clipboard，請參考[這裏](http://neovim.org/doc/user/nvim_clipboard.html#nvim-clipboard)
 3. 只要 `PATH` 中有 python interpreter，NeoVim 就能自動支援，不需要再手動 re-build，不過需要裝一下 python package：`pip install neovim`
 4. homebrew 可以裝 neovim，但是我不建議用 homebrew 裝，因爲 homebrew 目前在 compile 的時候沒有把 debug mode 關掉，這樣 NeoVim 在遇上 [vim-airline](https://github.com/bling/vim-airline) 的時候會變得非常慢，建議的做法是自己 clone 一份 source code 用 [Optimized build](https://github.com/neovim/neovim/wiki/Building-Neovim#optimized-builds)，然後再把 `$VIMRUNTIME` 設定成 `runtime/` 這個資料夾，最後把 `build/bin` 加入 `$PATH` 就可以了
+5. `<C-h>` may not work. If that is the case, please ref to this [workaround](https://github.com/neovim/neovim/issues/2048#issuecomment-78045837)
 
 基本上除了以上這幾點外應該不會再有太多問題了。
