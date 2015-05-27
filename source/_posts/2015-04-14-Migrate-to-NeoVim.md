@@ -1,6 +1,6 @@
 title: "Migrate to NeoVim"
 date: 2015-04-14 22:42:18
-tags:
+tags: ["dev", "tools"]
 ---
 
 
