@@ -4,8 +4,8 @@
 
 # Site
 title: Lazy Made Easy
-subtitle: 廬山煙雨浙江潮
-description:
+#subtitle: 廬山煙雨浙江潮
+description: ... in a lazy way.
 author: lazywei
 email: bert.cwchang@gmail.com
 language: zh-tw
@@ -86,42 +86,42 @@ deploy:
   repository: https://github.com/lazywei/lazywei.github.io.git
   branch: master
 
-# =============================================================================
-# NexT Theme configuration
-# =============================================================================
+# # =============================================================================
+# # NexT Theme configuration
+# # =============================================================================
 
-#
-avatar: https://graph.facebook.com/jrweizhang/picture?type=large
+# #
+# avatar: https://graph.facebook.com/jrweizhang/picture?type=large
 
-# Disqus
-disqus_shortname: lazier
+# # Disqus
+# disqus_shortname: lazier
 
-# 社交链接，将在侧栏中显示
-social:
-  GitHub: https://github.com/lazywei
-  Twitter: https://twitter.com/bert_cwchang
+# # 社交链接，将在侧栏中显示
+# social:
+#   GitHub: https://github.com/lazywei
+#   Twitter: https://twitter.com/bert_cwchang
 
-# Creative Commons 4.0 International License.
-# http://creativecommons.org/
-# Available: by | by-nc | by-nc-nd | by-nc-sa | by-nd | by-sa | zero
-creative_commons: by-nc-sa
-
-
-# Google 站长工具验证，请选择 `HTML Meta` 验证方式
-# See: https://www.google.com/webmasters/
-# google_site_verification: VvyjvVXcJQa0QklHipu6pwm2PJGnnchIqX7s5JbbT_0
+# # Creative Commons 4.0 International License.
+# # http://creativecommons.org/
+# # Available: by | by-nc | by-nc-nd | by-nc-sa | by-nd | by-sa | zero
+# creative_commons: by-nc-sa
 
 
-# Google 分析 ID
-# google_analytics:
+# # Google 站长工具验证，请选择 `HTML Meta` 验证方式
+# # See: https://www.google.com/webmasters/
+# # google_site_verification: VvyjvVXcJQa0QklHipu6pwm2PJGnnchIqX7s5JbbT_0
 
 
-# 百度统计 ID，此 ID 是百度统计提供脚本中 hm.js? 后面那串字符，非百度统计帐号
-# baidu_analytics: 50c15455e37f70aea674ff4a663eef27
+# # Google 分析 ID
+# # google_analytics:
 
-# 站点起始时间
+
+# # 百度统计 ID，此 ID 是百度统计提供脚本中 hm.js? 后面那串字符，非百度统计帐号
+# # baidu_analytics: 50c15455e37f70aea674ff4a663eef27
+
+# # 站点起始时间
 since: 2014
 
-# =============================================================================
-# End NexT Theme configuration
-# =============================================================================
+# # =============================================================================
+# # End NexT Theme configuration
+# # =============================================================================
