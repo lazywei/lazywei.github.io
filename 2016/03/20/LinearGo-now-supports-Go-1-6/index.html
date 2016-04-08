@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="tools,dev," />
+  <meta name="keywords" content="dev,golang,open source,machine learning," />
 
 
 
@@ -82,19 +82,16 @@
 
 
 
-<meta name="description" content="Vim 一直以來都是我最喜愛的編輯器，其實我唯一在用的編輯器，當然偶爾還是會有點「七年之癢」想玩玩 Emacs、Atom、Sublime Text，但是最終都還是覺得 Vim 使用起來最順手。
-雖然 Vim 是個曠世神作，但是在開發社群上出了一些意見紛爭，例如只有一個人在維護高達 300k 行的 C89，以及這個 Bram 這個主要作者對於 community patching 的態度等，因此在去">
+<meta name="description" content="Last summer, I built LinearGo, a Go wrapper for the famous machine learning library LIBLINEAR. Basically, I used CGO to bridge LIBLINEAR’s C library and Go. At first, I tried to build a 1-to-1 mapping">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Migrate to NeoVim">
-<meta property="og:url" content="http://lazier.cwchang.me/2015/04/14/Migrate-to-NeoVim/index.html">
+<meta property="og:title" content="LinearGo now supports Go 1.6">
+<meta property="og:url" content="http://lazier.cwchang.me/2016/03/20/LinearGo-now-supports-Go-1-6/index.html">
 <meta property="og:site_name" content="Lazy Made Easy">
-<meta property="og:description" content="Vim 一直以來都是我最喜愛的編輯器，其實我唯一在用的編輯器，當然偶爾還是會有點「七年之癢」想玩玩 Emacs、Atom、Sublime Text，但是最終都還是覺得 Vim 使用起來最順手。
-雖然 Vim 是個曠世神作，但是在開發社群上出了一些意見紛爭，例如只有一個人在維護高達 300k 行的 C89，以及這個 Bram 這個主要作者對於 community patching 的態度等，因此在去">
-<meta property="og:updated_time" content="2016-04-08T07:49:06.000Z">
+<meta property="og:description" content="Last summer, I built LinearGo, a Go wrapper for the famous machine learning library LIBLINEAR. Basically, I used CGO to bridge LIBLINEAR’s C library and Go. At first, I tried to build a 1-to-1 mapping">
+<meta property="og:updated_time" content="2016-04-08T09:12:37.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Migrate to NeoVim">
-<meta name="twitter:description" content="Vim 一直以來都是我最喜愛的編輯器，其實我唯一在用的編輯器，當然偶爾還是會有點「七年之癢」想玩玩 Emacs、Atom、Sublime Text，但是最終都還是覺得 Vim 使用起來最順手。
-雖然 Vim 是個曠世神作，但是在開發社群上出了一些意見紛爭，例如只有一個人在維護高達 300k 行的 C89，以及這個 Bram 這個主要作者對於 community patching 的態度等，因此在去">
+<meta name="twitter:title" content="LinearGo now supports Go 1.6">
+<meta name="twitter:description" content="Last summer, I built LinearGo, a Go wrapper for the famous machine learning library LIBLINEAR. Basically, I used CGO to bridge LIBLINEAR’s C library and Go. At first, I tried to build a 1-to-1 mapping">
 
 
 
@@ -112,7 +109,7 @@
   };
 </script>
 
-  <title> Migrate to NeoVim | Lazy Made Easy </title>
+  <title> LinearGo now supports Go 1.6 | Lazy Made Easy </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
@@ -242,7 +239,7 @@
             
             
               
-                Migrate to NeoVim
+                LinearGo now supports Go 1.6
               
             
           </h1>
@@ -254,8 +251,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">發表於</span>
-            <time itemprop="dateCreated" datetime="2015-04-14T22:42:18+08:00" content="2015-04-14">
-              2015-04-14
+            <time itemprop="dateCreated" datetime="2016-03-20T17:11:09+08:00" content="2016-03-20">
+              2016-03-20
             </time>
           </span>
 
@@ -265,8 +262,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/04/14/Migrate-to-NeoVim/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/04/14/Migrate-to-NeoVim/" itemprop="commentsCount"></span>
+                <a href="/2016/03/20/LinearGo-now-supports-Go-1-6/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/03/20/LinearGo-now-supports-Go-1-6/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -288,19 +285,15 @@
       
 
       
-        <p>Vim 一直以來都是我最喜愛的編輯器，其實我唯一在用的編輯器，當然偶爾還是會有點「七年之癢」想玩玩 Emacs、Atom、Sublime Text，但是最終都還是覺得 Vim 使用起來最順手。</p>
-<p>雖然 Vim 是個曠世神作，但是在開發社群上出了一些意見紛爭，例如只有一個人在維護高達 300k 行的 C89，以及這個 Bram 這個主要作者對於 community patching 的態度等，因此在去年約一二月的時候，出現了一個 community fork – <a href="https://github.com/neovim/neovim" target="_blank" rel="external">NeoVim</a>，號稱要重構 Vim，關於一些當時事件的細節可以看看<a href="https://www.ptt.cc/bbs/Editor/M.1393165951.A.9B0.html" target="_blank" rel="external">這篇的推文</a>。</p>
-<p>這一年來我都有持續在關注 NeoVim 的發展，而這陣子我覺得是一個非常好的入場時機，一些重大的 bugs 都被修了（雖然還是有一些 issues、或是一些爭論），以及我的愛將 <a href="https://github.com/junegunn/fzf" target="_blank" rel="external">fzf</a> 也在最近支援了新的 NeoVim features，再加上我的 Vim 今天無預警的突然壞了，所以就毅然決然正式入場。</p>
-<p>基本上 NeoVim 的相容性做的很好，我用的差不多將近一百個（突然覺得還真多…）套件都沒出什麼問題，所以如果沒意外的話應該是可以直接 as drop in replacement。</p>
-<p>這裏稍微列一下一些需要注意的點或是 features：</p>
-<ol>
-<li>不需要 <code>nocompatible</code> 了，然後 <code>encoding=utf-8</code> 是預設，更多的細節可以參考<a href="https://github.com/neovim/neovim/wiki/Differences-from-vim" target="_blank" rel="external">這裏</a></li>
-<li>NeoVim 有不一樣的 clipboard 處理方式，可以輕鬆跟 system share clipboard，請參考<a href="http://neovim.org/doc/user/nvim_clipboard.html#nvim-clipboard" target="_blank" rel="external">這裏</a></li>
-<li>只要 <code>PATH</code> 中有 python interpreter，NeoVim 就能自動支援，不需要再手動 re-build，不過需要裝一下 python package：<code>pip install neovim</code></li>
-<li>homebrew 可以裝 neovim，但是我不建議用 homebrew 裝，因爲 homebrew 目前在 compile 的時候沒有把 debug mode 關掉，這樣 NeoVim 在遇上 <a href="https://github.com/bling/vim-airline" target="_blank" rel="external">vim-airline</a> 的時候會變得非常慢，建議的做法是自己 clone 一份 source code 用 <a href="https://github.com/neovim/neovim/wiki/Building-Neovim#optimized-builds" target="_blank" rel="external">Optimized build</a>，然後再把 <code>$VIMRUNTIME</code> 設定成 <code>runtime/</code> 這個資料夾，最後把 <code>build/bin</code> 加入 <code>$PATH</code> 就可以了</li>
-<li><code>&lt;C-h&gt;</code> may not work. If that is the case, please ref to this <a href="https://github.com/neovim/neovim/issues/2048#issuecomment-78045837" target="_blank" rel="external">workaround</a></li>
-</ol>
-<p>基本上除了以上這幾點外應該不會再有太多問題了。</p>
+        <p>Last summer, I built <a href="https://github.com/lazywei/lineargo" target="_blank" rel="external">LinearGo</a>, a Go wrapper for the famous machine learning library <a href="http://www.csie.ntu.edu.tw/~cjlin/liblinear/" target="_blank" rel="external">LIBLINEAR</a>. Basically, I used CGO to bridge LIBLINEAR’s C library and Go. At first, I tried to build a 1-to-1 mapping for all of the data structure defined in C liblinear to hide the implementation details of C behind Go code.</p>
+<p>However, things become complicated after Go 1.6 as they change their pointer policy for CGO. We can no longer pass something that contains a Go pointer which points to a Go pointer (WTF I just said!?). For example, a <code>Parameter</code> contains a pointer to a <code>FeatureNode</code> (an array of FeatureNode in fact). Before Go 1.6, I simply pass the pointer of <code>Parameter</code> to C, contains a pointer to a <code>FeatureNode</code> (a Go struct). Things like this, which a Go pointer contains a Go pointer, is not allowed anymore in Go 1.6. Therefore, I’m forced to figure out some other way to get around this.</p>
+<p>The solution I came up with is passing plain C data type only (things like <code>int</code>, <code>double</code>, or pointers to them), and then re-construct the struct in C. Therefore, I removed the corresponding Go structure and wrote some C helper function which I can call from Go.</p>
+<p>For example, I have a <code>call_train</code> helper function, the signature of which is</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">struct</span> model* <span class="title">call_train</span><span class="params">(</span><br><span class="line">    <span class="keyword">double</span>* x, <span class="keyword">double</span>* y, <span class="keyword">int</span> n_rows, <span class="keyword">int</span> n_cols,</span><br><span class="line">    <span class="keyword">double</span> bias, <span class="keyword">int</span> solver_type, <span class="keyword">double</span> C, <span class="keyword">double</span> p, <span class="keyword">double</span> eps,</span><br><span class="line">    <span class="keyword">int</span> nr_weight, <span class="keyword">int</span>* weight_label, <span class="keyword">double</span>* weight)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>And the real <code>train</code> function looks like this</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">struct</span> model* <span class="title">train</span><span class="params">(<span class="keyword">const</span> <span class="keyword">struct</span> problem *prob, <span class="keyword">const</span> <span class="keyword">struct</span> parameter *param)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>In <code>call_train</code>, I manually construct <code>prob</code> and <code>param</code> and then call the real <code>train</code> with these arguments.</p>
+<p>Luckily, after some monkey coding, LinearGo is now supporting Go 1.6. Moreover, I believe the current approach is more stable than previous one because we only work on simple data type when bridging while leave the complicated structure in pure C.</p>
 
       
     </div>
@@ -321,9 +314,13 @@
       
         <div class="post-tags">
           
-            <a href="/tags/tools/" rel="tag">#tools</a>
-          
             <a href="/tags/dev/" rel="tag">#dev</a>
+          
+            <a href="/tags/golang/" rel="tag">#golang</a>
+          
+            <a href="/tags/open-source/" rel="tag">#open source</a>
+          
+            <a href="/tags/machine-learning/" rel="tag">#machine learning</a>
           
         </div>
       
@@ -332,17 +329,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/04/06/Customized-Go-Testing-with-Ginkgo/" rel="next" title="Customized Go Testing with Ginkgo">
-                <i class="fa fa-chevron-left"></i> Customized Go Testing with Ginkgo
+              <a href="/2016/03/18/Easier-to-Persist/" rel="next" title="降低成爲習慣的門檻">
+                <i class="fa fa-chevron-left"></i> 降低成爲習慣的門檻
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/05/28/First-Taste-of-React-Native-in-ReactJS-tw-Meetup/" rel="prev" title="First Taste of React Native in ReactJS.tw Meetup">
-                First Taste of React Native in ReactJS.tw Meetup <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -602,9 +595,9 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'lazier';
-      var disqus_identifier = '2015/04/14/Migrate-to-NeoVim/';
-      var disqus_title = 'Migrate to NeoVim';
-      var disqus_url = 'http://lazier.cwchang.me/2015/04/14/Migrate-to-NeoVim/';
+      var disqus_identifier = '2016/03/20/LinearGo-now-supports-Go-1-6/';
+      var disqus_title = 'LinearGo now supports Go 1.6';
+      var disqus_url = 'http://lazier.cwchang.me/2016/03/20/LinearGo-now-supports-Go-1-6/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');

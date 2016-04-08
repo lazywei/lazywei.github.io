@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lazier.cwchang.me/"/>
-  <updated>2016-04-08T07:49:06.000Z</updated>
+  <updated>2016-04-08T09:12:37.000Z</updated>
   <id>http://lazier.cwchang.me/</id>
   
   <author>
@@ -14,6 +14,73 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LinearGo now supports Go 1.6</title>
+    <link href="http://lazier.cwchang.me/2016/03/20/LinearGo-now-supports-Go-1-6/"/>
+    <id>http://lazier.cwchang.me/2016/03/20/LinearGo-now-supports-Go-1-6/</id>
+    <published>2016-03-20T09:11:09.000Z</published>
+    <updated>2016-04-08T09:12:37.000Z</updated>
+    
+    <content type="html">&lt;p&gt;Last summer, I built &lt;a href=&quot;https://github.com/lazywei/lineargo&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;LinearGo&lt;/a&gt;, a Go wrapper for the famous machine learning library &lt;a href=&quot;http://www.csie.ntu.edu.tw/~cjlin/liblinear/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;LIBLINEAR&lt;/a&gt;. Basically, I used CGO to bridge LIBLINEAR’s C library and Go. At first, I tried to build a 1-to-1 mapping for all of the data structure defined in C liblinear to hide the implementation details of C behind Go code.&lt;/p&gt;
+&lt;p&gt;However, things become complicated after Go 1.6 as they change their pointer policy for CGO. We can no longer pass something that contains a Go pointer which points to a Go pointer (WTF I just said!?). For example, a &lt;code&gt;Parameter&lt;/code&gt; contains a pointer to a &lt;code&gt;FeatureNode&lt;/code&gt; (an array of FeatureNode in fact). Before Go 1.6, I simply pass the pointer of &lt;code&gt;Parameter&lt;/code&gt; to C, contains a pointer to a &lt;code&gt;FeatureNode&lt;/code&gt; (a Go struct). Things like this, which a Go pointer contains a Go pointer, is not allowed anymore in Go 1.6. Therefore, I’m forced to figure out some other way to get around this.&lt;/p&gt;
+&lt;p&gt;The solution I came up with is passing plain C data type only (things like &lt;code&gt;int&lt;/code&gt;, &lt;code&gt;double&lt;/code&gt;, or pointers to them), and then re-construct the struct in C. Therefore, I removed the corresponding Go structure and wrote some C helper function which I can call from Go.&lt;/p&gt;
+&lt;p&gt;For example, I have a &lt;code&gt;call_train&lt;/code&gt; helper function, the signature of which is&lt;/p&gt;
+&lt;figure class=&quot;highlight c&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;struct&lt;/span&gt; model* &lt;span class=&quot;title&quot;&gt;call_train&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;double&lt;/span&gt;* x, &lt;span class=&quot;keyword&quot;&gt;double&lt;/span&gt;* y, &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; n_rows, &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; n_cols,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;double&lt;/span&gt; bias, &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; solver_type, &lt;span class=&quot;keyword&quot;&gt;double&lt;/span&gt; C, &lt;span class=&quot;keyword&quot;&gt;double&lt;/span&gt; p, &lt;span class=&quot;keyword&quot;&gt;double&lt;/span&gt; eps,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; nr_weight, &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt;* weight_label, &lt;span class=&quot;keyword&quot;&gt;double&lt;/span&gt;* weight)&lt;/span&gt;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;And the real &lt;code&gt;train&lt;/code&gt; function looks like this&lt;/p&gt;
+&lt;figure class=&quot;highlight c&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;struct&lt;/span&gt; model* &lt;span class=&quot;title&quot;&gt;train&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;struct&lt;/span&gt; problem *prob, &lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;struct&lt;/span&gt; parameter *param)&lt;/span&gt;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;In &lt;code&gt;call_train&lt;/code&gt;, I manually construct &lt;code&gt;prob&lt;/code&gt; and &lt;code&gt;param&lt;/code&gt; and then call the real &lt;code&gt;train&lt;/code&gt; with these arguments.&lt;/p&gt;
+&lt;p&gt;Luckily, after some monkey coding, LinearGo is now supporting Go 1.6. Moreover, I believe the current approach is more stable than previous one because we only work on simple data type when bridging while leave the complicated structure in pure C.&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Last summer, I built &lt;a href=&quot;https://github.com/lazywei/lineargo&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;LinearGo&lt;/a&gt;, a Go wrapper for the famo
+    
+    </summary>
+    
+    
+      <category term="dev" scheme="http://lazier.cwchang.me/tags/dev/"/>
+    
+      <category term="golang" scheme="http://lazier.cwchang.me/tags/golang/"/>
+    
+      <category term="open source" scheme="http://lazier.cwchang.me/tags/open-source/"/>
+    
+      <category term="machine learning" scheme="http://lazier.cwchang.me/tags/machine-learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>降低成爲習慣的門檻</title>
+    <link href="http://lazier.cwchang.me/2016/03/18/Easier-to-Persist/"/>
+    <id>http://lazier.cwchang.me/2016/03/18/Easier-to-Persist/</id>
+    <published>2016-03-18T09:16:51.000Z</published>
+    <updated>2016-04-08T09:19:06.000Z</updated>
+    
+    <content type="html">&lt;p&gt;我以前試過很多記帳軟體或記帳方式，但一直都沒成功持續下去，所以也就算是放棄了。一直到最近突然又想記帳，找了一下發現 iOS 上有個秒速記帳，嘗試試用之下發現真的非常好用，而且他讓我真的堅持了記帳這個行爲（至少至今已經有一個多月了XD）。&lt;/p&gt;
+&lt;p&gt;有點好奇是什麼讓他與衆不同、能我“粘在”記帳這個行爲上面，稍微分析後自覺有幾個原因：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;記帳速度非常快，直接從 notification center 拉下來就可以記帳，連解鎖都不必。&lt;/li&gt;
+&lt;li&gt;對於悠遊卡、銀行、轉帳等整合的不錯，很簡單就可以做到自動記錄悠遊卡消費（除大衆運輸外）、記錄各帳戶之間轉帳的功能。&lt;/li&gt;
+&lt;li&gt;類別這個功能做的夠彈性但卻不失簡單，能夠快速指定類別，也可以快速新增不同的類別。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;這三點有個共通性：他們讓記帳這件事情變得更容易達成，當 trigger 這個行爲的門檻降低時，這個行爲也就更容易變成習慣，而達成這點靠的就是使整個過程簡單化，不需要做太多動作、花太多腦力就能完成。&lt;/p&gt;
+&lt;p&gt;對比之下，我覺得 Medium 也做到這件事情，無論是手機還是電腦上的界面都夠簡單，寫一篇文章可以簡單到連 title 都不用想（我猜不少人跟我一樣常常卡在幫一篇文章想 title 上…），所以也比較能讓人願意去寫。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;我以前試過很多記帳軟體或記帳方式，但一直都沒成功持續下去，所以也就算是放棄了。一直到最近突然又想記帳，找了一下發現 iOS 上有個秒速記帳，嘗試試用之下發現真的非常好用，而且他讓我真的堅持了記帳這個行爲（至少至今已經有一個多月了XD）。&lt;/p&gt;
+&lt;p&gt;有點好奇是什麼讓他與衆
+    
+    </summary>
+    
+    
+      <category term="tools" scheme="http://lazier.cwchang.me/tags/tools/"/>
+    
+      <category term="productivity" scheme="http://lazier.cwchang.me/tags/productivity/"/>
+    
+  </entry>
   
   <entry>
     <title>Google Summer of Code instruction for Taiwan Students</title>
@@ -74,20 +141,19 @@
     <link href="http://lazier.cwchang.me/2015/07/16/GitHub-CodeConf-2015/"/>
     <id>http://lazier.cwchang.me/2015/07/16/GitHub-CodeConf-2015/</id>
     <published>2015-07-16T12:44:35.000Z</published>
-    <updated>2016-04-08T07:49:06.000Z</updated>
+    <updated>2016-04-08T09:01:16.000Z</updated>
     
-    <content type="html">&lt;p&gt;I attended the &lt;a href=&quot;http://codeconf.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;CodeConf&lt;/a&gt; 2015 held by GitHub last month,&lt;br&gt;and it was truly a wonderful journey. Admittedly, this was my first time heard&lt;br&gt;about CodeConf. However, it didn’t make me any less excited, and it turns out&lt;br&gt;CodeConf is really a top tier conference, which I won’t be hesitate to join&lt;br&gt;again. By the way, CodeConf took place in Nashville, the music city, and the city&lt;br&gt;is also awfully impressive.&lt;/p&gt;
-&lt;p&gt;It’s not hard to give reasons why CodeConf is one of the best conferences I have&lt;br&gt;been in: the presentation room – The Bell Tower, the food and drinks, the party&lt;br&gt;, etc. Yet, the most awesome part is the people, the attendants. I met a lot of&lt;br&gt;interesting people there, including hackers, fighters for equality, GitHubbers,&lt;br&gt;and I really got inspired a lot by meeting them and by their talks. And hence&lt;br&gt;I’d like to note some impressing talks from which I felt I learn a lot ideas and&lt;br&gt;concepts.&lt;/p&gt;
-&lt;p&gt;The first one talk I’d like to note here is &lt;strong&gt;State of the Open Source&lt;br&gt;Licenses&lt;/strong&gt; given by GitHubber &lt;a href=&quot;https://github.com/mislav&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Mislav Marohnic&lt;/a&gt;. This&lt;br&gt;talk is talking about what is license, why we need it, and how we can utilize it&lt;br&gt;in open source projects. Though not gaining too many stars, I did some open&lt;br&gt;source projects myself on &lt;a href=&quot;https://github.com/lazywei&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub&lt;/a&gt;. However, I&lt;br&gt;didn’t add license to all my projects – actually, I only applied license to a&lt;br&gt;few of them. Mislave showed us how the license can impact a open source project,&lt;br&gt;or even the whole open source community. I think I do learn a lot from this&lt;br&gt;talk, at least I know what license should I apply on my projects!&lt;/p&gt;
-&lt;p&gt;Another interesting talk is &lt;strong&gt;Detecting and mitigating fraud in realtime at Airbnb&lt;/strong&gt;&lt;br&gt;given by Eric Levine from Airbnb. It’s not surprising that I was interested in&lt;br&gt;this talk – I’m a machine learning researcher! Spam or fraud detection has been&lt;br&gt;studied for maybe several years. However, when applying to real world, it’s&lt;br&gt;totally a different story. Eric showed us, clearly, how they setup their model&lt;br&gt;and their architecture. I’m impressed that their models are simply random&lt;br&gt;forest, and I’m also impressed that it only take them half of an hour to&lt;br&gt;re-train their whole models. Moreover, Eric used very simple but understandable&lt;br&gt;way to introduce the basic idea of machine learning, and I think I should copy&lt;br&gt;his slide for introducing machine learning in the future … :-P&lt;/p&gt;
-&lt;p&gt;There are a lot of other great talks, such as Atom keynote or Facebook and&lt;br&gt;Microsoft’s talk on large scale open sourcing. Yet, I’d like to highlight one&lt;br&gt;more talk here – &lt;strong&gt;Debugging Diversity&lt;/strong&gt; given by Anjuan Simmons. In fact, this&lt;br&gt;is not really like a technical talk. Instead, Anjuan focused on the “Diversity”&lt;br&gt;or “Equality” in the community. In my opinion, people who involved in open&lt;br&gt;source projects are somehow more important than the projects themselves. Human&lt;br&gt;is the core, and it is all about how we interact with others. Anjuan did a great&lt;br&gt;job on this topic, and it was this talk that made me feel CodeConf is one level&lt;br&gt;higher than the other conferences I attended in Taiwan. Code and projects are&lt;br&gt;interesting, but sometimes we should pay more attentions on people around the&lt;br&gt;projects. Also, we should give more respect to everyone no matter who they are&lt;br&gt;or what they do. Truly, this talk is awesome!&lt;/p&gt;
-&lt;p&gt;I also gave a short lightening talk on my Google Summer of Code project –&lt;br&gt;&lt;a href=&quot;https://github.com/github/linguist&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Linguist&lt;/a&gt; and &lt;a href=&quot;https://github.com/lazywei/mockingbird&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Mockingbird&lt;/a&gt;.&lt;br&gt;Basically, Linguist is a Ruby gem used by GitHub (mostly by GitHub) that can do&lt;br&gt;&lt;strong&gt;Programming Language Detection&lt;/strong&gt; for a given text file. I’m sure you know&lt;br&gt;where it is used in GitHub – yes, on the top banner region! There are lot of&lt;br&gt;strategies in Linguist, and one of them is machine learning. Given my experiences&lt;br&gt;and great interests in machine learning, I started work on it to try to improve&lt;br&gt;the machine learning part – with GitHubbers as mentors, how lucky! I briefly&lt;br&gt;introduce my work, what have been done, and next steps in the talk. I found it&lt;br&gt;kind of difficult to explain machine learning and my project in oral&lt;br&gt;English, which is not my native language, and presenting in front of a lot of&lt;br&gt;truly hackers made me super nervous. But I did hope I convey the ideas clearly,&lt;br&gt;and I did hope there will be more people knowing / doing / playing with machine&lt;br&gt;learning.&lt;/p&gt;
-&lt;p&gt;And I guess that’s it, my brief note on GitHub’s CodeConf. Oh right, I visited&lt;br&gt;GitHub HQ in SF before went to Nashville. It’s really awesome! It is probably&lt;br&gt;the most cool place I have ever dreamed about for a hacker. :-)&lt;/p&gt;
+    <content type="html">&lt;p&gt;I attended the &lt;a href=&quot;http://codeconf.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;CodeConf&lt;/a&gt; 2015 held by GitHub last month, and it was truly a wonderful journey. Admittedly, this was my first time heard about CodeConf. However, it didn’t make me any less excited, and it turns out CodeConf is really a top tier conference, which I won’t be hesitate to join again. By the way, CodeConf took place in Nashville, the music city, and the city is also awfully impressive. It’s not hard to give reasons why CodeConf is one of the best conferences I have been in: the presentation room – The Bell Tower, the food and drinks, the party , etc. Yet, the most awesome part is the people, the attendants. I met a lot of interesting people there, including hackers, fighters for equality, GitHubbers, and I really got inspired a lot by meeting them and by their talks. And hence I’d like to note some impressing talks from which I felt I learn a lot ideas and concepts.&lt;/p&gt;
+&lt;p&gt;The first one talk I’d like to note here is &lt;strong&gt;State of the Open Source Licenses&lt;/strong&gt; given by GitHubber &lt;a href=&quot;https://github.com/mislav&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Mislav Marohnic&lt;/a&gt;. This talk is talking about what is license, why we need it, and how we can utilize it in open source projects. Though not gaining too many stars, I did some open source projects myself on &lt;a href=&quot;https://github.com/lazywei&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub&lt;/a&gt;. However, I didn’t add license to all my projects – actually, I only applied license to a few of them. Mislave showed us how the license can impact a open source project, or even the whole open source community. I think I do learn a lot from this talk, at least I know what license should I apply on my projects!&lt;/p&gt;
+&lt;p&gt;Another interesting talk is &lt;strong&gt;Detecting and mitigating fraud in realtime at Airbnb&lt;/strong&gt; given by Eric Levine from Airbnb. It’s not surprising that I was interested in this talk – I’m a machine learning researcher! Spam or fraud detection has been studied for maybe several years. However, when applying to real world, it’s totally a different story. Eric showed us, clearly, how they setup their model and their architecture. I’m impressed that their models are simply random forest, and I’m also impressed that it only take them half of an hour to re-train their whole models. Moreover, Eric used very simple but understandable way to introduce the basic idea of machine learning, and I think I should copy his slide for introducing machine learning in the future … :-P&lt;/p&gt;
+&lt;p&gt;There are a lot of other great talks, such as Atom keynote or Facebook and Microsoft’s talk on large scale open sourcing. Yet, I’d like to highlight one more talk here – &lt;strong&gt;Debugging Diversity&lt;/strong&gt; given by Anjuan Simmons. In fact, this is not really like a technical talk. Instead, Anjuan focused on the “Diversity” or “Equality” in the community. In my opinion, people who involved in open source projects are somehow more important than the projects themselves. Human is the core, and it is all about how we interact with others. Anjuan did a great job on this topic, and it was this talk that made me feel CodeConf is one level higher than the other conferences I attended in Taiwan. Code and projects are interesting, but sometimes we should pay more attentions on people around the projects. Also, we should give more respect to everyone no matter who they are or what they do. Truly, this talk is awesome!&lt;/p&gt;
+&lt;p&gt;I also gave a short lightening talk on my Google Summer of Code project – &lt;a href=&quot;https://github.com/github/linguist&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Linguist&lt;/a&gt; and &lt;a href=&quot;https://github.com/lazywei/mockingbird&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Mockingbird&lt;/a&gt;. Basically, Linguist is a Ruby gem used by GitHub (mostly by GitHub) that can do &lt;strong&gt;Programming Language Detection&lt;/strong&gt; for a given text file. I’m sure you know where it is used in GitHub – yes, on the top banner region! There are lot of strategies in Linguist, and one of them is machine learning. Given my experiences and great interests in machine learning, I started work on it to try to improve the machine learning part – with GitHubbers as mentors, how lucky! I briefly introduce my work, what have been done, and next steps in the talk. I found it kind of difficult to explain machine learning and my project in oral English, which is not my native language, and presenting in front of a lot of truly hackers made me super nervous. But I did hope I convey the ideas clearly, and I did hope there will be more people knowing / doing / playing with machine learning.&lt;/p&gt;
+&lt;p&gt;And I guess that’s it, my brief note on GitHub’s CodeConf. Oh right, I visited GitHub HQ in SF before went to Nashville. It’s really awesome! It is probably the most cool place I have ever dreamed about for a hacker. :-)&lt;/p&gt;
 </content>
     
     <summary type="html">
     
-      &lt;p&gt;I attended the &lt;a href=&quot;http://codeconf.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;CodeConf&lt;/a&gt; 2015 held by GitHub last month,&lt;br&gt;and it was t
+      &lt;p&gt;I attended the &lt;a href=&quot;http://codeconf.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;CodeConf&lt;/a&gt; 2015 held by GitHub last month, and it was trul
     
     </summary>
     

@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="tools,dev," />
+  <meta name="keywords" content="tools,productivity," />
 
 
 
@@ -82,19 +82,25 @@
 
 
 
-<meta name="description" content="Vim 一直以來都是我最喜愛的編輯器，其實我唯一在用的編輯器，當然偶爾還是會有點「七年之癢」想玩玩 Emacs、Atom、Sublime Text，但是最終都還是覺得 Vim 使用起來最順手。
-雖然 Vim 是個曠世神作，但是在開發社群上出了一些意見紛爭，例如只有一個人在維護高達 300k 行的 C89，以及這個 Bram 這個主要作者對於 community patching 的態度等，因此在去">
+<meta name="description" content="我以前試過很多記帳軟體或記帳方式，但一直都沒成功持續下去，所以也就算是放棄了。一直到最近突然又想記帳，找了一下發現 iOS 上有個秒速記帳，嘗試試用之下發現真的非常好用，而且他讓我真的堅持了記帳這個行爲（至少至今已經有一個多月了XD）。
+有點好奇是什麼讓他與衆不同、能我“粘在”記帳這個行爲上面，稍微分析後自覺有幾個原因：
+
+記帳速度非常快，直接從 notification center 拉下來就可">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Migrate to NeoVim">
-<meta property="og:url" content="http://lazier.cwchang.me/2015/04/14/Migrate-to-NeoVim/index.html">
+<meta property="og:title" content="降低成爲習慣的門檻">
+<meta property="og:url" content="http://lazier.cwchang.me/2016/03/18/Easier-to-Persist/index.html">
 <meta property="og:site_name" content="Lazy Made Easy">
-<meta property="og:description" content="Vim 一直以來都是我最喜愛的編輯器，其實我唯一在用的編輯器，當然偶爾還是會有點「七年之癢」想玩玩 Emacs、Atom、Sublime Text，但是最終都還是覺得 Vim 使用起來最順手。
-雖然 Vim 是個曠世神作，但是在開發社群上出了一些意見紛爭，例如只有一個人在維護高達 300k 行的 C89，以及這個 Bram 這個主要作者對於 community patching 的態度等，因此在去">
-<meta property="og:updated_time" content="2016-04-08T07:49:06.000Z">
+<meta property="og:description" content="我以前試過很多記帳軟體或記帳方式，但一直都沒成功持續下去，所以也就算是放棄了。一直到最近突然又想記帳，找了一下發現 iOS 上有個秒速記帳，嘗試試用之下發現真的非常好用，而且他讓我真的堅持了記帳這個行爲（至少至今已經有一個多月了XD）。
+有點好奇是什麼讓他與衆不同、能我“粘在”記帳這個行爲上面，稍微分析後自覺有幾個原因：
+
+記帳速度非常快，直接從 notification center 拉下來就可">
+<meta property="og:updated_time" content="2016-04-08T09:19:06.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Migrate to NeoVim">
-<meta name="twitter:description" content="Vim 一直以來都是我最喜愛的編輯器，其實我唯一在用的編輯器，當然偶爾還是會有點「七年之癢」想玩玩 Emacs、Atom、Sublime Text，但是最終都還是覺得 Vim 使用起來最順手。
-雖然 Vim 是個曠世神作，但是在開發社群上出了一些意見紛爭，例如只有一個人在維護高達 300k 行的 C89，以及這個 Bram 這個主要作者對於 community patching 的態度等，因此在去">
+<meta name="twitter:title" content="降低成爲習慣的門檻">
+<meta name="twitter:description" content="我以前試過很多記帳軟體或記帳方式，但一直都沒成功持續下去，所以也就算是放棄了。一直到最近突然又想記帳，找了一下發現 iOS 上有個秒速記帳，嘗試試用之下發現真的非常好用，而且他讓我真的堅持了記帳這個行爲（至少至今已經有一個多月了XD）。
+有點好奇是什麼讓他與衆不同、能我“粘在”記帳這個行爲上面，稍微分析後自覺有幾個原因：
+
+記帳速度非常快，直接從 notification center 拉下來就可">
 
 
 
@@ -112,7 +118,7 @@
   };
 </script>
 
-  <title> Migrate to NeoVim | Lazy Made Easy </title>
+  <title> 降低成爲習慣的門檻 | Lazy Made Easy </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
@@ -242,7 +248,7 @@
             
             
               
-                Migrate to NeoVim
+                降低成爲習慣的門檻
               
             
           </h1>
@@ -254,8 +260,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">發表於</span>
-            <time itemprop="dateCreated" datetime="2015-04-14T22:42:18+08:00" content="2015-04-14">
-              2015-04-14
+            <time itemprop="dateCreated" datetime="2016-03-18T17:16:51+08:00" content="2016-03-18">
+              2016-03-18
             </time>
           </span>
 
@@ -265,8 +271,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/04/14/Migrate-to-NeoVim/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/04/14/Migrate-to-NeoVim/" itemprop="commentsCount"></span>
+                <a href="/2016/03/18/Easier-to-Persist/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/03/18/Easier-to-Persist/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -288,19 +294,15 @@
       
 
       
-        <p>Vim 一直以來都是我最喜愛的編輯器，其實我唯一在用的編輯器，當然偶爾還是會有點「七年之癢」想玩玩 Emacs、Atom、Sublime Text，但是最終都還是覺得 Vim 使用起來最順手。</p>
-<p>雖然 Vim 是個曠世神作，但是在開發社群上出了一些意見紛爭，例如只有一個人在維護高達 300k 行的 C89，以及這個 Bram 這個主要作者對於 community patching 的態度等，因此在去年約一二月的時候，出現了一個 community fork – <a href="https://github.com/neovim/neovim" target="_blank" rel="external">NeoVim</a>，號稱要重構 Vim，關於一些當時事件的細節可以看看<a href="https://www.ptt.cc/bbs/Editor/M.1393165951.A.9B0.html" target="_blank" rel="external">這篇的推文</a>。</p>
-<p>這一年來我都有持續在關注 NeoVim 的發展，而這陣子我覺得是一個非常好的入場時機，一些重大的 bugs 都被修了（雖然還是有一些 issues、或是一些爭論），以及我的愛將 <a href="https://github.com/junegunn/fzf" target="_blank" rel="external">fzf</a> 也在最近支援了新的 NeoVim features，再加上我的 Vim 今天無預警的突然壞了，所以就毅然決然正式入場。</p>
-<p>基本上 NeoVim 的相容性做的很好，我用的差不多將近一百個（突然覺得還真多…）套件都沒出什麼問題，所以如果沒意外的話應該是可以直接 as drop in replacement。</p>
-<p>這裏稍微列一下一些需要注意的點或是 features：</p>
+        <p>我以前試過很多記帳軟體或記帳方式，但一直都沒成功持續下去，所以也就算是放棄了。一直到最近突然又想記帳，找了一下發現 iOS 上有個秒速記帳，嘗試試用之下發現真的非常好用，而且他讓我真的堅持了記帳這個行爲（至少至今已經有一個多月了XD）。</p>
+<p>有點好奇是什麼讓他與衆不同、能我“粘在”記帳這個行爲上面，稍微分析後自覺有幾個原因：</p>
 <ol>
-<li>不需要 <code>nocompatible</code> 了，然後 <code>encoding=utf-8</code> 是預設，更多的細節可以參考<a href="https://github.com/neovim/neovim/wiki/Differences-from-vim" target="_blank" rel="external">這裏</a></li>
-<li>NeoVim 有不一樣的 clipboard 處理方式，可以輕鬆跟 system share clipboard，請參考<a href="http://neovim.org/doc/user/nvim_clipboard.html#nvim-clipboard" target="_blank" rel="external">這裏</a></li>
-<li>只要 <code>PATH</code> 中有 python interpreter，NeoVim 就能自動支援，不需要再手動 re-build，不過需要裝一下 python package：<code>pip install neovim</code></li>
-<li>homebrew 可以裝 neovim，但是我不建議用 homebrew 裝，因爲 homebrew 目前在 compile 的時候沒有把 debug mode 關掉，這樣 NeoVim 在遇上 <a href="https://github.com/bling/vim-airline" target="_blank" rel="external">vim-airline</a> 的時候會變得非常慢，建議的做法是自己 clone 一份 source code 用 <a href="https://github.com/neovim/neovim/wiki/Building-Neovim#optimized-builds" target="_blank" rel="external">Optimized build</a>，然後再把 <code>$VIMRUNTIME</code> 設定成 <code>runtime/</code> 這個資料夾，最後把 <code>build/bin</code> 加入 <code>$PATH</code> 就可以了</li>
-<li><code>&lt;C-h&gt;</code> may not work. If that is the case, please ref to this <a href="https://github.com/neovim/neovim/issues/2048#issuecomment-78045837" target="_blank" rel="external">workaround</a></li>
+<li>記帳速度非常快，直接從 notification center 拉下來就可以記帳，連解鎖都不必。</li>
+<li>對於悠遊卡、銀行、轉帳等整合的不錯，很簡單就可以做到自動記錄悠遊卡消費（除大衆運輸外）、記錄各帳戶之間轉帳的功能。</li>
+<li>類別這個功能做的夠彈性但卻不失簡單，能夠快速指定類別，也可以快速新增不同的類別。</li>
 </ol>
-<p>基本上除了以上這幾點外應該不會再有太多問題了。</p>
+<p>這三點有個共通性：他們讓記帳這件事情變得更容易達成，當 trigger 這個行爲的門檻降低時，這個行爲也就更容易變成習慣，而達成這點靠的就是使整個過程簡單化，不需要做太多動作、花太多腦力就能完成。</p>
+<p>對比之下，我覺得 Medium 也做到這件事情，無論是手機還是電腦上的界面都夠簡單，寫一篇文章可以簡單到連 title 都不用想（我猜不少人跟我一樣常常卡在幫一篇文章想 title 上…），所以也比較能讓人願意去寫。</p>
 
       
     </div>
@@ -323,7 +325,7 @@
           
             <a href="/tags/tools/" rel="tag">#tools</a>
           
-            <a href="/tags/dev/" rel="tag">#dev</a>
+            <a href="/tags/productivity/" rel="tag">#productivity</a>
           
         </div>
       
@@ -332,16 +334,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/04/06/Customized-Go-Testing-with-Ginkgo/" rel="next" title="Customized Go Testing with Ginkgo">
-                <i class="fa fa-chevron-left"></i> Customized Go Testing with Ginkgo
+              <a href="/2015/10/17/Google-Summer-of-Code-instruction-for-Taiwan-Students/" rel="next" title="Google Summer of Code instruction for Taiwan Students">
+                <i class="fa fa-chevron-left"></i> Google Summer of Code instruction for Taiwan Students
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/05/28/First-Taste-of-React-Native-in-ReactJS-tw-Meetup/" rel="prev" title="First Taste of React Native in ReactJS.tw Meetup">
-                First Taste of React Native in ReactJS.tw Meetup <i class="fa fa-chevron-right"></i>
+              <a href="/2016/03/20/LinearGo-now-supports-Go-1-6/" rel="prev" title="LinearGo now supports Go 1.6">
+                LinearGo now supports Go 1.6 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -602,9 +604,9 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'lazier';
-      var disqus_identifier = '2015/04/14/Migrate-to-NeoVim/';
-      var disqus_title = 'Migrate to NeoVim';
-      var disqus_url = 'http://lazier.cwchang.me/2015/04/14/Migrate-to-NeoVim/';
+      var disqus_identifier = '2016/03/18/Easier-to-Persist/';
+      var disqus_title = '降低成爲習慣的門檻';
+      var disqus_url = 'http://lazier.cwchang.me/2016/03/18/Easier-to-Persist/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');
