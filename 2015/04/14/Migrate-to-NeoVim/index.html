@@ -1,0 +1,635 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="tools,dev," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Lazy Made Easy" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Vim 一直以來都是我最喜愛的編輯器，其實我唯一在用的編輯器，當然偶爾還是會有點「七年之癢」想玩玩 Emacs、Atom、Sublime Text，但是最終都還是覺得 Vim 使用起來最順手。
+雖然 Vim 是個曠世神作，但是在開發社群上出了一些意見紛爭，例如只有一個人在維護高達 300k 行的 C89，以及這個 Bram 這個主要作者對於 community patching 的態度等，因此在去">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Migrate to NeoVim">
+<meta property="og:url" content="http://lazier.cwchang.me/2015/04/14/Migrate-to-NeoVim/index.html">
+<meta property="og:site_name" content="Lazy Made Easy">
+<meta property="og:description" content="Vim 一直以來都是我最喜愛的編輯器，其實我唯一在用的編輯器，當然偶爾還是會有點「七年之癢」想玩玩 Emacs、Atom、Sublime Text，但是最終都還是覺得 Vim 使用起來最順手。
+雖然 Vim 是個曠世神作，但是在開發社群上出了一些意見紛爭，例如只有一個人在維護高達 300k 行的 C89，以及這個 Bram 這個主要作者對於 community patching 的態度等，因此在去">
+<meta property="og:updated_time" content="2016-04-08T07:49:06.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Migrate to NeoVim">
+<meta name="twitter:description" content="Vim 一直以來都是我最喜愛的編輯器，其實我唯一在用的編輯器，當然偶爾還是會有點「七年之癢」想玩玩 Emacs、Atom、Sublime Text，但是最終都還是覺得 Vim 使用起來最順手。
+雖然 Vim 是個曠世神作，但是在開發社群上出了一些意見紛爭，例如只有一個人在維護高達 300k 行的 C89，以及這個 Bram 這個主要作者對於 community patching 的態度等，因此在去">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Migrate to NeoVim | Lazy Made Easy </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Lazy Made Easy</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="http://cwchang.me" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            關於
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            歸檔
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            標籤
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Migrate to NeoVim
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">發表於</span>
+            <time itemprop="dateCreated" datetime="2015-04-14T22:42:18+08:00" content="2015-04-14">
+              2015-04-14
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/04/14/Migrate-to-NeoVim/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/04/14/Migrate-to-NeoVim/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Vim 一直以來都是我最喜愛的編輯器，其實我唯一在用的編輯器，當然偶爾還是會有點「七年之癢」想玩玩 Emacs、Atom、Sublime Text，但是最終都還是覺得 Vim 使用起來最順手。</p>
+<p>雖然 Vim 是個曠世神作，但是在開發社群上出了一些意見紛爭，例如只有一個人在維護高達 300k 行的 C89，以及這個 Bram 這個主要作者對於 community patching 的態度等，因此在去年約一二月的時候，出現了一個 community fork – <a href="https://github.com/neovim/neovim" target="_blank" rel="external">NeoVim</a>，號稱要重構 Vim，關於一些當時事件的細節可以看看<a href="https://www.ptt.cc/bbs/Editor/M.1393165951.A.9B0.html" target="_blank" rel="external">這篇的推文</a>。</p>
+<p>這一年來我都有持續在關注 NeoVim 的發展，而這陣子我覺得是一個非常好的入場時機，一些重大的 bugs 都被修了（雖然還是有一些 issues、或是一些爭論），以及我的愛將 <a href="https://github.com/junegunn/fzf" target="_blank" rel="external">fzf</a> 也在最近支援了新的 NeoVim features，再加上我的 Vim 今天無預警的突然壞了，所以就毅然決然正式入場。</p>
+<p>基本上 NeoVim 的相容性做的很好，我用的差不多將近一百個（突然覺得還真多…）套件都沒出什麼問題，所以如果沒意外的話應該是可以直接 as drop in replacement。</p>
+<p>這裏稍微列一下一些需要注意的點或是 features：</p>
+<ol>
+<li>不需要 <code>nocompatible</code> 了，然後 <code>encoding=utf-8</code> 是預設，更多的細節可以參考<a href="https://github.com/neovim/neovim/wiki/Differences-from-vim" target="_blank" rel="external">這裏</a></li>
+<li>NeoVim 有不一樣的 clipboard 處理方式，可以輕鬆跟 system share clipboard，請參考<a href="http://neovim.org/doc/user/nvim_clipboard.html#nvim-clipboard" target="_blank" rel="external">這裏</a></li>
+<li>只要 <code>PATH</code> 中有 python interpreter，NeoVim 就能自動支援，不需要再手動 re-build，不過需要裝一下 python package：<code>pip install neovim</code></li>
+<li>homebrew 可以裝 neovim，但是我不建議用 homebrew 裝，因爲 homebrew 目前在 compile 的時候沒有把 debug mode 關掉，這樣 NeoVim 在遇上 <a href="https://github.com/bling/vim-airline" target="_blank" rel="external">vim-airline</a> 的時候會變得非常慢，建議的做法是自己 clone 一份 source code 用 <a href="https://github.com/neovim/neovim/wiki/Building-Neovim#optimized-builds" target="_blank" rel="external">Optimized build</a>，然後再把 <code>$VIMRUNTIME</code> 設定成 <code>runtime/</code> 這個資料夾，最後把 <code>build/bin</code> 加入 <code>$PATH</code> 就可以了</li>
+<li><code>&lt;C-h&gt;</code> may not work. If that is the case, please ref to this <a href="https://github.com/neovim/neovim/issues/2048#issuecomment-78045837" target="_blank" rel="external">workaround</a></li>
+</ol>
+<p>基本上除了以上這幾點外應該不會再有太多問題了。</p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/tools/" rel="tag">#tools</a>
+          
+            <a href="/tags/dev/" rel="tag">#dev</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/04/06/Customized-Go-Testing-with-Ginkgo/" rel="next" title="Customized Go Testing with Ginkgo">
+                <i class="fa fa-chevron-left"></i> Customized Go Testing with Ginkgo
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/05/28/First-Taste-of-React-Native-in-ReactJS-tw-Meetup/" rel="prev" title="First Taste of React Native in ReactJS.tw Meetup">
+                First Taste of React Native in ReactJS.tw Meetup <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            本站概覽
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://graph.facebook.com/v2.5/1579404899/picture?type=square"
+               alt="Chih-Wei Chang" />
+          <p class="site-author-name" itemprop="name">Chih-Wei Chang</p>
+          <p class="site-description motion-element" itemprop="description">lazywei on the lazy way</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-name">文章</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">標籤</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/lazywei" target="_blank">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目錄</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chih-Wei Chang</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 強力驅動
+</div>
+
+<div class="theme-info">
+  主題 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'lazier';
+      var disqus_identifier = '2015/04/14/Migrate-to-NeoVim/';
+      var disqus_title = 'Migrate to NeoVim';
+      var disqus_url = 'http://lazier.cwchang.me/2015/04/14/Migrate-to-NeoVim/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

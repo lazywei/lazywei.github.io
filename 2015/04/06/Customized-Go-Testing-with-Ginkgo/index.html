@@ -1,0 +1,630 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="dev,golang,testing," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Lazy Made Easy" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="這次在寫 go-opencv 的時候遇到一些測試上的小問題：我用了 gonum 的 mat64 來做基礎矩陣操作，所以很多測試上都需要直接對 mat64.Dense 測試，而 mat64.Dense 底下的資料是 []float64，所以我需要的是可以直接對 []float64 測試的套件。然而大部分的測試框架內建的 assertion 都頂多到 float64 的 approimately co">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Customized Go Testing with Ginkgo">
+<meta property="og:url" content="http://lazier.cwchang.me/2015/04/06/Customized-Go-Testing-with-Ginkgo/index.html">
+<meta property="og:site_name" content="Lazy Made Easy">
+<meta property="og:description" content="這次在寫 go-opencv 的時候遇到一些測試上的小問題：我用了 gonum 的 mat64 來做基礎矩陣操作，所以很多測試上都需要直接對 mat64.Dense 測試，而 mat64.Dense 底下的資料是 []float64，所以我需要的是可以直接對 []float64 測試的套件。然而大部分的測試框架內建的 assertion 都頂多到 float64 的 approimately co">
+<meta property="og:updated_time" content="2016-04-08T07:49:06.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Customized Go Testing with Ginkgo">
+<meta name="twitter:description" content="這次在寫 go-opencv 的時候遇到一些測試上的小問題：我用了 gonum 的 mat64 來做基礎矩陣操作，所以很多測試上都需要直接對 mat64.Dense 測試，而 mat64.Dense 底下的資料是 []float64，所以我需要的是可以直接對 []float64 測試的套件。然而大部分的測試框架內建的 assertion 都頂多到 float64 的 approimately co">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Customized Go Testing with Ginkgo | Lazy Made Easy </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Lazy Made Easy</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="http://cwchang.me" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            關於
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            歸檔
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            標籤
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Customized Go Testing with Ginkgo
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">發表於</span>
+            <time itemprop="dateCreated" datetime="2015-04-06T11:43:09+08:00" content="2015-04-06">
+              2015-04-06
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/04/06/Customized-Go-Testing-with-Ginkgo/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/04/06/Customized-Go-Testing-with-Ginkgo/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>這次在寫 <a href="https://github.com/lazywei/go-opencv" target="_blank" rel="external">go-opencv</a> 的時候遇到一些測試上的小問題：我用了 gonum 的 <a href="https://godoc.org/github.com/gonum/matrix/mat64" target="_blank" rel="external">mat64</a> 來做基礎矩陣操作，所以很多測試上都需要直接對 <code>mat64.Dense</code> 測試，而 <code>mat64.Dense</code> 底下的資料是 <code>[]float64</code>，所以我需要的是可以直接對 <code>[]float64</code> 測試的套件。然而大部分的測試框架內建的 assertion 都頂多到 <code>float64</code> 的 approimately comparison，所以勢必要自己寫 assertion。</p>
+<p>一開始我用的是 <a href="https://github.com/stretchr/testify" target="_blank" rel="external">testify</a>，是個相當簡潔易用的測試框架，他提供了 <code>InDelta</code> 這樣的 assertion 來比較兩個 <code>float64</code> 是不是在容許誤差內，於是我就自己多寫了一個 <a href="https://github.com/lazywei/testify/commit/f0b02af48e5ee31c78b949e9ed67c37e08d1a897" target="_blank" rel="external"><code>InDeltaSlice</code></a> 來比較兩個 <code>[]float64</code>，如此一來我就可以用</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">assert.InDeltaSlice(t,</span><br><span class="line">		[]<span class="keyword">float64</span>&#123;<span class="number">-5.47022369e+03</span>, <span class="number">0.00000000e+00</span>, <span class="number">9.59500000e+02</span>, <span class="number">0.00000000e+00</span>&#125;,</span><br><span class="line">		mat.Row(<span class="literal">nil</span>, <span class="number">0</span>), tol)</span><br></pre></td></tr></table></figure>
+<p>的方式來做測試，但其實我更想要的，是直接吃兩個 <code>mat64.Dense</code> 的 assertion，而不用像我這樣自己手動取每個 Row 或 Column 出來比較。</p>
+<p>這時候我發現了 <a href="http://onsi.github.io/ginkgo" target="_blank" rel="external">Ginkgo</a> 以及 <a href="http://onsi.github.io/gomega" target="_blank" rel="external">Gomega</a>，前者是一套 BDD 的測試框架，後者則是搭配 Ginkgo 使用的 matchers。Gomega 的好處是 matcher 的 interface 訂得相當彈性，所以可以很輕鬆的自己加上<a href="http://onsi.github.io/gomega/#adding-your-own-matchers" target="_blank" rel="external">自定義的 matcher</a>，於是我就寫了一個 package <a href="https://github.com/lazywei/gomegamat64" target="_blank" rel="external">gomegamat64</a>，打算把之後跟 <code>mat64</code> 相關的 matcher 都寫進來，目前提供了一個 <code>AllClostTo</code> 的 matcher，讓我可以直接這樣做：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">pt3 := mat64.NewDense(<span class="number">3</span>, <span class="number">1</span>, []<span class="keyword">float64</span>&#123;<span class="number">1</span>, <span class="number">3</span>, <span class="number">-2</span>&#125;)</span><br><span class="line"></span><br><span class="line">Ω(pt3).Should(gomegamat64.AllCloseTo(</span><br><span class="line">        mat64.NewDense(<span class="number">3</span>, <span class="number">1</span>, []<span class="keyword">float64</span>&#123;<span class="number">1</span>, <span class="number">3</span>, <span class="number">-3</span>&#125;),</span><br><span class="line">        <span class="number">1e-6</span>,</span><br><span class="line">        <span class="literal">false</span>,</span><br><span class="line">))</span><br></pre></td></tr></table></figure>
+<p>而且更棒的是，如果在一個很大的矩陣中，matcher 只告訴我兩個矩陣不相等，而沒有告訴我是哪個 Row/Column 不相等的話，其實要 debug 是相當困難的，而 Gomega 定義良好的 interface 可以讓我直接在 not match 的時候給出有用的資訊，例如這個 <code>AllCloseTo</code> 如果 not match 的話，會給出這樣的 error message</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Expected -2 to close to -3: pos=(2, 0), tol=1e-06, relative=false</span><br></pre></td></tr></table></figure>
+<p>而且如果兩個矩陣的 dimensions 不一致的話，這個 matcher 也可以擋下來，這樣就不用再自己手動檢查了！</p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/dev/" rel="tag">#dev</a>
+          
+            <a href="/tags/golang/" rel="tag">#golang</a>
+          
+            <a href="/tags/testing/" rel="tag">#testing</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/02/02/thoughts-on-timing-attack/" rel="next" title="Hashing Password and Timing Attack">
+                <i class="fa fa-chevron-left"></i> Hashing Password and Timing Attack
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/04/14/Migrate-to-NeoVim/" rel="prev" title="Migrate to NeoVim">
+                Migrate to NeoVim <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            本站概覽
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://graph.facebook.com/v2.5/1579404899/picture?type=square"
+               alt="Chih-Wei Chang" />
+          <p class="site-author-name" itemprop="name">Chih-Wei Chang</p>
+          <p class="site-description motion-element" itemprop="description">lazywei on the lazy way</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-name">文章</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">標籤</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/lazywei" target="_blank">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目錄</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chih-Wei Chang</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 強力驅動
+</div>
+
+<div class="theme-info">
+  主題 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'lazier';
+      var disqus_identifier = '2015/04/06/Customized-Go-Testing-with-Ginkgo/';
+      var disqus_title = 'Customized Go Testing with Ginkgo';
+      var disqus_url = 'http://lazier.cwchang.me/2015/04/06/Customized-Go-Testing-with-Ginkgo/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

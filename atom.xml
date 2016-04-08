@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Lazy Made Easy</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://lazier.cwchang.me/"/>
+  <updated>2016-04-08T07:49:06.000Z</updated>
+  <id>http://lazier.cwchang.me/</id>
+  
+  <author>
+    <name>Chih-Wei Chang</name>
+    <email>bert.cwchang@gmail.com</email>
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Google Summer of Code instruction for Taiwan Students</title>
+    <link href="http://lazier.cwchang.me/2015/10/17/Google-Summer-of-Code-instruction-for-Taiwan-Students/"/>
+    <id>http://lazier.cwchang.me/2015/10/17/Google-Summer-of-Code-instruction-for-Taiwan-Students/</id>
+    <published>2015-10-17T03:36:11.000Z</published>
+    <updated>2016-04-08T07:49:06.000Z</updated>
+    
+    <content type="html">&lt;p&gt;【GSoC 2016 — 推薦給對 Open Source 有興趣的同學們】&lt;/p&gt;
+&lt;p&gt;今天想推薦大家一個 Google 專門爲學生舉辦的活動 – Google Summer of Code (GSoC)&lt;/p&gt;
+&lt;p&gt;我在 2014 &amp;amp; 2015 分別參加了 GSoC with Ruby on Rails / GitHub，對我來說是非常珍貴、收穫良多、而且有趣的體驗，甚至 &lt;a href=&quot;https://github.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub&lt;/a&gt; 還因此在暑假時提供我前往美國參加 CodeConf 的機會（special thanks to &lt;a href=&quot;https://github.com/johndbritton&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;John Britton&lt;/a&gt; &amp;amp; &lt;a href=&quot;https://github.com/muan&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Mu-An Chiou&lt;/a&gt;）；私以爲這個活動相當值得參加，但臺灣的同學們好像都不太知道有這個活動，至少我這兩年參加下來似乎都只有我一個臺灣學生（當然也有可能是臺灣參加學生都太低調了，沒在 mailing list 上出聲），所以剛剛一得知 GSoC 2016 時程表出來，就想著要寫篇推薦（坑）文 … XD，希望能讓更多臺灣的同學知道&lt;/p&gt;
+&lt;p&gt;首先，GSoC 是 Google 舉辦的、爲其約莫三個月的暑期活動，適合闔家大小一起參加（誤），而且還有錢領（重點無誤）！其目的爲促進學生對於 Open Source Projects 的參與，只要在申請參加的時候有學生身份（i.e., 在學證明）都能參加，活動進行方式大致如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;有意願參加的 Open Source Projects (organizations) 會向 Google 申請&lt;/li&gt;
+&lt;li&gt;Google 審核後會有一個 approved organizations list，這些 organizations 會指派一些 mentors（通常就是這個 projects 的 core contributors）以及一些他們覺得可以做的 ideas / proposals&lt;/li&gt;
+&lt;li&gt;接着由學生向這些通過 approved organization 提出 proposals，大概就是說想 improve / implement 什麼東西之類的&lt;/li&gt;
+&lt;li&gt;Organization 會從申請者中挑選最 match 的幾個 proposals（每個 org 大概都有 2~5 個 quota 可以挑人）&lt;/li&gt;
+&lt;li&gt;被選上的學生會在五月至八月與該組織的 mentors 一起 work on your proposal，mentors 會在這段期間跟你 meeting，討論進度，幫你 review code，甚至跟你一起 implement 某個 feature&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;我覺得值得參加的幾個原因如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;有錢拿XD，這個經歷寫上 resume 也算比較特別，例如我在 LinkedIn 上就因此收過幾封來信，並說他們覺得這個經歷很有趣&lt;/li&gt;
+&lt;li&gt;跟 core contributors co-work 的經驗挺珍貴的，可以看看 senior developers 是怎麼思考問題，他們解決問題的策略是什麼，重要的是，可以有一個隨時讓你問的 mentors 是件幸福的事情&lt;/li&gt;
+&lt;li&gt;會被迫要好好看這些 open source projects 的 code，我想讀一些品質好的 code 對於寫程式的技巧是挺有幫助的，可以更加熟悉一些該程式語言的特性，大多時候看 code 可能會遇到看不懂的狀況，這時候有 mentors 的好處就出來了，看不懂的地方大可直接問他們&lt;/li&gt;
+&lt;li&gt;熟悉 open source 的開發、整合流程 (e.g., CI / testing)，這些我想在 industry 實務開發上都是挺有用的&lt;/li&gt;
+&lt;li&gt;就我自己在幾個 start-up 打雜的經驗來說，open source 的使用率都是挺高的，能趁早熟悉這個生態對於進入業界我想應該算是有些許幫助&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;下面則是一點點對於有意願參加的同學的建議：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;儘早跟有興趣的 org 聯絡，可以參考下面 link 的 timeline 看 organizations list 什麼時候會出來，多溝通才知道他們想要做的是什麼，例如我這兩年參加的 project 都跟該 org 一開始提出的 ideas 有不少出入，都是在多次溝通之後才確定彼此想做的是什麼&lt;/li&gt;
+&lt;li&gt;Make a concrete proposal，儘量把 proposal 寫的詳細一點，例如想要怎麼完成這個 project，安排的時程如何之類的&lt;/li&gt;
+&lt;li&gt;在申請開始前（也就是提 proposal 前），就可以先開始參與該 open source 了，例如看看 GitHub 上面有什麼 issues，先找簡單的解解看，或是甚至在下面隨便畫個蝦也行，熟悉一下 codebase，這樣對於之後寫 proposal 很有幫助，畢竟對 codebase 瞭解才能寫出有內容的提案，也可以藉機讓 potential mentors 對你有點印象，最重要的是，趁這個時間確定是不是真的對這個 project 有興趣（例如我去年幫 CodeMirror 寫了一點東西之後才覺得我沒有很想做這個 project）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;還有更多我覺得很棒的收穫，但是比較偏私人方面，就不寫上來了。對於這個活動有興趣或是有更多疑問的都歡迎來跟我聊一下，雖然我只是一個弱弱的參與者，但是參加了兩年至少對於申請、流程還算是有點小心得，主要也是希望可以讓更多臺灣的同學知道這個活動，免得每次都只能看一堆老印在 mailing list 上面聊天（必須說，他們真的超積極）、或是看他們辦 GSoC meetup 之類的XD&lt;/p&gt;
+&lt;p&gt;GSoC 2016 相關時程表也已經出來了，請參考：&lt;a href=&quot;https://developers.google.com/open-source/gsoc/timeline&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://developers.google.com/open-source/gsoc/timeline&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;最後特別感謝 &lt;a href=&quot;https://icook.tw/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;iCook 愛料理&lt;/a&gt; 的 &lt;a href=&quot;http://github.com/dlackty&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Richard Lee&lt;/a&gt; 大大介紹讓我得以知道這個活動！&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;【GSoC 2016 — 推薦給對 Open Source 有興趣的同學們】&lt;/p&gt;
+&lt;p&gt;今天想推薦大家一個 Google 專門爲學生舉辦的活動 – Google Summer of Code (GSoC)&lt;/p&gt;
+&lt;p&gt;我在 2014 &amp;amp; 2015 分別參加了 
+    
+    </summary>
+    
+    
+      <category term="github" scheme="http://lazier.cwchang.me/tags/github/"/>
+    
+      <category term="open source" scheme="http://lazier.cwchang.me/tags/open-source/"/>
+    
+      <category term="gsoc" scheme="http://lazier.cwchang.me/tags/gsoc/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>GitHub CodeConf 2015</title>
+    <link href="http://lazier.cwchang.me/2015/07/16/GitHub-CodeConf-2015/"/>
+    <id>http://lazier.cwchang.me/2015/07/16/GitHub-CodeConf-2015/</id>
+    <published>2015-07-16T12:44:35.000Z</published>
+    <updated>2016-04-08T07:49:06.000Z</updated>
+    
+    <content type="html">&lt;p&gt;I attended the &lt;a href=&quot;http://codeconf.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;CodeConf&lt;/a&gt; 2015 held by GitHub last month,&lt;br&gt;and it was truly a wonderful journey. Admittedly, this was my first time heard&lt;br&gt;about CodeConf. However, it didn’t make me any less excited, and it turns out&lt;br&gt;CodeConf is really a top tier conference, which I won’t be hesitate to join&lt;br&gt;again. By the way, CodeConf took place in Nashville, the music city, and the city&lt;br&gt;is also awfully impressive.&lt;/p&gt;
+&lt;p&gt;It’s not hard to give reasons why CodeConf is one of the best conferences I have&lt;br&gt;been in: the presentation room – The Bell Tower, the food and drinks, the party&lt;br&gt;, etc. Yet, the most awesome part is the people, the attendants. I met a lot of&lt;br&gt;interesting people there, including hackers, fighters for equality, GitHubbers,&lt;br&gt;and I really got inspired a lot by meeting them and by their talks. And hence&lt;br&gt;I’d like to note some impressing talks from which I felt I learn a lot ideas and&lt;br&gt;concepts.&lt;/p&gt;
+&lt;p&gt;The first one talk I’d like to note here is &lt;strong&gt;State of the Open Source&lt;br&gt;Licenses&lt;/strong&gt; given by GitHubber &lt;a href=&quot;https://github.com/mislav&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Mislav Marohnic&lt;/a&gt;. This&lt;br&gt;talk is talking about what is license, why we need it, and how we can utilize it&lt;br&gt;in open source projects. Though not gaining too many stars, I did some open&lt;br&gt;source projects myself on &lt;a href=&quot;https://github.com/lazywei&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub&lt;/a&gt;. However, I&lt;br&gt;didn’t add license to all my projects – actually, I only applied license to a&lt;br&gt;few of them. Mislave showed us how the license can impact a open source project,&lt;br&gt;or even the whole open source community. I think I do learn a lot from this&lt;br&gt;talk, at least I know what license should I apply on my projects!&lt;/p&gt;
+&lt;p&gt;Another interesting talk is &lt;strong&gt;Detecting and mitigating fraud in realtime at Airbnb&lt;/strong&gt;&lt;br&gt;given by Eric Levine from Airbnb. It’s not surprising that I was interested in&lt;br&gt;this talk – I’m a machine learning researcher! Spam or fraud detection has been&lt;br&gt;studied for maybe several years. However, when applying to real world, it’s&lt;br&gt;totally a different story. Eric showed us, clearly, how they setup their model&lt;br&gt;and their architecture. I’m impressed that their models are simply random&lt;br&gt;forest, and I’m also impressed that it only take them half of an hour to&lt;br&gt;re-train their whole models. Moreover, Eric used very simple but understandable&lt;br&gt;way to introduce the basic idea of machine learning, and I think I should copy&lt;br&gt;his slide for introducing machine learning in the future … :-P&lt;/p&gt;
+&lt;p&gt;There are a lot of other great talks, such as Atom keynote or Facebook and&lt;br&gt;Microsoft’s talk on large scale open sourcing. Yet, I’d like to highlight one&lt;br&gt;more talk here – &lt;strong&gt;Debugging Diversity&lt;/strong&gt; given by Anjuan Simmons. In fact, this&lt;br&gt;is not really like a technical talk. Instead, Anjuan focused on the “Diversity”&lt;br&gt;or “Equality” in the community. In my opinion, people who involved in open&lt;br&gt;source projects are somehow more important than the projects themselves. Human&lt;br&gt;is the core, and it is all about how we interact with others. Anjuan did a great&lt;br&gt;job on this topic, and it was this talk that made me feel CodeConf is one level&lt;br&gt;higher than the other conferences I attended in Taiwan. Code and projects are&lt;br&gt;interesting, but sometimes we should pay more attentions on people around the&lt;br&gt;projects. Also, we should give more respect to everyone no matter who they are&lt;br&gt;or what they do. Truly, this talk is awesome!&lt;/p&gt;
+&lt;p&gt;I also gave a short lightening talk on my Google Summer of Code project –&lt;br&gt;&lt;a href=&quot;https://github.com/github/linguist&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Linguist&lt;/a&gt; and &lt;a href=&quot;https://github.com/lazywei/mockingbird&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Mockingbird&lt;/a&gt;.&lt;br&gt;Basically, Linguist is a Ruby gem used by GitHub (mostly by GitHub) that can do&lt;br&gt;&lt;strong&gt;Programming Language Detection&lt;/strong&gt; for a given text file. I’m sure you know&lt;br&gt;where it is used in GitHub – yes, on the top banner region! There are lot of&lt;br&gt;strategies in Linguist, and one of them is machine learning. Given my experiences&lt;br&gt;and great interests in machine learning, I started work on it to try to improve&lt;br&gt;the machine learning part – with GitHubbers as mentors, how lucky! I briefly&lt;br&gt;introduce my work, what have been done, and next steps in the talk. I found it&lt;br&gt;kind of difficult to explain machine learning and my project in oral&lt;br&gt;English, which is not my native language, and presenting in front of a lot of&lt;br&gt;truly hackers made me super nervous. But I did hope I convey the ideas clearly,&lt;br&gt;and I did hope there will be more people knowing / doing / playing with machine&lt;br&gt;learning.&lt;/p&gt;
+&lt;p&gt;And I guess that’s it, my brief note on GitHub’s CodeConf. Oh right, I visited&lt;br&gt;GitHub HQ in SF before went to Nashville. It’s really awesome! It is probably&lt;br&gt;the most cool place I have ever dreamed about for a hacker. :-)&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;I attended the &lt;a href=&quot;http://codeconf.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;CodeConf&lt;/a&gt; 2015 held by GitHub last month,&lt;br&gt;and it was t
+    
+    </summary>
+    
+    
+      <category term="dev" scheme="http://lazier.cwchang.me/tags/dev/"/>
+    
+      <category term="conf" scheme="http://lazier.cwchang.me/tags/conf/"/>
+    
+      <category term="github" scheme="http://lazier.cwchang.me/tags/github/"/>
+    
+      <category term="codeconf" scheme="http://lazier.cwchang.me/tags/codeconf/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Combining Evernote and OmniFocus</title>
+    <link href="http://lazier.cwchang.me/2015/05/31/Combining-Evernote-and-OmniFocus/"/>
+    <id>http://lazier.cwchang.me/2015/05/31/Combining-Evernote-and-OmniFocus/</id>
+    <published>2015-05-31T07:05:33.000Z</published>
+    <updated>2016-04-08T07:49:06.000Z</updated>
+    
+    <content type="html">&lt;p&gt;大概從去年年底開始，我就成了 Evernote 的重度使用者，對我來說 Evernote 就是一個什麼都可以記錄的地方，有些人稱呼 Evernote 爲第二個大腦，我覺得挺適切的。&lt;/p&gt;
+&lt;p&gt;不過我發現 Evernote 也許在很多地方上表現得不錯，但他並不適合做一個 TODO list，雖然他有待辦清單的功能，但是跟一些成熟的 TODO list 軟體比起來真的差多了，而且 Evernote 的 TODO items 很有可能會散落在各個不同的筆記本裏面，很難有一個可以一口氣看到所有統整畫面的地方。&lt;br&gt;不幸的是，這點對我來說很重要，在安排事情的 priority 時，我習慣可以縱覽全部的待辦事項。再者，我喜歡的工作流是 GTD，而 Evernote 在這個 context 下是完全不適用的。或者應該說，Evernote 其實比較像一個用來記錄各種想法、以及想法的細節的地方，而不是一個記錄「待辦事項」的地方。&lt;/p&gt;
+&lt;p&gt;而說到 GTD，在 Mac 上最好用的大概就是 OmniFocus 了，他可以按照很多 GTD 的 convention 來分類待辦事項，然後也可以設定 due date（這點在 evernote 上實在不是很好用），除此之外更可以設定每個專案的 review cycle，固定一陣子 review 某個專案的內容等等。不過沒有完美的軟體，OF 在記錄細節上表現的並不好，例如當我安排了一個「做研究」的待辦事項後，我會想要在記錄一些當下的想法，這點在 OF 上就很難做，而且如果真的在 OF 上記錄了這些想法，那這些細節就會同時散落在 OF 和 Evernote 上了（因爲我也會記錄一些東西在 EN），身爲一個工程師，我還是比較希望能有個 single source of truth，我也希望我工作的思考歷程能被記錄下來，而不是隨着 item checked 之後就消失了。&lt;/p&gt;
+&lt;p&gt;總結來說 EN 是記錄事情的王者，而 OF 是安排事項的王者，所以我後來想到了一個方法，可以讓這兩個工具同時做好自己擅長的事情，然後把剩下的交給對方：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;把細節、思考、工作的東西都記錄在 EN，例如我會在一個 note 上寫關於做某個研究需要注意的一些事項、或是實驗該怎麼設計比較好&lt;/li&gt;
+&lt;li&gt;利用 EN 的記事鏈接，複製該篇 note 的 link，然後把這個 link 貼上到 OF 的 note section，這樣就可以在處理 OF 上的待辦事項時，cross reference 到 Evernote 中的細節&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;實際做起來大概是長這樣：&lt;/p&gt;
+&lt;p&gt;OmniFocus：&lt;br&gt;&lt;img src=&quot;img/2015/5/31-omnifocus.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Evernote：&lt;br&gt;&lt;img src=&quot;img/2015/5/31-evernote.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;大概從去年年底開始，我就成了 Evernote 的重度使用者，對我來說 Evernote 就是一個什麼都可以記錄的地方，有些人稱呼 Evernote 爲第二個大腦，我覺得挺適切的。&lt;/p&gt;
+&lt;p&gt;不過我發現 Evernote 也許在很多地方上表現得不錯，但他並不適合做一個 
+    
+    </summary>
+    
+    
+      <category term="tools" scheme="http://lazier.cwchang.me/tags/tools/"/>
+    
+      <category term="productivity" scheme="http://lazier.cwchang.me/tags/productivity/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>First Taste of React Native in ReactJS.tw Meetup</title>
+    <link href="http://lazier.cwchang.me/2015/05/28/First-Taste-of-React-Native-in-ReactJS-tw-Meetup/"/>
+    <id>http://lazier.cwchang.me/2015/05/28/First-Taste-of-React-Native-in-ReactJS-tw-Meetup/</id>
+    <published>2015-05-27T17:13:14.000Z</published>
+    <updated>2016-04-08T07:49:06.000Z</updated>
+    
+    <content type="html">&lt;p&gt;今天在 ReactJS.tw 的社群聚會中給了一個 React Native 初體驗的 talk，應該算是我第一次在這樣的技術社群中公開分享心得吧。&lt;/p&gt;
+&lt;p&gt;希望整體演講還算 OK，希望沒有讓大家期待落空了哈哈。講完之後也覺得的確有蠻多可以改進的地方，算是收穫良多，果然上臺做簡報這種事情還是要多練習的，希望可以練成和 Jeremy 一樣流暢的 flow。&lt;/p&gt;
+&lt;p&gt;而這也是第一次把 slide 放上 speakerdeck，有不少朋友跑來說簡報做的不錯，真是受寵若驚。&lt;/p&gt;
+&lt;p&gt;順帶一提，我是用 Beamer (LaTex) 做投影片的，不過主要是因爲用了 &lt;a href=&quot;https://github.com/matze/mtheme&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;mTheme&lt;/a&gt; 這個 Theme 才看起來比較現代化一點，不然 Beamer 的原生 Theme 可能真的相當 old school，而爲了可以用 keynote，我還另外找了一個 &lt;a href=&quot;http://www.cs.hmc.edu/~oneill/freesoftware/pdftokeynote.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;PDF to Keynote&lt;/a&gt;，把 PDF 轉成 Keynote，這樣就可以用很多方便的工具，例如手機上的 remote control，以及 keynote 的小抄，不過這次發現在臺上其實沒什麼機會偷看小抄XD&lt;/p&gt;
+&lt;p&gt;最後這次 slide 的連接在此：&lt;a href=&quot;https://speakerdeck.com/lazywei/first-taste-of-react-native&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;First Taste of React Native&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天在 ReactJS.tw 的社群聚會中給了一個 React Native 初體驗的 talk，應該算是我第一次在這樣的技術社群中公開分享心得吧。&lt;/p&gt;
+&lt;p&gt;希望整體演講還算 OK，希望沒有讓大家期待落空了哈哈。講完之後也覺得的確有蠻多可以改進的地方，算是收穫良多，果
+    
+    </summary>
+    
+    
+      <category term="dev" scheme="http://lazier.cwchang.me/tags/dev/"/>
+    
+      <category term="reactjs" scheme="http://lazier.cwchang.me/tags/reactjs/"/>
+    
+      <category term="reactnative" scheme="http://lazier.cwchang.me/tags/reactnative/"/>
+    
+      <category term="presentation" scheme="http://lazier.cwchang.me/tags/presentation/"/>
+    
+      <category term="javascript" scheme="http://lazier.cwchang.me/tags/javascript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Migrate to NeoVim</title>
+    <link href="http://lazier.cwchang.me/2015/04/14/Migrate-to-NeoVim/"/>
+    <id>http://lazier.cwchang.me/2015/04/14/Migrate-to-NeoVim/</id>
+    <published>2015-04-14T14:42:18.000Z</published>
+    <updated>2016-04-08T07:49:06.000Z</updated>
+    
+    <content type="html">&lt;p&gt;Vim 一直以來都是我最喜愛的編輯器，其實我唯一在用的編輯器，當然偶爾還是會有點「七年之癢」想玩玩 Emacs、Atom、Sublime Text，但是最終都還是覺得 Vim 使用起來最順手。&lt;/p&gt;
+&lt;p&gt;雖然 Vim 是個曠世神作，但是在開發社群上出了一些意見紛爭，例如只有一個人在維護高達 300k 行的 C89，以及這個 Bram 這個主要作者對於 community patching 的態度等，因此在去年約一二月的時候，出現了一個 community fork – &lt;a href=&quot;https://github.com/neovim/neovim&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;NeoVim&lt;/a&gt;，號稱要重構 Vim，關於一些當時事件的細節可以看看&lt;a href=&quot;https://www.ptt.cc/bbs/Editor/M.1393165951.A.9B0.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;這篇的推文&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;這一年來我都有持續在關注 NeoVim 的發展，而這陣子我覺得是一個非常好的入場時機，一些重大的 bugs 都被修了（雖然還是有一些 issues、或是一些爭論），以及我的愛將 &lt;a href=&quot;https://github.com/junegunn/fzf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;fzf&lt;/a&gt; 也在最近支援了新的 NeoVim features，再加上我的 Vim 今天無預警的突然壞了，所以就毅然決然正式入場。&lt;/p&gt;
+&lt;p&gt;基本上 NeoVim 的相容性做的很好，我用的差不多將近一百個（突然覺得還真多…）套件都沒出什麼問題，所以如果沒意外的話應該是可以直接 as drop in replacement。&lt;/p&gt;
+&lt;p&gt;這裏稍微列一下一些需要注意的點或是 features：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;不需要 &lt;code&gt;nocompatible&lt;/code&gt; 了，然後 &lt;code&gt;encoding=utf-8&lt;/code&gt; 是預設，更多的細節可以參考&lt;a href=&quot;https://github.com/neovim/neovim/wiki/Differences-from-vim&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;這裏&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;NeoVim 有不一樣的 clipboard 處理方式，可以輕鬆跟 system share clipboard，請參考&lt;a href=&quot;http://neovim.org/doc/user/nvim_clipboard.html#nvim-clipboard&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;這裏&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;只要 &lt;code&gt;PATH&lt;/code&gt; 中有 python interpreter，NeoVim 就能自動支援，不需要再手動 re-build，不過需要裝一下 python package：&lt;code&gt;pip install neovim&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;homebrew 可以裝 neovim，但是我不建議用 homebrew 裝，因爲 homebrew 目前在 compile 的時候沒有把 debug mode 關掉，這樣 NeoVim 在遇上 &lt;a href=&quot;https://github.com/bling/vim-airline&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;vim-airline&lt;/a&gt; 的時候會變得非常慢，建議的做法是自己 clone 一份 source code 用 &lt;a href=&quot;https://github.com/neovim/neovim/wiki/Building-Neovim#optimized-builds&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Optimized build&lt;/a&gt;，然後再把 &lt;code&gt;$VIMRUNTIME&lt;/code&gt; 設定成 &lt;code&gt;runtime/&lt;/code&gt; 這個資料夾，最後把 &lt;code&gt;build/bin&lt;/code&gt; 加入 &lt;code&gt;$PATH&lt;/code&gt; 就可以了&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;C-h&amp;gt;&lt;/code&gt; may not work. If that is the case, please ref to this &lt;a href=&quot;https://github.com/neovim/neovim/issues/2048#issuecomment-78045837&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;workaround&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;基本上除了以上這幾點外應該不會再有太多問題了。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Vim 一直以來都是我最喜愛的編輯器，其實我唯一在用的編輯器，當然偶爾還是會有點「七年之癢」想玩玩 Emacs、Atom、Sublime Text，但是最終都還是覺得 Vim 使用起來最順手。&lt;/p&gt;
+&lt;p&gt;雖然 Vim 是個曠世神作，但是在開發社群上出了一些意見紛爭，例如
+    
+    </summary>
+    
+    
+      <category term="tools" scheme="http://lazier.cwchang.me/tags/tools/"/>
+    
+      <category term="dev" scheme="http://lazier.cwchang.me/tags/dev/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Customized Go Testing with Ginkgo</title>
+    <link href="http://lazier.cwchang.me/2015/04/06/Customized-Go-Testing-with-Ginkgo/"/>
+    <id>http://lazier.cwchang.me/2015/04/06/Customized-Go-Testing-with-Ginkgo/</id>
+    <published>2015-04-06T03:43:09.000Z</published>
+    <updated>2016-04-08T07:49:06.000Z</updated>
+    
+    <content type="html">&lt;p&gt;這次在寫 &lt;a href=&quot;https://github.com/lazywei/go-opencv&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;go-opencv&lt;/a&gt; 的時候遇到一些測試上的小問題：我用了 gonum 的 &lt;a href=&quot;https://godoc.org/github.com/gonum/matrix/mat64&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;mat64&lt;/a&gt; 來做基礎矩陣操作，所以很多測試上都需要直接對 &lt;code&gt;mat64.Dense&lt;/code&gt; 測試，而 &lt;code&gt;mat64.Dense&lt;/code&gt; 底下的資料是 &lt;code&gt;[]float64&lt;/code&gt;，所以我需要的是可以直接對 &lt;code&gt;[]float64&lt;/code&gt; 測試的套件。然而大部分的測試框架內建的 assertion 都頂多到 &lt;code&gt;float64&lt;/code&gt; 的 approimately comparison，所以勢必要自己寫 assertion。&lt;/p&gt;
+&lt;p&gt;一開始我用的是 &lt;a href=&quot;https://github.com/stretchr/testify&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;testify&lt;/a&gt;，是個相當簡潔易用的測試框架，他提供了 &lt;code&gt;InDelta&lt;/code&gt; 這樣的 assertion 來比較兩個 &lt;code&gt;float64&lt;/code&gt; 是不是在容許誤差內，於是我就自己多寫了一個 &lt;a href=&quot;https://github.com/lazywei/testify/commit/f0b02af48e5ee31c78b949e9ed67c37e08d1a897&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;code&gt;InDeltaSlice&lt;/code&gt;&lt;/a&gt; 來比較兩個 &lt;code&gt;[]float64&lt;/code&gt;，如此一來我就可以用&lt;/p&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;assert.InDeltaSlice(t,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		[]&lt;span class=&quot;keyword&quot;&gt;float64&lt;/span&gt;&amp;#123;&lt;span class=&quot;number&quot;&gt;-5.47022369e+03&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;0.00000000e+00&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;9.59500000e+02&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;0.00000000e+00&lt;/span&gt;&amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		mat.Row(&lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;), tol)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;的方式來做測試，但其實我更想要的，是直接吃兩個 &lt;code&gt;mat64.Dense&lt;/code&gt; 的 assertion，而不用像我這樣自己手動取每個 Row 或 Column 出來比較。&lt;/p&gt;
+&lt;p&gt;這時候我發現了 &lt;a href=&quot;http://onsi.github.io/ginkgo&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Ginkgo&lt;/a&gt; 以及 &lt;a href=&quot;http://onsi.github.io/gomega&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Gomega&lt;/a&gt;，前者是一套 BDD 的測試框架，後者則是搭配 Ginkgo 使用的 matchers。Gomega 的好處是 matcher 的 interface 訂得相當彈性，所以可以很輕鬆的自己加上&lt;a href=&quot;http://onsi.github.io/gomega/#adding-your-own-matchers&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;自定義的 matcher&lt;/a&gt;，於是我就寫了一個 package &lt;a href=&quot;https://github.com/lazywei/gomegamat64&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;gomegamat64&lt;/a&gt;，打算把之後跟 &lt;code&gt;mat64&lt;/code&gt; 相關的 matcher 都寫進來，目前提供了一個 &lt;code&gt;AllClostTo&lt;/code&gt; 的 matcher，讓我可以直接這樣做：&lt;/p&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;pt3 := mat64.NewDense(&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, []&lt;span class=&quot;keyword&quot;&gt;float64&lt;/span&gt;&amp;#123;&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;-2&lt;/span&gt;&amp;#125;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Ω(pt3).Should(gomegamat64.AllCloseTo(&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        mat64.NewDense(&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, []&lt;span class=&quot;keyword&quot;&gt;float64&lt;/span&gt;&amp;#123;&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;-3&lt;/span&gt;&amp;#125;),&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;number&quot;&gt;1e-6&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;))&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;而且更棒的是，如果在一個很大的矩陣中，matcher 只告訴我兩個矩陣不相等，而沒有告訴我是哪個 Row/Column 不相等的話，其實要 debug 是相當困難的，而 Gomega 定義良好的 interface 可以讓我直接在 not match 的時候給出有用的資訊，例如這個 &lt;code&gt;AllCloseTo&lt;/code&gt; 如果 not match 的話，會給出這樣的 error message&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Expected -2 to close to -3: pos=(2, 0), tol=1e-06, relative=false&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;而且如果兩個矩陣的 dimensions 不一致的話，這個 matcher 也可以擋下來，這樣就不用再自己手動檢查了！&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;這次在寫 &lt;a href=&quot;https://github.com/lazywei/go-opencv&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;go-opencv&lt;/a&gt; 的時候遇到一些測試上的小問題：我用了 gonum 的 &lt;a href=&quot;http
+    
+    </summary>
+    
+    
+      <category term="dev" scheme="http://lazier.cwchang.me/tags/dev/"/>
+    
+      <category term="golang" scheme="http://lazier.cwchang.me/tags/golang/"/>
+    
+      <category term="testing" scheme="http://lazier.cwchang.me/tags/testing/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hashing Password and Timing Attack</title>
+    <link href="http://lazier.cwchang.me/2015/02/02/thoughts-on-timing-attack/"/>
+    <id>http://lazier.cwchang.me/2015/02/02/thoughts-on-timing-attack/</id>
+    <published>2015-02-02T03:59:00.000Z</published>
+    <updated>2016-04-08T07:49:06.000Z</updated>
+    
+    <content type="html">&lt;p&gt;今天在實作 Token-Based 登入系統的時候碰到了一點小問題：原本在 Rails 中的 User System 是使用 &lt;a href=&quot;https://github.com/plataformatec/devise&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Devise&lt;/a&gt;，但是我們的 API Server 並不在 Rails 底下，也就是說我沒有辦法直接存取 Devise；在這樣的情況下，我就必須要自己將「把 plain text 的密碼做 hash 並跟資料庫中的密碼比較」的這個步驟實作出來，並且還要跟 Devise 做的相容。&lt;/p&gt;
+&lt;p&gt;於是我和 &lt;a href=&quot;godfat.org&quot;&gt;Godfat&lt;/a&gt; 就開始看 Devise 是怎麼做的，結果發現 Devise 做了一件有趣的事情 – 他在 compare hashed password 的時候用了一個 &lt;code&gt;secure_compare&lt;/code&gt;，看了一下 source code 後發現，使用這個特製 &lt;code&gt;secure_compare&lt;/code&gt; 的原因是爲了達成 &lt;strong&gt;Constant time (in password length) Comparison&lt;/strong&gt;，而想要 constant time 則是爲了預防 timing attack。&lt;/p&gt;
+&lt;p&gt;所謂的 timing attack 及 contant time comparison 可以參考&lt;a href=&quot;http://security.stackexchange.com/questions/46212/does-bcrypt-compare-the-hashes-in-length-constant-time&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;這篇&lt;/a&gt;，大致上就是說利用「比較兩個 hashed string」所花費的時間來猜出正確的 hashed string，例如當你發現某個 hashed string 在比較的時候比人家慢了 2ms，那有可能這個 hashed string 的開頭和正確的 hashed string 的開頭是一致的，這就是 timing attack。所以爲了預防 timing attack，使用「不論在任何情況下都用一樣的時間做比較」的比較函數就相當重要了。&lt;/p&gt;
+&lt;p&gt;但是這個情況在 devise 中就有點 tricky，首先，devise 使用的是 bcrypt，這個 hash function 是有帶 salt 的（類似密鑰的東西），在沒有 salt 的情況下，是幾乎不可能得知 hash function 是如何 mapping 的 – 理論上 salt 是不會 leak 的。而前面所說的 timing attack 是建立在攻擊者知道 hash function 如何 mapping 的基礎上，如果攻擊者沒有 salt，那麼比較時的時間差就不會泄漏任何訊息給攻擊者。詳細的討論可以看在 &lt;a href=&quot;https://github.com/codahale/bcrypt-ruby/pull/43&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;bcrypt-ruby 上的討論&lt;/a&gt;，在有 salt 的情況下，使用 slow comparison 其實沒什麼意義，所以 devise 大概是做了白工…&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天在實作 Token-Based 登入系統的時候碰到了一點小問題：原本在 Rails 中的 User System 是使用 &lt;a href=&quot;https://github.com/plataformatec/devise&quot; target=&quot;_blank&quot; rel=&quot;ext
+    
+    </summary>
+    
+    
+      <category term="dev" scheme="http://lazier.cwchang.me/tags/dev/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LastPass v.s. Dashlane</title>
+    <link href="http://lazier.cwchang.me/2015/01/28/lastpass-vs-dashlane/"/>
+    <id>http://lazier.cwchang.me/2015/01/28/lastpass-vs-dashlane/</id>
+    <published>2015-01-28T07:00:00.000Z</published>
+    <updated>2016-04-08T07:49:06.000Z</updated>
+    
+    <content type="html">&lt;p&gt;之前看到一個很驚悚的消息「&lt;a href=&quot;http://share.inside.com.tw/posts/11396&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;一鍵修改所有密碼，Dashlane 的新功能讓 1Password 壓力很大&lt;/a&gt;」，於是就心動地跑去裝了 Dashlane 來玩，不過最後我還是換回是用 &lt;a href=&quot;https://lastpass.com/f?7475776&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;LastPass&lt;/a&gt;，這裏稍微條例一下一些比較：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;LastPass 最近也推出了自動更改密碼的功能了，而且我覺得使用上比起 Dashlane 令人放心的多（LastPass 更改密碼的時候你看得到他是怎麼運作的）&lt;/li&gt;
+&lt;li&gt;LastPass 在 Android 上的應用比起 Dashlane 聰明得多，其實使用這類型的服務最重要的就是利用他的自動產生密碼的功能，不過要善用這個功能，勢必要在所有裝置上都能存取這個密碼，不然在手機上登入網站會非常不方便。Dashlane 的解決方式是提供一個 dashlane keyboard，也就是一個特別的輸入法，使用這個輸入法就能自動存取密碼並登入，但問題是並非所有人都是使用英文輸入（dashlane keyboard 沒有中文支援），而且這樣強迫使用者使用他們的輸入法其實並不友善，再來，dashlane keyboard 在我的手機上經常不 work；相較之下 LastPass 就聰明得多，他利用 Android 特有的漂浮視窗，讓你在遇到「帳號密碼」的輸入欄位的時候，可以自動填上帳號密碼，而不影響到原先使用的輸入法&lt;/li&gt;
+&lt;li&gt;費用上還是 LastPass 更爲友善&lt;/li&gt;
+&lt;li&gt;電腦版的使用界面上 Dashlane 樂勝，有漂亮的 UI，但是我後來發現其實我也沒怎麼使用這些 fancy 的功能，大多時候我還是使用簡單的產生密碼及填入而已，而這些功能 LastPass 也同樣做得很好&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;綜合上述幾點，我最後還是換回了 LastPass。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;之前看到一個很驚悚的消息「&lt;a href=&quot;http://share.inside.com.tw/posts/11396&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;一鍵修改所有密碼，Dashlane 的新功能讓 1Password 壓力很大&lt;/a&gt;」，
+    
+    </summary>
+    
+    
+      <category term="tools" scheme="http://lazier.cwchang.me/tags/tools/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ChatOps: Hubot Capistrano Heaven</title>
+    <link href="http://lazier.cwchang.me/2015/01/24/ChatOps-Hubot-Capistrano-Heaven/"/>
+    <id>http://lazier.cwchang.me/2015/01/24/ChatOps-Hubot-Capistrano-Heaven/</id>
+    <published>2015-01-24T05:57:00.000Z</published>
+    <updated>2016-04-08T07:49:06.000Z</updated>
+    
+    <content type="html">&lt;p&gt;一直以來在 Rails 開發中，我都使用 &lt;a href=&quot;https://github.com/capistrano/capistrano&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;capistrano&lt;/a&gt; 作爲自動化部署的工具，他幫我把所有繁雜而瑣碎的部署任務都一次處理好，例如在 &lt;code&gt;git pull&lt;/code&gt; 最新的 repo 後，要跑個 &lt;code&gt;bundle install&lt;/code&gt;、有時候還要跑 migration，接着要 precompile assets 等等，最後如果是使用 nginx 搭配 passenger 的方案，還要 &lt;code&gt;touch tmp/restart.txt&lt;/code&gt; 來通知 web server。&lt;/p&gt;
+&lt;p&gt;這一切都相當方便 – 在團隊中所有人都有完整開發環境的前提下（capistrano 是 ruby gem，理所當然需要 ruby environment）。然而事實上，並不是所有團隊成員都有完整的開發環境，例如當我們把前後端分離（透過 API 互相溝通）時，我們就不會希望 F2E 也要裝一份完整的 Rails 環境；再者，透過 capistrano 部署會造成沒有人知道現在有誰在部署、部署情況如何，除非在 capistrano 中再加上 notification to Slack or something else。這對於需要快速 iteration 的新創團隊來說是相當不利的，我們需要的是：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;所有人都有辦法 deploy，即使是 art&lt;/li&gt;
+&lt;li&gt;任何 deploy 發生時，都應該要讓所有人知道這個 deploy 的狀態&lt;/li&gt;
+&lt;li&gt;所有 deploy 應該都要被完整記錄&lt;/li&gt;
+&lt;li&gt;deploy 應該要可以輕鬆指定要使用哪個 branch，哪個 environment&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;幸運的，我在前團隊 &lt;a href=&quot;http://icook.tw/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;iCook&lt;/a&gt; 學到也見識到非常多這種 DevOps 相關的技術（不得不說，iCook CTO &lt;a href=&quot;https://twitter.com/dlackty&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Richard&lt;/a&gt; 把整個團隊的 DevOps 打造得相當強悍）。跟 Richard 討論及研究了一下後，決定使用如下配置及服務來完成整個部署流程：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://hubot.github.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hubot&lt;/a&gt; 用於在 Slack 聊天室下指令，這樣只要能上聊天室就能部署，即使你是用手機&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://developer.github.com/v3/repos/deployments&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Github Deployment API&lt;/a&gt; 用 RESTful 的方式來管理 deployment&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/atmos/hubot-deploy&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hubot-deploy&lt;/a&gt; + &lt;a href=&quot;https://github.com/atmos/heaven&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Heaven&lt;/a&gt; 前者讓 hubot 可以操作 Github Deployment API，後者會接受從 Github Deployment API 來的訊息，並負責執行 capistrano&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;具體一點來說，Heaven 是一個 Rails application，他有一個 &lt;code&gt;POST /events&lt;/code&gt; 這樣的 route 接收來自 Github Deployment API 的 event，接着利用 resque 來執行實際的 deployment。&lt;/p&gt;
+&lt;p&gt;這次遇到最大的麻煩是 heaven 和 hubot-deploy 的文件寫得相當差，看了老半天看不出個所以然來，花了不少時間才搞懂這個架構的流程以及一些 tricks，所以在此記錄一下。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Heaven&lt;/strong&gt;&lt;br&gt;如同前面說的，Heaven 是一個 Rails application，所以需要自己 host，不過他其實也提供了直接放上 heroku 的方式，其中要設定一些環境變數，這邊說明一下他們的用途：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;GITHUB_TOKEN&lt;/code&gt; Heaven 在 deploy 完後會利用 gist 作爲他的 STDOUT/STDERR，這個 token 就是讓 heaven 可以 create gist。我個人是另外開了一個 for bot 的 Github account，這樣我的 gist 才不會被塞爆&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;GITHUB_CLIENT_ID&lt;/code&gt; &amp;amp; &lt;code&gt;GITHUB_CLIENT_SECRET&lt;/code&gt; 老實說我現在還沒弄清楚他們要幹嘛，不過隨便去申請一個 Github Dev App，然後填上 client id &amp;amp; secret 就好&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;DEPLOYMENT_PRIVATE_KEY&lt;/code&gt; 因爲執行 cap 的是 heaven，所以 heaven 會需要 ssh access to our server，這個就是他需要用的 private key&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;SLACK_WEBHOOK_URL&lt;/code&gt; 在 Slack 建立一個 incoming webhook 後填入這裏，這讓 heaven 可以發送 deployment notification 到聊天室，讓所有人都知道部署狀況&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;大致上 Heaven 這樣丟上 heroku 就可以跑了。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Hubot Deploy&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;接下來我們設定 hubot deploy，這是一個 hubot script，用 npm 裝完後加入 hubot 的 &lt;code&gt;external-scripts&lt;/code&gt;，接着比較重要的是建立一個 &lt;code&gt;apps.json&lt;/code&gt; 在 hubot 的目錄底下，這讓 hubot 知道要怎麼部署哪些 applications，內容大致如下：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;quot;hello&amp;quot;: &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;quot;provider&amp;quot;: &amp;quot;bundler_capistrano&amp;quot;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;quot;repository&amp;quot;: &amp;quot;lazywei/hello&amp;quot;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;quot;environments&amp;quot;: [&amp;quot;production&amp;quot;, &amp;quot;staging&amp;quot;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;quot;world&amp;quot;: &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;quot;provider&amp;quot;: &amp;quot;capistrano&amp;quot;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;quot;repository&amp;quot;: &amp;quot;lazywei/world&amp;quot;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;quot;environments&amp;quot;: [&amp;quot;production&amp;quot;, &amp;quot;staging&amp;quot;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;這其實就是讓之後我們可以透過 hubot 呼叫 &lt;code&gt;hubot deploy hello/master ...&lt;/code&gt; 之類的，其中比較需要注意的是 provider，這個欄位的意思是 heaven 要用什麼方式去執行部署的動作，例如 Richard 在 iCook 使用的就是 AWS 的 OpsWorks。&lt;/p&gt;
+&lt;p&gt;而注意到 provider 又分 capistrano 及 bundler_capistrano，這沒有被寫在文件上，是我折騰了好久才在 source code 中看到的。他們的區別是什麼？首先注意到，heaven 會做的動作是拉下最新的 repo，然後在 repo 中執行 &lt;code&gt;cap ...&lt;/code&gt; 的指令，但是如果你使用的 cap 與 heaven 的版本不同，就完蛋了，又或者是你的部署需要其他額外的 gems，但是這些 gems 並不在 heaven 的 Gemfile 中，那也會爆炸。好險後來發現 bundler_capistrano，他會在執行 cap 之前建立一個乾淨的 Bundle 環境，然後在這個環境中，安裝「要被部署的 app 的 Gemfile 中被標註爲 heaven or deployment group」的那些 gems，所以我們可以直接把需要被用到的 gems 放進我們原本的 Gemfile 中，以我的例子來說，我就用了最新的 cap 而不是 heaven 預設的 cap 2.9。&lt;/p&gt;
+&lt;p&gt;另外我的 hubot-deploy 也是放在 heroku 上，有幾個變數需要注意：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;HUBOT_SLACK_TOKEN&lt;/code&gt; 這是讓 hubot 可以聽 slack 用的&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;HUBOT_GITHUB_TOKEN&lt;/code&gt; 這是判斷誰有 deploy 權限，不過建議不要設定這個，請使用 hubot-deploy 提供的指令 &lt;code&gt;deploy-token:set&lt;/code&gt; 來設定，這個 token 請至你的 github 帳號中 application / personal access 中產生&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Little Tricks&lt;/strong&gt;&lt;br&gt;雖然整體流程最後看似簡單，但其實中間藏了不少沒被寫在文件上的地雷，這裏記錄一下一些解決的方式或是小技巧：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Heaven 放上 heroku 後除了 web dyno 外會開另外兩個 resque dyno，一下就讓你每個月噴 75 美金…但其實這可以透過 &lt;code&gt;spawn&lt;/code&gt; 來繞過，請參考這篇&lt;a href=&quot;https://coderwall.com/p/fprnhg/free-background-jobs-on-heroku&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;黑暗大法&lt;/a&gt;，感謝 Richard 提供&lt;/li&gt;
+&lt;li&gt;Capistrano 3 會在第一次執行的時候問你要不要讓他們蒐集數據，這會直接讓 heaven 卡住…解法是把 project 底下應該有個 &lt;code&gt;.capistrano/metric&lt;/code&gt; 寫進 source control (e.g. git)&lt;/li&gt;
+&lt;li&gt;不知道爲什麼 heaven 在 document 中寫說 cap 的 repo_url 需要用 https 而不是 ssh/git，但是這樣會造成 heaven 在 pull 的時候無法使用 ssh key 來認證，需要寫死 github 的帳號密碼在 &lt;code&gt;deploy.rb&lt;/code&gt; 中，但這實在太不合理了…結果事實證明用 &lt;code&gt;git@...&lt;/code&gt; 好像也可以，但是不知道之後會不會突然爆炸就是了&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;大致上就是這樣了&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;一直以來在 Rails 開發中，我都使用 &lt;a href=&quot;https://github.com/capistrano/capistrano&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;capistrano&lt;/a&gt; 作爲自動化部署的工具，他幫我把所有繁
+    
+    </summary>
+    
+    
+      <category term="devops" scheme="http://lazier.cwchang.me/tags/devops/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>鼠鬚管擴充詞庫</title>
+    <link href="http://lazier.cwchang.me/2015/01/18/rime-dictionaries/"/>
+    <id>http://lazier.cwchang.me/2015/01/18/rime-dictionaries/</id>
+    <published>2015-01-18T11:53:00.000Z</published>
+    <updated>2016-04-08T07:49:06.000Z</updated>
+    
+    <content type="html">&lt;p&gt;我大約從一兩年前開始改用拼音輸入法，在 OS X 上我使用的是「&lt;a href=&quot;https://code.google.com/p/rimeime/wiki/Downloads&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;鼠鬚管&lt;/a&gt;」，這是一套對於中文很講究的輸入法，從他的名字就可以略知一二，非常適合我這種假文青，而且同時支援多種拼音方案以及注音等輸入方式，相關的文章可以參考「&lt;a href=&quot;https://www.byvoid.com/blog/recommend-rime&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;推薦一個神級輸入法 – Rime&lt;/a&gt;」。&lt;/p&gt;
+&lt;p&gt;鼠鬚管速度快、定製性高，惟其詞庫量不足，是最爲人詬病的一點，相較於其他如百度、搜狗等輸入法，鼠鬚管的詞庫準確性的確不夠，常常需要自己選字選很久。不過這個問題其實可以透過使用擴充詞庫來解決，雖然還是不及百度或搜狗的雲詞庫來得準確，但是一般使用上算是沒問題了，擴充詞庫可以在 &lt;a href=&quot;https://github.com/rime-aca/dictionaries&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;rime-aca/dictionaries&lt;/a&gt; 找到，在我剛找到這個詞庫的時候並沒有太詳細的說明文件，算是自己摸索了一陣子才理解怎麼正確的使用這個詞庫，所以也發了個 &lt;a href=&quot;https://github.com/rime-aca/dictionaries/pull/3&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;PR&lt;/a&gt; 在 READEME 裏加上使用說明，有興趣可以參考看看。在這樣的架構下，增加自己的自訂詞庫也相當方便。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;我大約從一兩年前開始改用拼音輸入法，在 OS X 上我使用的是「&lt;a href=&quot;https://code.google.com/p/rimeime/wiki/Downloads&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;鼠鬚管&lt;/a&gt;」，這是一套對於
+    
+    </summary>
+    
+    
+      <category term="tools" scheme="http://lazier.cwchang.me/tags/tools/"/>
+    
+      <category term="os x" scheme="http://lazier.cwchang.me/tags/os-x/"/>
+    
+  </entry>
+  
+</feed>
