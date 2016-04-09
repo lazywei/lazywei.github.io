@@ -5,8 +5,8 @@
 # Site
 title: Lazy Made Easy
 #subtitle: 廬山煙雨浙江潮
-description: ... in a lazy way.
-author: lazywei
+description: lazywei on the lazy way
+author: Chih-Wei Chang
 email: bert.cwchang@gmail.com
 language: zh-tw
 timezone:
@@ -76,8 +76,8 @@ archive: 1
 category: 1
 tag: 1
 
-# # Disqus
-# disqus_shortname: lazier
+# Disqus
+disqus_shortname: lazier
 
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html
@@ -85,19 +85,3 @@ deploy:
   type: git
   repository: https://github.com/lazywei/lazywei.github.io.git
   branch: master
-
-# =============================================================================
-# NexT Theme configuration
-# =============================================================================
-
-# Creative Commons 4.0 International License.
-# http://creativecommons.org/
-# Available: by | by-nc | by-nc-nd | by-nc-sa | by-nd | by-sa | zero
-creative_commons: by-nc-sa
-
-# # 站点起始时间
-since: 2014
-
-# # =============================================================================
-# # End NexT Theme configuration
-# # =============================================================================
