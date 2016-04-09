@@ -241,6 +241,109 @@
             
               
                 
+                <a class="post-title-link" href="/2015/02/02/thoughts-on-timing-attack/" itemprop="url">
+                  Hashing Password and Timing Attack
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">發表於</span>
+            <time itemprop="dateCreated" datetime="2015-02-02T11:59:00+08:00" content="2015-02-02">
+              2015-02-02
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/02/02/thoughts-on-timing-attack/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/02/02/thoughts-on-timing-attack/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>今天在實作 Token-Based 登入系統的時候碰到了一點小問題：原本在 Rails 中的 User System 是使用 <a href="https://github.com/plataformatec/devise" target="_blank" rel="external">Devise</a>，但是我們的 API Server 並不在 Rails 底下，也就是說我沒有辦法直接存取 Devise；在這樣的情況下，我就必須要自己將「把 plain text 的密碼做 hash 並跟資料庫中的密碼比較」的這個步驟實作出來，並且還要跟 Devise 做的相容。</p>
+<p>於是我和 <a href="godfat.org">Godfat</a> 就開始看 Devise 是怎麼做的，結果發現 Devise 做了一件有趣的事情 – 他在 compare hashed password 的時候用了一個 <code>secure_compare</code>，看了一下 source code 後發現，使用這個特製 <code>secure_compare</code> 的原因是爲了達成 <strong>Constant time (in password length) Comparison</strong>，而想要 constant time 則是爲了預防 timing attack。</p>
+<p>所謂的 timing attack 及 contant time comparison 可以參考<a href="http://security.stackexchange.com/questions/46212/does-bcrypt-compare-the-hashes-in-length-constant-time" target="_blank" rel="external">這篇</a>，大致上就是說利用「比較兩個 hashed string」所花費的時間來猜出正確的 hashed string，例如當你發現某個 hashed string 在比較的時候比人家慢了 2ms，那有可能這個 hashed string 的開頭和正確的 hashed string 的開頭是一致的，這就是 timing attack。所以爲了預防 timing attack，使用「不論在任何情況下都用一樣的時間做比較」的比較函數就相當重要了。</p>
+<p>但是這個情況在 devise 中就有點 tricky，首先，devise 使用的是 bcrypt，這個 hash function 是有帶 salt 的（類似密鑰的東西），在沒有 salt 的情況下，是幾乎不可能得知 hash function 是如何 mapping 的 – 理論上 salt 是不會 leak 的。而前面所說的 timing attack 是建立在攻擊者知道 hash function 如何 mapping 的基礎上，如果攻擊者沒有 salt，那麼比較時的時間差就不會泄漏任何訊息給攻擊者。詳細的討論可以看在 <a href="https://github.com/codahale/bcrypt-ruby/pull/43" target="_blank" rel="external">bcrypt-ruby 上的討論</a>，在有 salt 的情況下，使用 slow comparison 其實沒什麼意義，所以 devise 大概是做了白工…</p>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/01/28/lastpass-vs-dashlane/" itemprop="url">
                   LastPass v.s. Dashlane
                 </a>
@@ -470,112 +573,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/01/18/rime-dictionaries/" itemprop="url">
-                  鼠鬚管擴充詞庫
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">發表於</span>
-            <time itemprop="dateCreated" datetime="2015-01-18T19:53:00+08:00" content="2015-01-18">
-              2015-01-18
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/01/18/rime-dictionaries/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/01/18/rime-dictionaries/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>我大約從一兩年前開始改用拼音輸入法，在 OS X 上我使用的是「<a href="https://code.google.com/p/rimeime/wiki/Downloads" target="_blank" rel="external">鼠鬚管</a>」，這是一套對於中文很講究的輸入法，從他的名字就可以略知一二，非常適合我這種假文青，而且同時支援多種拼音方案以及注音等輸入方式，相關的文章可以參考「<a href="https://www.byvoid.com/blog/recommend-rime" target="_blank" rel="external">推薦一個神級輸入法 – Rime</a>」。</p>
-<p>鼠鬚管速度快、定製性高，惟其詞庫量不足，是最爲人詬病的一點，相較於其他如百度、搜狗等輸入法，鼠鬚管的詞庫準確性的確不夠，常常需要自己選字選很久。不過這個問題其實可以透過使用擴充詞庫來解決，雖然還是不及百度或搜狗的雲詞庫來得準確，但是一般使用上算是沒問題了，擴充詞庫可以在 <a href="https://github.com/rime-aca/dictionaries" target="_blank" rel="external">rime-aca/dictionaries</a> 找到，在我剛找到這個詞庫的時候並沒有太詳細的說明文件，算是自己摸索了一陣子才理解怎麼正確的使用這個詞庫，所以也發了個 <a href="https://github.com/rime-aca/dictionaries/pull/3" target="_blank" rel="external">PR</a> 在 READEME 裏加上使用說明，有興趣可以參考看看。在這樣的架構下，增加自己的自訂詞庫也相當方便。</p>
-
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -616,7 +618,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
@@ -626,7 +628,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">標籤</span>
               </a>
             </div>

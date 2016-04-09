@@ -241,6 +241,110 @@
             
               
                 
+                <a class="post-title-link" href="/2015/05/28/First-Taste-of-React-Native-in-ReactJS-tw-Meetup/" itemprop="url">
+                  First Taste of React Native in ReactJS.tw Meetup
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">發表於</span>
+            <time itemprop="dateCreated" datetime="2015-05-28T01:13:14+08:00" content="2015-05-28">
+              2015-05-28
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/05/28/First-Taste-of-React-Native-in-ReactJS-tw-Meetup/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/05/28/First-Taste-of-React-Native-in-ReactJS-tw-Meetup/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>今天在 ReactJS.tw 的社群聚會中給了一個 React Native 初體驗的 talk，應該算是我第一次在這樣的技術社群中公開分享心得吧。</p>
+<p>希望整體演講還算 OK，希望沒有讓大家期待落空了哈哈。講完之後也覺得的確有蠻多可以改進的地方，算是收穫良多，果然上臺做簡報這種事情還是要多練習的，希望可以練成和 Jeremy 一樣流暢的 flow。</p>
+<p>而這也是第一次把 slide 放上 speakerdeck，有不少朋友跑來說簡報做的不錯，真是受寵若驚。</p>
+<p>順帶一提，我是用 Beamer (LaTex) 做投影片的，不過主要是因爲用了 <a href="https://github.com/matze/mtheme" target="_blank" rel="external">mTheme</a> 這個 Theme 才看起來比較現代化一點，不然 Beamer 的原生 Theme 可能真的相當 old school，而爲了可以用 keynote，我還另外找了一個 <a href="http://www.cs.hmc.edu/~oneill/freesoftware/pdftokeynote.html" target="_blank" rel="external">PDF to Keynote</a>，把 PDF 轉成 Keynote，這樣就可以用很多方便的工具，例如手機上的 remote control，以及 keynote 的小抄，不過這次發現在臺上其實沒什麼機會偷看小抄XD</p>
+<p>最後這次 slide 的連接在此：<a href="https://speakerdeck.com/lazywei/first-taste-of-react-native" target="_blank" rel="external">First Taste of React Native</a></p>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/04/14/Migrate-to-NeoVim/" itemprop="url">
                   Migrate to NeoVim
                 </a>
@@ -440,114 +544,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/02/02/thoughts-on-timing-attack/" itemprop="url">
-                  Hashing Password and Timing Attack
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">發表於</span>
-            <time itemprop="dateCreated" datetime="2015-02-02T11:59:00+08:00" content="2015-02-02">
-              2015-02-02
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/02/02/thoughts-on-timing-attack/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/02/02/thoughts-on-timing-attack/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>今天在實作 Token-Based 登入系統的時候碰到了一點小問題：原本在 Rails 中的 User System 是使用 <a href="https://github.com/plataformatec/devise" target="_blank" rel="external">Devise</a>，但是我們的 API Server 並不在 Rails 底下，也就是說我沒有辦法直接存取 Devise；在這樣的情況下，我就必須要自己將「把 plain text 的密碼做 hash 並跟資料庫中的密碼比較」的這個步驟實作出來，並且還要跟 Devise 做的相容。</p>
-<p>於是我和 <a href="godfat.org">Godfat</a> 就開始看 Devise 是怎麼做的，結果發現 Devise 做了一件有趣的事情 – 他在 compare hashed password 的時候用了一個 <code>secure_compare</code>，看了一下 source code 後發現，使用這個特製 <code>secure_compare</code> 的原因是爲了達成 <strong>Constant time (in password length) Comparison</strong>，而想要 constant time 則是爲了預防 timing attack。</p>
-<p>所謂的 timing attack 及 contant time comparison 可以參考<a href="http://security.stackexchange.com/questions/46212/does-bcrypt-compare-the-hashes-in-length-constant-time" target="_blank" rel="external">這篇</a>，大致上就是說利用「比較兩個 hashed string」所花費的時間來猜出正確的 hashed string，例如當你發現某個 hashed string 在比較的時候比人家慢了 2ms，那有可能這個 hashed string 的開頭和正確的 hashed string 的開頭是一致的，這就是 timing attack。所以爲了預防 timing attack，使用「不論在任何情況下都用一樣的時間做比較」的比較函數就相當重要了。</p>
-<p>但是這個情況在 devise 中就有點 tricky，首先，devise 使用的是 bcrypt，這個 hash function 是有帶 salt 的（類似密鑰的東西），在沒有 salt 的情況下，是幾乎不可能得知 hash function 是如何 mapping 的 – 理論上 salt 是不會 leak 的。而前面所說的 timing attack 是建立在攻擊者知道 hash function 如何 mapping 的基礎上，如果攻擊者沒有 salt，那麼比較時的時間差就不會泄漏任何訊息給攻擊者。詳細的討論可以看在 <a href="https://github.com/codahale/bcrypt-ruby/pull/43" target="_blank" rel="external">bcrypt-ruby 上的討論</a>，在有 salt 的情況下，使用 slow comparison 其實沒什麼意義，所以 devise 大概是做了白工…</p>
-
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -588,7 +589,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
@@ -598,7 +599,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">標籤</span>
               </a>
             </div>
