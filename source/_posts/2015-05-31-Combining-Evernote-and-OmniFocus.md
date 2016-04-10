@@ -21,7 +21,7 @@ date: 2015-05-31 15:05:33
 實際做起來大概是長這樣：
 
 OmniFocus：
-![](img/2015/5/31-omnifocus.png)
+![](/img/2015/5/31-omnifocus.png)
 
 Evernote：
-![](img/2015/5/31-evernote.png)
+![](/img/2015/5/31-evernote.png)
