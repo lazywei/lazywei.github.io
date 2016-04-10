@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lazier.cwchang.me/"/>
-  <updated>2016-04-10T05:45:47.000Z</updated>
+  <updated>2016-04-10T05:47:59.000Z</updated>
   <id>http://lazier.cwchang.me/</id>
   
   <author>
@@ -20,17 +20,17 @@
     <link href="http://lazier.cwchang.me/2016/04/10/Tide-the-pomodoro-timer/"/>
     <id>http://lazier.cwchang.me/2016/04/10/Tide-the-pomodoro-timer/</id>
     <published>2016-04-10T05:38:48.000Z</published>
-    <updated>2016-04-10T05:45:47.000Z</updated>
+    <updated>2016-04-10T05:47:59.000Z</updated>
     
-    <content type="html">&lt;img src=&quot;img/2016/4/10-tide-the-pomodoro-timer.png&quot; class=&quot;full-image&quot; alt=&quot;Tide Pomodoro Timer&quot; title=&quot;Tide Pomodoro Timer&quot;&gt;
+    <content type="html">&lt;img src=&quot;/img/2016/4/10-tide-the-pomodoro-timer.png&quot; class=&quot;full-image&quot; alt=&quot;Tide Pomodoro Timer&quot; title=&quot;Tide Pomodoro Timer&quot;&gt;
 &lt;p&gt;最近發現一個挺不錯的 iPhone App: &lt;a href=&quot;https://itunes.apple.com/tw/app/chao-xi-mei-hao-fan-jia-zhong/id1077776989?l=zh&amp;amp;mt=8&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;潮汐&lt;/a&gt;。「潮汐」是一個番茄時鐘計時器，關於番茄時鐘工作法的說明網路上很多，這裏就不贅述了，以往用過不少番茄時鐘的 App，大部分都是蠻簡易的 App，我想這也跟番茄時鐘工作法本身很單純有關吧，並不需要什麼太多的功能，所以大多的 App 其實也沒什麼顯著差異。&lt;/p&gt;
 &lt;p&gt;不過前陣子發現「潮汐」之後就愛上他了，他除了一樣提供很直覺很簡單的計時操作之外，還搭配了一些白噪音幫助你進入專注的狀態，我就挺喜歡他「冥想」這個主題的背景音，很舒服也很能專心，另外這個 App 的整體設計感也很不錯，蠻適合我這種有文青魂的人，是這陣子用過最棒的番茄時鐘計時器，在這邊分享推薦給大家，有興趣可以下載來試試看！&lt;/p&gt;
 </content>
     
     <summary type="html">
     
-      &lt;img src=&quot;img/2016/4/10-tide-the-pomodoro-timer.png&quot; class=&quot;full-image&quot; alt=&quot;Tide Pomodoro Timer&quot; title=&quot;Tide Pomodoro Timer&quot;&gt;
-&lt;p&gt;最近發現一個挺不錯的
+      &lt;img src=&quot;/img/2016/4/10-tide-the-pomodoro-timer.png&quot; class=&quot;full-image&quot; alt=&quot;Tide Pomodoro Timer&quot; title=&quot;Tide Pomodoro Timer&quot;&gt;
+&lt;p&gt;最近發現一個挺不錯
     
     </summary>
     
@@ -232,7 +232,7 @@
     <link href="http://lazier.cwchang.me/2015/05/31/Combining-Evernote-and-OmniFocus/"/>
     <id>http://lazier.cwchang.me/2015/05/31/Combining-Evernote-and-OmniFocus/</id>
     <published>2015-05-31T07:05:33.000Z</published>
-    <updated>2016-04-08T07:49:06.000Z</updated>
+    <updated>2016-04-10T05:49:13.000Z</updated>
     
     <content type="html">&lt;p&gt;大概從去年年底開始，我就成了 Evernote 的重度使用者，對我來說 Evernote 就是一個什麼都可以記錄的地方，有些人稱呼 Evernote 爲第二個大腦，我覺得挺適切的。&lt;/p&gt;
 &lt;p&gt;不過我發現 Evernote 也許在很多地方上表現得不錯，但他並不適合做一個 TODO list，雖然他有待辦清單的功能，但是跟一些成熟的 TODO list 軟體比起來真的差多了，而且 Evernote 的 TODO items 很有可能會散落在各個不同的筆記本裏面，很難有一個可以一口氣看到所有統整畫面的地方。&lt;br&gt;不幸的是，這點對我來說很重要，在安排事情的 priority 時，我習慣可以縱覽全部的待辦事項。再者，我喜歡的工作流是 GTD，而 Evernote 在這個 context 下是完全不適用的。或者應該說，Evernote 其實比較像一個用來記錄各種想法、以及想法的細節的地方，而不是一個記錄「待辦事項」的地方。&lt;/p&gt;
@@ -243,8 +243,8 @@
 &lt;li&gt;利用 EN 的記事鏈接，複製該篇 note 的 link，然後把這個 link 貼上到 OF 的 note section，這樣就可以在處理 OF 上的待辦事項時，cross reference 到 Evernote 中的細節&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;實際做起來大概是長這樣：&lt;/p&gt;
-&lt;p&gt;OmniFocus：&lt;br&gt;&lt;img src=&quot;img/2015/5/31-omnifocus.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;Evernote：&lt;br&gt;&lt;img src=&quot;img/2015/5/31-evernote.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;OmniFocus：&lt;br&gt;&lt;img src=&quot;/img/2015/5/31-omnifocus.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Evernote：&lt;br&gt;&lt;img src=&quot;/img/2015/5/31-evernote.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
