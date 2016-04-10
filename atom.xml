@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lazier.cwchang.me/"/>
-  <updated>2016-04-09T06:38:12.000Z</updated>
+  <updated>2016-04-10T05:45:47.000Z</updated>
   <id>http://lazier.cwchang.me/</id>
   
   <author>
@@ -14,6 +14,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Tide: The Pomodoro timer</title>
+    <link href="http://lazier.cwchang.me/2016/04/10/Tide-the-pomodoro-timer/"/>
+    <id>http://lazier.cwchang.me/2016/04/10/Tide-the-pomodoro-timer/</id>
+    <published>2016-04-10T05:38:48.000Z</published>
+    <updated>2016-04-10T05:45:47.000Z</updated>
+    
+    <content type="html">&lt;img src=&quot;img/2016/4/10-tide-the-pomodoro-timer.png&quot; class=&quot;full-image&quot; alt=&quot;Tide Pomodoro Timer&quot; title=&quot;Tide Pomodoro Timer&quot;&gt;
+&lt;p&gt;最近發現一個挺不錯的 iPhone App: &lt;a href=&quot;https://itunes.apple.com/tw/app/chao-xi-mei-hao-fan-jia-zhong/id1077776989?l=zh&amp;amp;mt=8&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;潮汐&lt;/a&gt;。「潮汐」是一個番茄時鐘計時器，關於番茄時鐘工作法的說明網路上很多，這裏就不贅述了，以往用過不少番茄時鐘的 App，大部分都是蠻簡易的 App，我想這也跟番茄時鐘工作法本身很單純有關吧，並不需要什麼太多的功能，所以大多的 App 其實也沒什麼顯著差異。&lt;/p&gt;
+&lt;p&gt;不過前陣子發現「潮汐」之後就愛上他了，他除了一樣提供很直覺很簡單的計時操作之外，還搭配了一些白噪音幫助你進入專注的狀態，我就挺喜歡他「冥想」這個主題的背景音，很舒服也很能專心，另外這個 App 的整體設計感也很不錯，蠻適合我這種有文青魂的人，是這陣子用過最棒的番茄時鐘計時器，在這邊分享推薦給大家，有興趣可以下載來試試看！&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;img src=&quot;img/2016/4/10-tide-the-pomodoro-timer.png&quot; class=&quot;full-image&quot; alt=&quot;Tide Pomodoro Timer&quot; title=&quot;Tide Pomodoro Timer&quot;&gt;
+&lt;p&gt;最近發現一個挺不錯的
+    
+    </summary>
+    
+    
+      <category term="tools" scheme="http://lazier.cwchang.me/tags/tools/"/>
+    
+      <category term="productivity" scheme="http://lazier.cwchang.me/tags/productivity/"/>
+    
+      <category term="ios" scheme="http://lazier.cwchang.me/tags/ios/"/>
+    
+  </entry>
   
   <entry>
     <title>Learn English with Audible</title>
@@ -159,9 +187,9 @@
     </summary>
     
     
-      <category term="open source" scheme="http://lazier.cwchang.me/tags/open-source/"/>
-    
       <category term="github" scheme="http://lazier.cwchang.me/tags/github/"/>
+    
+      <category term="open source" scheme="http://lazier.cwchang.me/tags/open-source/"/>
     
       <category term="gsoc" scheme="http://lazier.cwchang.me/tags/gsoc/"/>
     
@@ -191,9 +219,9 @@
     
       <category term="dev" scheme="http://lazier.cwchang.me/tags/dev/"/>
     
-      <category term="github" scheme="http://lazier.cwchang.me/tags/github/"/>
-    
       <category term="conf" scheme="http://lazier.cwchang.me/tags/conf/"/>
+    
+      <category term="github" scheme="http://lazier.cwchang.me/tags/github/"/>
     
       <category term="codeconf" scheme="http://lazier.cwchang.me/tags/codeconf/"/>
     
