@@ -1,0 +1,39 @@
+#!/usr/bin/env python
+import os
+import shutil
+import subprocess
+from datetime import datetime
+
+def safe_filename(filename):
+    safe = "".\
+           join([c for c in filename if c.isalpha() or c.isdigit() or c==' ']).\
+           rstrip()
+    return safe.replace(" ", "-").lower()
+
+def main(origin, output):
+    now = datetime.now()
+    _, ext = os.path.splitext(origin)
+    folder = "public/img/{}/{}/".format(now.year, now.month)
+    filename = "{}-{}{}".format(now.day, safe_filename(output), ext)
+
+    filepath = os.path.join(
+        os.path.dirname(os.path.realpath(__file__)), folder, filename)
+
+    os.makedirs(os.path.dirname(filepath), exist_ok=True)
+    shutil.copy2(origin, filepath)
+
+    to_paste = "/".join(folder.split("/")[1:]) + filename
+
+    # stole from http://stackoverflow.com/questions/1825692/can-python-send-text-to-the-mac-clipboard
+    process = subprocess.Popen(
+        'pbcopy', env={'LANG': 'en_US.UTF-8'}, stdin=subprocess.PIPE)
+    process.communicate(to_paste.encode('utf-8'))
+
+    print("{} is copied to Clipboard!".format(to_paste))
+
+
+
+
+if __name__ == '__main__':
+    import clime
+    clime.start(white_list=["main"])
