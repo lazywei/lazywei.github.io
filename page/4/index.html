@@ -241,6 +241,118 @@
             
               
                 
+                <a class="post-title-link" href="/2015/04/14/Migrate-to-NeoVim/" itemprop="url">
+                  Migrate to NeoVim
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">發表於</span>
+            <time itemprop="dateCreated" datetime="2015-04-14T22:42:18+08:00" content="2015-04-14">
+              2015-04-14
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/04/14/Migrate-to-NeoVim/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/04/14/Migrate-to-NeoVim/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Vim 一直以來都是我最喜愛的編輯器，其實我唯一在用的編輯器，當然偶爾還是會有點「七年之癢」想玩玩 Emacs、Atom、Sublime Text，但是最終都還是覺得 Vim 使用起來最順手。</p>
+<p>雖然 Vim 是個曠世神作，但是在開發社群上出了一些意見紛爭，例如只有一個人在維護高達 300k 行的 C89，以及這個 Bram 這個主要作者對於 community patching 的態度等，因此在去年約一二月的時候，出現了一個 community fork – <a href="https://github.com/neovim/neovim" target="_blank" rel="external">NeoVim</a>，號稱要重構 Vim，關於一些當時事件的細節可以看看<a href="https://www.ptt.cc/bbs/Editor/M.1393165951.A.9B0.html" target="_blank" rel="external">這篇的推文</a>。</p>
+<p>這一年來我都有持續在關注 NeoVim 的發展，而這陣子我覺得是一個非常好的入場時機，一些重大的 bugs 都被修了（雖然還是有一些 issues、或是一些爭論），以及我的愛將 <a href="https://github.com/junegunn/fzf" target="_blank" rel="external">fzf</a> 也在最近支援了新的 NeoVim features，再加上我的 Vim 今天無預警的突然壞了，所以就毅然決然正式入場。</p>
+<p>基本上 NeoVim 的相容性做的很好，我用的差不多將近一百個（突然覺得還真多…）套件都沒出什麼問題，所以如果沒意外的話應該是可以直接 as drop in replacement。</p>
+<p>這裏稍微列一下一些需要注意的點或是 features：</p>
+<ol>
+<li>不需要 <code>nocompatible</code> 了，然後 <code>encoding=utf-8</code> 是預設，更多的細節可以參考<a href="https://github.com/neovim/neovim/wiki/Differences-from-vim" target="_blank" rel="external">這裏</a></li>
+<li>NeoVim 有不一樣的 clipboard 處理方式，可以輕鬆跟 system share clipboard，請參考<a href="http://neovim.org/doc/user/nvim_clipboard.html#nvim-clipboard" target="_blank" rel="external">這裏</a></li>
+<li>只要 <code>PATH</code> 中有 python interpreter，NeoVim 就能自動支援，不需要再手動 re-build，不過需要裝一下 python package：<code>pip install neovim</code></li>
+<li>homebrew 可以裝 neovim，但是我不建議用 homebrew 裝，因爲 homebrew 目前在 compile 的時候沒有把 debug mode 關掉，這樣 NeoVim 在遇上 <a href="https://github.com/bling/vim-airline" target="_blank" rel="external">vim-airline</a> 的時候會變得非常慢，建議的做法是自己 clone 一份 source code 用 <a href="https://github.com/neovim/neovim/wiki/Building-Neovim#optimized-builds" target="_blank" rel="external">Optimized build</a>，然後再把 <code>$VIMRUNTIME</code> 設定成 <code>runtime/</code> 這個資料夾，最後把 <code>build/bin</code> 加入 <code>$PATH</code> 就可以了</li>
+<li><code>&lt;C-h&gt;</code> may not work. If that is the case, please ref to this <a href="https://github.com/neovim/neovim/issues/2048#issuecomment-78045837" target="_blank" rel="external">workaround</a></li>
+</ol>
+<p>基本上除了以上這幾點外應該不會再有太多問題了。</p>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/04/06/Customized-Go-Testing-with-Ginkgo/" itemprop="url">
                   Customized Go Testing with Ginkgo
                 </a>
@@ -431,113 +543,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/01/28/lastpass-vs-dashlane/" itemprop="url">
-                  LastPass v.s. Dashlane
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">發表於</span>
-            <time itemprop="dateCreated" datetime="2015-01-28T15:00:00+08:00" content="2015-01-28">
-              2015-01-28
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/01/28/lastpass-vs-dashlane/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/01/28/lastpass-vs-dashlane/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>之前看到一個很驚悚的消息「<a href="http://share.inside.com.tw/posts/11396" target="_blank" rel="external">一鍵修改所有密碼，Dashlane 的新功能讓 1Password 壓力很大</a>」，於是就心動地跑去裝了 Dashlane 來玩，不過最後我還是換回是用 <a href="https://lastpass.com/f?7475776" target="_blank" rel="external">LastPass</a>，這裏稍微條例一下一些比較：</p>
-<ol>
-<li>LastPass 最近也推出了自動更改密碼的功能了，而且我覺得使用上比起 Dashlane 令人放心的多（LastPass 更改密碼的時候你看得到他是怎麼運作的）</li>
-<li>LastPass 在 Android 上的應用比起 Dashlane 聰明得多，其實使用這類型的服務最重要的就是利用他的自動產生密碼的功能，不過要善用這個功能，勢必要在所有裝置上都能存取這個密碼，不然在手機上登入網站會非常不方便。Dashlane 的解決方式是提供一個 dashlane keyboard，也就是一個特別的輸入法，使用這個輸入法就能自動存取密碼並登入，但問題是並非所有人都是使用英文輸入（dashlane keyboard 沒有中文支援），而且這樣強迫使用者使用他們的輸入法其實並不友善，再來，dashlane keyboard 在我的手機上經常不 work；相較之下 LastPass 就聰明得多，他利用 Android 特有的漂浮視窗，讓你在遇到「帳號密碼」的輸入欄位的時候，可以自動填上帳號密碼，而不影響到原先使用的輸入法</li>
-<li>費用上還是 LastPass 更爲友善</li>
-<li>電腦版的使用界面上 Dashlane 樂勝，有漂亮的 UI，但是我後來發現其實我也沒怎麼使用這些 fancy 的功能，大多時候我還是使用簡單的產生密碼及填入而已，而這些功能 LastPass 也同樣做得很好</li>
-</ol>
-<p>綜合上述幾點，我最後還是換回了 LastPass。</p>
-
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -583,7 +588,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>

@@ -241,6 +241,114 @@
             
               
                 
+                <a class="post-title-link" href="/2016/03/20/LinearGo-now-supports-Go-1-6/" itemprop="url">
+                  LinearGo now supports Go 1.6
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">發表於</span>
+            <time itemprop="dateCreated" datetime="2016-03-20T17:11:09+08:00" content="2016-03-20">
+              2016-03-20
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/20/LinearGo-now-supports-Go-1-6/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/03/20/LinearGo-now-supports-Go-1-6/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Last summer, I built <a href="https://github.com/lazywei/lineargo" target="_blank" rel="external">LinearGo</a>, a Go wrapper for the famous machine learning library <a href="http://www.csie.ntu.edu.tw/~cjlin/liblinear/" target="_blank" rel="external">LIBLINEAR</a>. Basically, I used CGO to bridge LIBLINEAR’s C library and Go. At first, I tried to build a 1-to-1 mapping for all of the data structure defined in C liblinear to hide the implementation details of C behind Go code.</p>
+<p>However, things become complicated after Go 1.6 as they change their pointer policy for CGO. We can no longer pass something that contains a Go pointer which points to a Go pointer (WTF I just said!?). For example, a <code>Parameter</code> contains a pointer to a <code>FeatureNode</code> (an array of FeatureNode in fact). Before Go 1.6, I simply pass the pointer of <code>Parameter</code> to C, contains a pointer to a <code>FeatureNode</code> (a Go struct). Things like this, which a Go pointer contains a Go pointer, is not allowed anymore in Go 1.6. Therefore, I’m forced to figure out some other way to get around this.</p>
+<p>The solution I came up with is passing plain C data type only (things like <code>int</code>, <code>double</code>, or pointers to them), and then re-construct the struct in C. Therefore, I removed the corresponding Go structure and wrote some C helper function which I can call from Go.</p>
+<p>For example, I have a <code>call_train</code> helper function, the signature of which is</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">struct</span> model* <span class="title">call_train</span><span class="params">(</span><br><span class="line">    <span class="keyword">double</span>* x, <span class="keyword">double</span>* y, <span class="keyword">int</span> n_rows, <span class="keyword">int</span> n_cols,</span><br><span class="line">    <span class="keyword">double</span> bias, <span class="keyword">int</span> solver_type, <span class="keyword">double</span> C, <span class="keyword">double</span> p, <span class="keyword">double</span> eps,</span><br><span class="line">    <span class="keyword">int</span> nr_weight, <span class="keyword">int</span>* weight_label, <span class="keyword">double</span>* weight)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>And the real <code>train</code> function looks like this</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">struct</span> model* <span class="title">train</span><span class="params">(<span class="keyword">const</span> <span class="keyword">struct</span> problem *prob, <span class="keyword">const</span> <span class="keyword">struct</span> parameter *param)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>In <code>call_train</code>, I manually construct <code>prob</code> and <code>param</code> and then call the real <code>train</code> with these arguments.</p>
+<p>Luckily, after some monkey coding, LinearGo is now supporting Go 1.6. Moreover, I believe the current approach is more stable than previous one because we only work on simple data type when bridging while leave the complicated structure in pure C.</p>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/03/18/Easier-to-Persist/" itemprop="url">
                   降低成爲習慣的門檻
                 </a>
@@ -455,111 +563,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/07/16/GitHub-CodeConf-2015/" itemprop="url">
-                  GitHub CodeConf 2015
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">發表於</span>
-            <time itemprop="dateCreated" datetime="2015-07-16T20:44:35+08:00" content="2015-07-16">
-              2015-07-16
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/07/16/GitHub-CodeConf-2015/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/07/16/GitHub-CodeConf-2015/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>I attended the <a href="http://codeconf.com/" target="_blank" rel="external">CodeConf</a> 2015 held by GitHub last month, and it was truly a wonderful journey. Admittedly, this was my first time heard about CodeConf. However, it didn’t make me any less excited, and it turns out CodeConf is really a top tier conference, which I won’t be hesitate to join again. By the way, CodeConf took place in Nashville, the music city, and the city is also awfully impressive. It’s not hard to give reasons why CodeConf is one of the best conferences I have been in: the presentation room – The Bell Tower, the food and drinks, the party , etc. Yet, the most awesome part is the people, the attendants. I met a lot of interesting people there, including hackers, fighters for equality, GitHubbers, and I really got inspired a lot by meeting them and by their talks. And hence I’d like to note some impressing talks from which I felt I learn a lot ideas and concepts.</p>
-<p>The first one talk I’d like to note here is <strong>State of the Open Source Licenses</strong> given by GitHubber <a href="https://github.com/mislav" target="_blank" rel="external">Mislav Marohnic</a>. This talk is talking about what is license, why we need it, and how we can utilize it in open source projects. Though not gaining too many stars, I did some open source projects myself on <a href="https://github.com/lazywei" target="_blank" rel="external">GitHub</a>. However, I didn’t add license to all my projects – actually, I only applied license to a few of them. Mislave showed us how the license can impact a open source project, or even the whole open source community. I think I do learn a lot from this talk, at least I know what license should I apply on my projects!</p>
-<p>Another interesting talk is <strong>Detecting and mitigating fraud in realtime at Airbnb</strong> given by Eric Levine from Airbnb. It’s not surprising that I was interested in this talk – I’m a machine learning researcher! Spam or fraud detection has been studied for maybe several years. However, when applying to real world, it’s totally a different story. Eric showed us, clearly, how they setup their model and their architecture. I’m impressed that their models are simply random forest, and I’m also impressed that it only take them half of an hour to re-train their whole models. Moreover, Eric used very simple but understandable way to introduce the basic idea of machine learning, and I think I should copy his slide for introducing machine learning in the future … :-P</p>
-<p>There are a lot of other great talks, such as Atom keynote or Facebook and Microsoft’s talk on large scale open sourcing. Yet, I’d like to highlight one more talk here – <strong>Debugging Diversity</strong> given by Anjuan Simmons. In fact, this is not really like a technical talk. Instead, Anjuan focused on the “Diversity” or “Equality” in the community. In my opinion, people who involved in open source projects are somehow more important than the projects themselves. Human is the core, and it is all about how we interact with others. Anjuan did a great job on this topic, and it was this talk that made me feel CodeConf is one level higher than the other conferences I attended in Taiwan. Code and projects are interesting, but sometimes we should pay more attentions on people around the projects. Also, we should give more respect to everyone no matter who they are or what they do. Truly, this talk is awesome!</p>
-<p>I also gave a short lightening talk on my Google Summer of Code project – <a href="https://github.com/github/linguist" target="_blank" rel="external">Linguist</a> and <a href="https://github.com/lazywei/mockingbird" target="_blank" rel="external">Mockingbird</a>. Basically, Linguist is a Ruby gem used by GitHub (mostly by GitHub) that can do <strong>Programming Language Detection</strong> for a given text file. I’m sure you know where it is used in GitHub – yes, on the top banner region! There are lot of strategies in Linguist, and one of them is machine learning. Given my experiences and great interests in machine learning, I started work on it to try to improve the machine learning part – with GitHubbers as mentors, how lucky! I briefly introduce my work, what have been done, and next steps in the talk. I found it kind of difficult to explain machine learning and my project in oral English, which is not my native language, and presenting in front of a lot of truly hackers made me super nervous. But I did hope I convey the ideas clearly, and I did hope there will be more people knowing / doing / playing with machine learning.</p>
-<p>And I guess that’s it, my brief note on GitHub’s CodeConf. Oh right, I visited GitHub HQ in SF before went to Nashville. It’s really awesome! It is probably the most cool place I have ever dreamed about for a hacker. :-)</p>
-
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -605,7 +608,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>

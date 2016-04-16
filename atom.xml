@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lazier.cwchang.me/"/>
-  <updated>2016-04-10T05:47:59.000Z</updated>
+  <updated>2016-04-16T15:18:02.000Z</updated>
   <id>http://lazier.cwchang.me/</id>
   
   <author>
@@ -14,6 +14,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Quick Add Event to Google Calendar with Alfred</title>
+    <link href="http://lazier.cwchang.me/2016/04/16/Quick-Add-Event-to-Google-Calendar-with-Alfred/"/>
+    <id>http://lazier.cwchang.me/2016/04/16/Quick-Add-Event-to-Google-Calendar-with-Alfred/</id>
+    <published>2016-04-16T15:17:14.000Z</published>
+    <updated>2016-04-16T15:18:02.000Z</updated>
+    
+    <content type="html">&lt;img src=&quot;img/2016/4/16-alfred-with-google-calendar.png&quot; class=&quot;full-image&quot; alt=&quot;Alfred with Google Calendar Quick Add&quot; title=&quot;Alfred with Google Calendar Quick Add&quot;&gt;
+&lt;p&gt;Here is a quick tip for integrating Alfred with Google Calendar.&lt;br&gt;Go to Alfred 2’s Preferences, and then go to the ‘Web Search’ under ‘Features’. Click the ‘Add Custom Search’ on the bottom right.&lt;/p&gt;
+&lt;p&gt;In the ‘Search URL’ input box, enter the following URL:&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;http://www.google.com/calendar/event?ctext=+&amp;#123;query&amp;#125;+&amp;amp;action=TEMPLATE&amp;amp;pprop=HowCreated%3AQUICKA&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;Next, set the proper keyword, and then you’re ready to roll!&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;img src=&quot;img/2016/4/16-alfred-with-google-calendar.png&quot; class=&quot;full-image&quot; alt=&quot;Alfred with Google Calendar Quick Add&quot; title=&quot;Alfred with G
+    
+    </summary>
+    
+    
+      <category term="tools" scheme="http://lazier.cwchang.me/tags/tools/"/>
+    
+      <category term="os x" scheme="http://lazier.cwchang.me/tags/os-x/"/>
+    
+      <category term="productivity" scheme="http://lazier.cwchang.me/tags/productivity/"/>
+    
+  </entry>
   
   <entry>
     <title>Tide: The Pomodoro timer</title>
@@ -325,9 +354,9 @@
     </summary>
     
     
-      <category term="tools" scheme="http://lazier.cwchang.me/tags/tools/"/>
-    
       <category term="dev" scheme="http://lazier.cwchang.me/tags/dev/"/>
+    
+      <category term="tools" scheme="http://lazier.cwchang.me/tags/tools/"/>
     
   </entry>
   

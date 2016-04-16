@@ -241,6 +241,110 @@
             
               
                 
+                <a class="post-title-link" href="/2016/04/16/Quick-Add-Event-to-Google-Calendar-with-Alfred/" itemprop="url">
+                  Quick Add Event to Google Calendar with Alfred
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">發表於</span>
+            <time itemprop="dateCreated" datetime="2016-04-16T23:17:14+08:00" content="2016-04-16">
+              2016-04-16
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/16/Quick-Add-Event-to-Google-Calendar-with-Alfred/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/04/16/Quick-Add-Event-to-Google-Calendar-with-Alfred/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <img src="img/2016/4/16-alfred-with-google-calendar.png" class="full-image" alt="Alfred with Google Calendar Quick Add" title="Alfred with Google Calendar Quick Add">
+<p>Here is a quick tip for integrating Alfred with Google Calendar.<br>Go to Alfred 2’s Preferences, and then go to the ‘Web Search’ under ‘Features’. Click the ‘Add Custom Search’ on the bottom right.</p>
+<p>In the ‘Search URL’ input box, enter the following URL:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://www.google.com/calendar/event?ctext=+&#123;query&#125;+&amp;action=TEMPLATE&amp;pprop=HowCreated%3AQUICKA</span><br></pre></td></tr></table></figure>
+<p>Next, set the proper keyword, and then you’re ready to roll!</p>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/04/10/Tide-the-pomodoro-timer/" itemprop="url">
                   Tide: The Pomodoro timer
                 </a>
@@ -430,114 +534,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/03/20/LinearGo-now-supports-Go-1-6/" itemprop="url">
-                  LinearGo now supports Go 1.6
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">發表於</span>
-            <time itemprop="dateCreated" datetime="2016-03-20T17:11:09+08:00" content="2016-03-20">
-              2016-03-20
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/03/20/LinearGo-now-supports-Go-1-6/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/03/20/LinearGo-now-supports-Go-1-6/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Last summer, I built <a href="https://github.com/lazywei/lineargo" target="_blank" rel="external">LinearGo</a>, a Go wrapper for the famous machine learning library <a href="http://www.csie.ntu.edu.tw/~cjlin/liblinear/" target="_blank" rel="external">LIBLINEAR</a>. Basically, I used CGO to bridge LIBLINEAR’s C library and Go. At first, I tried to build a 1-to-1 mapping for all of the data structure defined in C liblinear to hide the implementation details of C behind Go code.</p>
-<p>However, things become complicated after Go 1.6 as they change their pointer policy for CGO. We can no longer pass something that contains a Go pointer which points to a Go pointer (WTF I just said!?). For example, a <code>Parameter</code> contains a pointer to a <code>FeatureNode</code> (an array of FeatureNode in fact). Before Go 1.6, I simply pass the pointer of <code>Parameter</code> to C, contains a pointer to a <code>FeatureNode</code> (a Go struct). Things like this, which a Go pointer contains a Go pointer, is not allowed anymore in Go 1.6. Therefore, I’m forced to figure out some other way to get around this.</p>
-<p>The solution I came up with is passing plain C data type only (things like <code>int</code>, <code>double</code>, or pointers to them), and then re-construct the struct in C. Therefore, I removed the corresponding Go structure and wrote some C helper function which I can call from Go.</p>
-<p>For example, I have a <code>call_train</code> helper function, the signature of which is</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">struct</span> model* <span class="title">call_train</span><span class="params">(</span><br><span class="line">    <span class="keyword">double</span>* x, <span class="keyword">double</span>* y, <span class="keyword">int</span> n_rows, <span class="keyword">int</span> n_cols,</span><br><span class="line">    <span class="keyword">double</span> bias, <span class="keyword">int</span> solver_type, <span class="keyword">double</span> C, <span class="keyword">double</span> p, <span class="keyword">double</span> eps,</span><br><span class="line">    <span class="keyword">int</span> nr_weight, <span class="keyword">int</span>* weight_label, <span class="keyword">double</span>* weight)</span></span>;</span><br></pre></td></tr></table></figure>
-<p>And the real <code>train</code> function looks like this</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">struct</span> model* <span class="title">train</span><span class="params">(<span class="keyword">const</span> <span class="keyword">struct</span> problem *prob, <span class="keyword">const</span> <span class="keyword">struct</span> parameter *param)</span></span>;</span><br></pre></td></tr></table></figure>
-<p>In <code>call_train</code>, I manually construct <code>prob</code> and <code>param</code> and then call the real <code>train</code> with these arguments.</p>
-<p>Luckily, after some monkey coding, LinearGo is now supporting Go 1.6. Moreover, I believe the current approach is more stable than previous one because we only work on simple data type when bridging while leave the complicated structure in pure C.</p>
-
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -583,7 +579,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
