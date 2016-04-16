@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lazier.cwchang.me/"/>
-  <updated>2016-04-16T15:18:02.000Z</updated>
+  <updated>2016-04-16T15:25:35.000Z</updated>
   <id>http://lazier.cwchang.me/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://lazier.cwchang.me/2016/04/16/Quick-Add-Event-to-Google-Calendar-with-Alfred/"/>
     <id>http://lazier.cwchang.me/2016/04/16/Quick-Add-Event-to-Google-Calendar-with-Alfred/</id>
     <published>2016-04-16T15:17:14.000Z</published>
-    <updated>2016-04-16T15:18:02.000Z</updated>
+    <updated>2016-04-16T15:25:35.000Z</updated>
     
     <content type="html">&lt;img src=&quot;img/2016/4/16-alfred-with-google-calendar.png&quot; class=&quot;full-image&quot; alt=&quot;Alfred with Google Calendar Quick Add&quot; title=&quot;Alfred with Google Calendar Quick Add&quot;&gt;
 &lt;p&gt;Here is a quick tip for integrating Alfred with Google Calendar.&lt;br&gt;Go to Alfred 2’s Preferences, and then go to the ‘Web Search’ under ‘Features’. Click the ‘Add Custom Search’ on the bottom right.&lt;/p&gt;
@@ -49,7 +49,7 @@
     <link href="http://lazier.cwchang.me/2016/04/10/Tide-the-pomodoro-timer/"/>
     <id>http://lazier.cwchang.me/2016/04/10/Tide-the-pomodoro-timer/</id>
     <published>2016-04-10T05:38:48.000Z</published>
-    <updated>2016-04-10T05:47:59.000Z</updated>
+    <updated>2016-04-16T15:25:35.000Z</updated>
     
     <content type="html">&lt;img src=&quot;/img/2016/4/10-tide-the-pomodoro-timer.png&quot; class=&quot;full-image&quot; alt=&quot;Tide Pomodoro Timer&quot; title=&quot;Tide Pomodoro Timer&quot;&gt;
 &lt;p&gt;最近發現一個挺不錯的 iPhone App: &lt;a href=&quot;https://itunes.apple.com/tw/app/chao-xi-mei-hao-fan-jia-zhong/id1077776989?l=zh&amp;amp;mt=8&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;潮汐&lt;/a&gt;。「潮汐」是一個番茄時鐘計時器，關於番茄時鐘工作法的說明網路上很多，這裏就不贅述了，以往用過不少番茄時鐘的 App，大部分都是蠻簡易的 App，我想這也跟番茄時鐘工作法本身很單純有關吧，並不需要什麼太多的功能，所以大多的 App 其實也沒什麼顯著差異。&lt;/p&gt;
@@ -77,7 +77,7 @@
     <link href="http://lazier.cwchang.me/2016/04/09/Learn-English-with-Audible/"/>
     <id>http://lazier.cwchang.me/2016/04/09/Learn-English-with-Audible/</id>
     <published>2016-04-09T06:38:12.000Z</published>
-    <updated>2016-04-09T06:38:12.000Z</updated>
+    <updated>2016-04-16T15:25:35.000Z</updated>
     
     <content type="html">&lt;p&gt;I have been using Amazon’s &lt;a href=&quot;http://audible.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Audible&lt;/a&gt; for more than two months, and I would like to share my thoughts about this service. I tried quite a few podcast services, such as Overcast and Apple’s Podcast, to improve my English listening skill. However, none of them last. Most of the time, I just didn’t get the point or the story of the podcast. One of the reason is that the speaking speed is a little bit too fast for me to understand. If you can’t follow the story, it is really hard for you to stay interested in that cast. And that was exactly my case.&lt;/p&gt;
 &lt;p&gt;Yet, when it comes to Audible, things become differently. I have listened to about 3 ~ 4 different books (not all finished though), and I found that the average speaking speed is pretty acceptable for my level. Moreover, once I got the main story and felt comfortable with the speed, I can even listen to 1.25x ~ 1.5x speed. Plus, the story flow is often more clear and consistent for a book than for a random topics podcast. Once you get the story flow, there is no need to understand every word the narrator said. Even missing one or two words (or even sentences), we can still stay on the right course of the story. And that is really crucial for listening a book with 10+ hours length because it is easier to focus on the main idea instead of the details. However, it is not saying that listening to Audible requires no efforts. There are still some tricks I felt important to be able to keep listening and prevent from distraction:&lt;/p&gt;
@@ -108,7 +108,7 @@
     <link href="http://lazier.cwchang.me/2016/03/20/LinearGo-now-supports-Go-1-6/"/>
     <id>http://lazier.cwchang.me/2016/03/20/LinearGo-now-supports-Go-1-6/</id>
     <published>2016-03-20T09:11:09.000Z</published>
-    <updated>2016-04-08T09:12:37.000Z</updated>
+    <updated>2016-04-16T15:25:35.000Z</updated>
     
     <content type="html">&lt;p&gt;Last summer, I built &lt;a href=&quot;https://github.com/lazywei/lineargo&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;LinearGo&lt;/a&gt;, a Go wrapper for the famous machine learning library &lt;a href=&quot;http://www.csie.ntu.edu.tw/~cjlin/liblinear/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;LIBLINEAR&lt;/a&gt;. Basically, I used CGO to bridge LIBLINEAR’s C library and Go. At first, I tried to build a 1-to-1 mapping for all of the data structure defined in C liblinear to hide the implementation details of C behind Go code.&lt;/p&gt;
 &lt;p&gt;However, things become complicated after Go 1.6 as they change their pointer policy for CGO. We can no longer pass something that contains a Go pointer which points to a Go pointer (WTF I just said!?). For example, a &lt;code&gt;Parameter&lt;/code&gt; contains a pointer to a &lt;code&gt;FeatureNode&lt;/code&gt; (an array of FeatureNode in fact). Before Go 1.6, I simply pass the pointer of &lt;code&gt;Parameter&lt;/code&gt; to C, contains a pointer to a &lt;code&gt;FeatureNode&lt;/code&gt; (a Go struct). Things like this, which a Go pointer contains a Go pointer, is not allowed anymore in Go 1.6. Therefore, I’m forced to figure out some other way to get around this.&lt;/p&gt;
@@ -143,7 +143,7 @@
     <link href="http://lazier.cwchang.me/2016/03/18/Easier-to-Persist/"/>
     <id>http://lazier.cwchang.me/2016/03/18/Easier-to-Persist/</id>
     <published>2016-03-18T09:16:51.000Z</published>
-    <updated>2016-04-08T09:19:06.000Z</updated>
+    <updated>2016-04-16T15:25:35.000Z</updated>
     
     <content type="html">&lt;p&gt;我以前試過很多記帳軟體或記帳方式，但一直都沒成功持續下去，所以也就算是放棄了。一直到最近突然又想記帳，找了一下發現 iOS 上有個秒速記帳，嘗試試用之下發現真的非常好用，而且他讓我真的堅持了記帳這個行爲（至少至今已經有一個多月了XD）。&lt;/p&gt;
 &lt;p&gt;有點好奇是什麼讓他與衆不同、能我“粘在”記帳這個行爲上面，稍微分析後自覺有幾個原因：&lt;/p&gt;
@@ -175,7 +175,7 @@
     <link href="http://lazier.cwchang.me/2015/10/17/Google-Summer-of-Code-instruction-for-Taiwan-Students/"/>
     <id>http://lazier.cwchang.me/2015/10/17/Google-Summer-of-Code-instruction-for-Taiwan-Students/</id>
     <published>2015-10-17T03:36:11.000Z</published>
-    <updated>2016-04-08T07:49:06.000Z</updated>
+    <updated>2016-04-16T15:25:35.000Z</updated>
     
     <content type="html">&lt;p&gt;【GSoC 2016 — 推薦給對 Open Source 有興趣的同學們】&lt;/p&gt;
 &lt;p&gt;今天想推薦大家一個 Google 專門爲學生舉辦的活動 – Google Summer of Code (GSoC)&lt;/p&gt;
@@ -216,9 +216,9 @@
     </summary>
     
     
-      <category term="github" scheme="http://lazier.cwchang.me/tags/github/"/>
-    
       <category term="open source" scheme="http://lazier.cwchang.me/tags/open-source/"/>
+    
+      <category term="github" scheme="http://lazier.cwchang.me/tags/github/"/>
     
       <category term="gsoc" scheme="http://lazier.cwchang.me/tags/gsoc/"/>
     
@@ -229,7 +229,7 @@
     <link href="http://lazier.cwchang.me/2015/07/16/GitHub-CodeConf-2015/"/>
     <id>http://lazier.cwchang.me/2015/07/16/GitHub-CodeConf-2015/</id>
     <published>2015-07-16T12:44:35.000Z</published>
-    <updated>2016-04-08T09:01:16.000Z</updated>
+    <updated>2016-04-16T15:25:35.000Z</updated>
     
     <content type="html">&lt;p&gt;I attended the &lt;a href=&quot;http://codeconf.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;CodeConf&lt;/a&gt; 2015 held by GitHub last month, and it was truly a wonderful journey. Admittedly, this was my first time heard about CodeConf. However, it didn’t make me any less excited, and it turns out CodeConf is really a top tier conference, which I won’t be hesitate to join again. By the way, CodeConf took place in Nashville, the music city, and the city is also awfully impressive. It’s not hard to give reasons why CodeConf is one of the best conferences I have been in: the presentation room – The Bell Tower, the food and drinks, the party , etc. Yet, the most awesome part is the people, the attendants. I met a lot of interesting people there, including hackers, fighters for equality, GitHubbers, and I really got inspired a lot by meeting them and by their talks. And hence I’d like to note some impressing talks from which I felt I learn a lot ideas and concepts.&lt;/p&gt;
 &lt;p&gt;The first one talk I’d like to note here is &lt;strong&gt;State of the Open Source Licenses&lt;/strong&gt; given by GitHubber &lt;a href=&quot;https://github.com/mislav&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Mislav Marohnic&lt;/a&gt;. This talk is talking about what is license, why we need it, and how we can utilize it in open source projects. Though not gaining too many stars, I did some open source projects myself on &lt;a href=&quot;https://github.com/lazywei&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub&lt;/a&gt;. However, I didn’t add license to all my projects – actually, I only applied license to a few of them. Mislave showed us how the license can impact a open source project, or even the whole open source community. I think I do learn a lot from this talk, at least I know what license should I apply on my projects!&lt;/p&gt;
@@ -248,9 +248,9 @@
     
       <category term="dev" scheme="http://lazier.cwchang.me/tags/dev/"/>
     
-      <category term="conf" scheme="http://lazier.cwchang.me/tags/conf/"/>
-    
       <category term="github" scheme="http://lazier.cwchang.me/tags/github/"/>
+    
+      <category term="conf" scheme="http://lazier.cwchang.me/tags/conf/"/>
     
       <category term="codeconf" scheme="http://lazier.cwchang.me/tags/codeconf/"/>
     
@@ -261,7 +261,7 @@
     <link href="http://lazier.cwchang.me/2015/05/31/Combining-Evernote-and-OmniFocus/"/>
     <id>http://lazier.cwchang.me/2015/05/31/Combining-Evernote-and-OmniFocus/</id>
     <published>2015-05-31T07:05:33.000Z</published>
-    <updated>2016-04-10T05:49:13.000Z</updated>
+    <updated>2016-04-16T15:25:35.000Z</updated>
     
     <content type="html">&lt;p&gt;大概從去年年底開始，我就成了 Evernote 的重度使用者，對我來說 Evernote 就是一個什麼都可以記錄的地方，有些人稱呼 Evernote 爲第二個大腦，我覺得挺適切的。&lt;/p&gt;
 &lt;p&gt;不過我發現 Evernote 也許在很多地方上表現得不錯，但他並不適合做一個 TODO list，雖然他有待辦清單的功能，但是跟一些成熟的 TODO list 軟體比起來真的差多了，而且 Evernote 的 TODO items 很有可能會散落在各個不同的筆記本裏面，很難有一個可以一口氣看到所有統整畫面的地方。&lt;br&gt;不幸的是，這點對我來說很重要，在安排事情的 priority 時，我習慣可以縱覽全部的待辦事項。再者，我喜歡的工作流是 GTD，而 Evernote 在這個 context 下是完全不適用的。或者應該說，Evernote 其實比較像一個用來記錄各種想法、以及想法的細節的地方，而不是一個記錄「待辦事項」的地方。&lt;/p&gt;
@@ -295,7 +295,7 @@
     <link href="http://lazier.cwchang.me/2015/05/28/First-Taste-of-React-Native-in-ReactJS-tw-Meetup/"/>
     <id>http://lazier.cwchang.me/2015/05/28/First-Taste-of-React-Native-in-ReactJS-tw-Meetup/</id>
     <published>2015-05-27T17:13:14.000Z</published>
-    <updated>2016-04-08T07:49:06.000Z</updated>
+    <updated>2016-04-16T15:25:35.000Z</updated>
     
     <content type="html">&lt;p&gt;今天在 ReactJS.tw 的社群聚會中給了一個 React Native 初體驗的 talk，應該算是我第一次在這樣的技術社群中公開分享心得吧。&lt;/p&gt;
 &lt;p&gt;希望整體演講還算 OK，希望沒有讓大家期待落空了哈哈。講完之後也覺得的確有蠻多可以改進的地方，算是收穫良多，果然上臺做簡報這種事情還是要多練習的，希望可以練成和 Jeremy 一樣流暢的 flow。&lt;/p&gt;
@@ -329,7 +329,7 @@
     <link href="http://lazier.cwchang.me/2015/04/14/Migrate-to-NeoVim/"/>
     <id>http://lazier.cwchang.me/2015/04/14/Migrate-to-NeoVim/</id>
     <published>2015-04-14T14:42:18.000Z</published>
-    <updated>2016-04-08T07:49:06.000Z</updated>
+    <updated>2016-04-16T15:25:35.000Z</updated>
     
     <content type="html">&lt;p&gt;Vim 一直以來都是我最喜愛的編輯器，其實我唯一在用的編輯器，當然偶爾還是會有點「七年之癢」想玩玩 Emacs、Atom、Sublime Text，但是最終都還是覺得 Vim 使用起來最順手。&lt;/p&gt;
 &lt;p&gt;雖然 Vim 是個曠世神作，但是在開發社群上出了一些意見紛爭，例如只有一個人在維護高達 300k 行的 C89，以及這個 Bram 這個主要作者對於 community patching 的態度等，因此在去年約一二月的時候，出現了一個 community fork – &lt;a href=&quot;https://github.com/neovim/neovim&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;NeoVim&lt;/a&gt;，號稱要重構 Vim，關於一些當時事件的細節可以看看&lt;a href=&quot;https://www.ptt.cc/bbs/Editor/M.1393165951.A.9B0.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;這篇的推文&lt;/a&gt;。&lt;/p&gt;
@@ -365,7 +365,7 @@
     <link href="http://lazier.cwchang.me/2015/04/06/Customized-Go-Testing-with-Ginkgo/"/>
     <id>http://lazier.cwchang.me/2015/04/06/Customized-Go-Testing-with-Ginkgo/</id>
     <published>2015-04-06T03:43:09.000Z</published>
-    <updated>2016-04-08T07:49:06.000Z</updated>
+    <updated>2016-04-16T15:25:35.000Z</updated>
     
     <content type="html">&lt;p&gt;這次在寫 &lt;a href=&quot;https://github.com/lazywei/go-opencv&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;go-opencv&lt;/a&gt; 的時候遇到一些測試上的小問題：我用了 gonum 的 &lt;a href=&quot;https://godoc.org/github.com/gonum/matrix/mat64&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;mat64&lt;/a&gt; 來做基礎矩陣操作，所以很多測試上都需要直接對 &lt;code&gt;mat64.Dense&lt;/code&gt; 測試，而 &lt;code&gt;mat64.Dense&lt;/code&gt; 底下的資料是 &lt;code&gt;[]float64&lt;/code&gt;，所以我需要的是可以直接對 &lt;code&gt;[]float64&lt;/code&gt; 測試的套件。然而大部分的測試框架內建的 assertion 都頂多到 &lt;code&gt;float64&lt;/code&gt; 的 approimately comparison，所以勢必要自己寫 assertion。&lt;/p&gt;
 &lt;p&gt;一開始我用的是 &lt;a href=&quot;https://github.com/stretchr/testify&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;testify&lt;/a&gt;，是個相當簡潔易用的測試框架，他提供了 &lt;code&gt;InDelta&lt;/code&gt; 這樣的 assertion 來比較兩個 &lt;code&gt;float64&lt;/code&gt; 是不是在容許誤差內，於是我就自己多寫了一個 &lt;a href=&quot;https://github.com/lazywei/testify/commit/f0b02af48e5ee31c78b949e9ed67c37e08d1a897&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;code&gt;InDeltaSlice&lt;/code&gt;&lt;/a&gt; 來比較兩個 &lt;code&gt;[]float64&lt;/code&gt;，如此一來我就可以用&lt;/p&gt;
@@ -398,7 +398,7 @@
     <link href="http://lazier.cwchang.me/2015/02/02/thoughts-on-timing-attack/"/>
     <id>http://lazier.cwchang.me/2015/02/02/thoughts-on-timing-attack/</id>
     <published>2015-02-02T03:59:00.000Z</published>
-    <updated>2016-04-08T07:49:06.000Z</updated>
+    <updated>2016-04-16T15:25:35.000Z</updated>
     
     <content type="html">&lt;p&gt;今天在實作 Token-Based 登入系統的時候碰到了一點小問題：原本在 Rails 中的 User System 是使用 &lt;a href=&quot;https://github.com/plataformatec/devise&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Devise&lt;/a&gt;，但是我們的 API Server 並不在 Rails 底下，也就是說我沒有辦法直接存取 Devise；在這樣的情況下，我就必須要自己將「把 plain text 的密碼做 hash 並跟資料庫中的密碼比較」的這個步驟實作出來，並且還要跟 Devise 做的相容。&lt;/p&gt;
 &lt;p&gt;於是我和 &lt;a href=&quot;godfat.org&quot;&gt;Godfat&lt;/a&gt; 就開始看 Devise 是怎麼做的，結果發現 Devise 做了一件有趣的事情 – 他在 compare hashed password 的時候用了一個 &lt;code&gt;secure_compare&lt;/code&gt;，看了一下 source code 後發現，使用這個特製 &lt;code&gt;secure_compare&lt;/code&gt; 的原因是爲了達成 &lt;strong&gt;Constant time (in password length) Comparison&lt;/strong&gt;，而想要 constant time 則是爲了預防 timing attack。&lt;/p&gt;
@@ -422,7 +422,7 @@
     <link href="http://lazier.cwchang.me/2015/01/28/lastpass-vs-dashlane/"/>
     <id>http://lazier.cwchang.me/2015/01/28/lastpass-vs-dashlane/</id>
     <published>2015-01-28T07:00:00.000Z</published>
-    <updated>2016-04-08T07:49:06.000Z</updated>
+    <updated>2016-04-16T15:25:35.000Z</updated>
     
     <content type="html">&lt;p&gt;之前看到一個很驚悚的消息「&lt;a href=&quot;http://share.inside.com.tw/posts/11396&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;一鍵修改所有密碼，Dashlane 的新功能讓 1Password 壓力很大&lt;/a&gt;」，於是就心動地跑去裝了 Dashlane 來玩，不過最後我還是換回是用 &lt;a href=&quot;https://lastpass.com/f?7475776&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;LastPass&lt;/a&gt;，這裏稍微條例一下一些比較：&lt;/p&gt;
 &lt;ol&gt;
@@ -450,7 +450,7 @@
     <link href="http://lazier.cwchang.me/2015/01/24/ChatOps-Hubot-Capistrano-Heaven/"/>
     <id>http://lazier.cwchang.me/2015/01/24/ChatOps-Hubot-Capistrano-Heaven/</id>
     <published>2015-01-24T05:57:00.000Z</published>
-    <updated>2016-04-08T07:49:06.000Z</updated>
+    <updated>2016-04-16T15:25:35.000Z</updated>
     
     <content type="html">&lt;p&gt;一直以來在 Rails 開發中，我都使用 &lt;a href=&quot;https://github.com/capistrano/capistrano&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;capistrano&lt;/a&gt; 作爲自動化部署的工具，他幫我把所有繁雜而瑣碎的部署任務都一次處理好，例如在 &lt;code&gt;git pull&lt;/code&gt; 最新的 repo 後，要跑個 &lt;code&gt;bundle install&lt;/code&gt;、有時候還要跑 migration，接着要 precompile assets 等等，最後如果是使用 nginx 搭配 passenger 的方案，還要 &lt;code&gt;touch tmp/restart.txt&lt;/code&gt; 來通知 web server。&lt;/p&gt;
 &lt;p&gt;這一切都相當方便 – 在團隊中所有人都有完整開發環境的前提下（capistrano 是 ruby gem，理所當然需要 ruby environment）。然而事實上，並不是所有團隊成員都有完整的開發環境，例如當我們把前後端分離（透過 API 互相溝通）時，我們就不會希望 F2E 也要裝一份完整的 Rails 環境；再者，透過 capistrano 部署會造成沒有人知道現在有誰在部署、部署情況如何，除非在 capistrano 中再加上 notification to Slack or something else。這對於需要快速 iteration 的新創團隊來說是相當不利的，我們需要的是：&lt;/p&gt;
@@ -514,7 +514,7 @@
     <link href="http://lazier.cwchang.me/2015/01/18/rime-dictionaries/"/>
     <id>http://lazier.cwchang.me/2015/01/18/rime-dictionaries/</id>
     <published>2015-01-18T11:53:00.000Z</published>
-    <updated>2016-04-08T07:49:06.000Z</updated>
+    <updated>2016-04-16T15:25:35.000Z</updated>
     
     <content type="html">&lt;p&gt;我大約從一兩年前開始改用拼音輸入法，在 OS X 上我使用的是「&lt;a href=&quot;https://code.google.com/p/rimeime/wiki/Downloads&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;鼠鬚管&lt;/a&gt;」，這是一套對於中文很講究的輸入法，從他的名字就可以略知一二，非常適合我這種假文青，而且同時支援多種拼音方案以及注音等輸入方式，相關的文章可以參考「&lt;a href=&quot;https://www.byvoid.com/blog/recommend-rime&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;推薦一個神級輸入法 – Rime&lt;/a&gt;」。&lt;/p&gt;
 &lt;p&gt;鼠鬚管速度快、定製性高，惟其詞庫量不足，是最爲人詬病的一點，相較於其他如百度、搜狗等輸入法，鼠鬚管的詞庫準確性的確不夠，常常需要自己選字選很久。不過這個問題其實可以透過使用擴充詞庫來解決，雖然還是不及百度或搜狗的雲詞庫來得準確，但是一般使用上算是沒問題了，擴充詞庫可以在 &lt;a href=&quot;https://github.com/rime-aca/dictionaries&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;rime-aca/dictionaries&lt;/a&gt; 找到，在我剛找到這個詞庫的時候並沒有太詳細的說明文件，算是自己摸索了一陣子才理解怎麼正確的使用這個詞庫，所以也發了個 &lt;a href=&quot;https://github.com/rime-aca/dictionaries/pull/3&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;PR&lt;/a&gt; 在 READEME 裏加上使用說明，有興趣可以參考看看。在這樣的架構下，增加自己的自訂詞庫也相當方便。&lt;/p&gt;
