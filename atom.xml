@@ -216,9 +216,9 @@
     </summary>
     
     
-      <category term="open source" scheme="http://lazier.cwchang.me/tags/open-source/"/>
-    
       <category term="github" scheme="http://lazier.cwchang.me/tags/github/"/>
+    
+      <category term="open source" scheme="http://lazier.cwchang.me/tags/open-source/"/>
     
       <category term="gsoc" scheme="http://lazier.cwchang.me/tags/gsoc/"/>
     
@@ -248,9 +248,9 @@
     
       <category term="dev" scheme="http://lazier.cwchang.me/tags/dev/"/>
     
-      <category term="github" scheme="http://lazier.cwchang.me/tags/github/"/>
-    
       <category term="conf" scheme="http://lazier.cwchang.me/tags/conf/"/>
+    
+      <category term="github" scheme="http://lazier.cwchang.me/tags/github/"/>
     
       <category term="codeconf" scheme="http://lazier.cwchang.me/tags/codeconf/"/>
     
