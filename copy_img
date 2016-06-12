@@ -22,7 +22,7 @@ def main(origin, output):
     os.makedirs(os.path.dirname(filepath), exist_ok=True)
     shutil.copy2(origin, filepath)
 
-    to_paste = "/".join(folder.split("/")[1:]) + filename
+    to_paste = "{{% fullimage \"/{}\", \"Alt\", \"Title\" %}}".format("/".join(folder.split("/")[1:]) + filename)
 
     # stole from http://stackoverflow.com/questions/1825692/can-python-send-text-to-the-mac-clipboard
     process = subprocess.Popen(
