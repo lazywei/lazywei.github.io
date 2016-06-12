@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lazier.cwchang.me/"/>
-  <updated>2016-04-16T15:25:35.000Z</updated>
+  <updated>2016-06-12T09:59:31.000Z</updated>
   <id>http://lazier.cwchang.me/</id>
   
   <author>
@@ -14,6 +14,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>iTerm 3 with 1Password</title>
+    <link href="http://lazier.cwchang.me/2016/06/12/iTerm-3-with-1Password/"/>
+    <id>http://lazier.cwchang.me/2016/06/12/iTerm-3-with-1Password/</id>
+    <published>2016-06-12T09:54:50.000Z</published>
+    <updated>2016-06-12T09:59:31.000Z</updated>
+    
+    <content type="html">&lt;p&gt;iTerm 3 is just &lt;a href=&quot;https://www.iterm2.com/version3.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;released&lt;/a&gt;, and it comes with some awesome features.&lt;br&gt;One of my favorite is the “trigger” feature. It can detect (with regular expression) certain pattern from the text in your terminal and trigger some actions.&lt;br&gt;Also, iTerm 3 provides yet another feature called “Password Manager”. It can store some password for you, and integrating with trigger, it enables us to enter password quickly. I recorded a short gif to demonstrate this feature:&lt;/p&gt;
+&lt;img src=&quot;img/2016/6/12-iterm3pm.gif&quot; class=&quot;full-image&quot; alt=&quot;iTerm3 with Password Manager&quot; title=&quot;iTerm3 with Password Manager&quot;&gt;
+&lt;p&gt;It’s pretty handy. However, one thing concern me is that I don’t want to spread my password everywhere. The reason I use 1Password is that I want to keep all my password in one place. And clearly, using iTerm’s password manage violate my expectation. That’s why I came up with another solution with Reuven’s &lt;a href=&quot;https://github.com/ravenac95/sudolikeaboss&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;sudolikeaboss&lt;/a&gt;. After install &lt;code&gt;sudolikeaboss&lt;/code&gt;, we can setup a trigger like this:&lt;/p&gt;
+&lt;img src=&quot;img/2016/6/12-iterm3trigger.png&quot; class=&quot;full-image&quot; alt=&quot;iTerm3 Trigger&quot; title=&quot;iTerm3 Trigger&quot;&gt;
+&lt;p&gt;And then we could have iTerm play with 1Password:&lt;/p&gt;
+&lt;img src=&quot;img/2016/6/12-iterm3-1pw.gif&quot; class=&quot;full-image&quot; alt=&quot;iTerm3 with 1Password&quot; title=&quot;iTerm3 with 1Password&quot;&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;iTerm 3 is just &lt;a href=&quot;https://www.iterm2.com/version3.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;released&lt;/a&gt;, and it comes with some awesom
+    
+    </summary>
+    
+    
+      <category term="tools" scheme="http://lazier.cwchang.me/tags/tools/"/>
+    
+      <category term="os x" scheme="http://lazier.cwchang.me/tags/os-x/"/>
+    
+      <category term="productivity" scheme="http://lazier.cwchang.me/tags/productivity/"/>
+    
+  </entry>
   
   <entry>
     <title>Quick Add Event to Google Calendar with Alfred</title>
