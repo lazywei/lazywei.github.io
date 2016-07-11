@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="tools,productivity,emacs," />
 
 
 
@@ -82,15 +82,16 @@
 
 
 
-<meta name="description" content="lazywei on the lazy way">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Lazy Made Easy">
-<meta property="og:url" content="http://lazier.cwchang.me/tags/devops/index.html">
+<meta name="description" content="I used Spacemacs, a popular Emacs distribution, for daily work. Recently, I faced an annoying situation. I got some projects that can only be compiled and executed on a remote server. Naturally, I thi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Emacs run script after save">
+<meta property="og:url" content="http://lazier.cwchang.me/2016/07/11/Emacs-run-script-after-save/index.html">
 <meta property="og:site_name" content="Lazy Made Easy">
-<meta property="og:description" content="lazywei on the lazy way">
+<meta property="og:description" content="I used Spacemacs, a popular Emacs distribution, for daily work. Recently, I faced an annoying situation. I got some projects that can only be compiled and executed on a remote server. Naturally, I thi">
+<meta property="og:updated_time" content="2016-07-11T01:02:37.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Lazy Made Easy">
-<meta name="twitter:description" content="lazywei on the lazy way">
+<meta name="twitter:title" content="Emacs run script after save">
+<meta name="twitter:description" content="I used Spacemacs, a popular Emacs distribution, for daily work. Recently, I faced an annoying situation. I got some projects that can only be compiled and executed on a remote server. Naturally, I thi">
 
 
 
@@ -108,7 +109,7 @@
   };
 </script>
 
-  <title> 標籤: devops | Lazy Made Easy </title>
+  <title> Emacs run script after save | Lazy Made Easy </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
@@ -129,7 +130,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -217,46 +218,144 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        devops
-        <small>標籤</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Emacs run script after save
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">發表於</span>
+            <time itemprop="dateCreated" datetime="2016-07-11T09:02:37+08:00" content="2016-07-11">
+              2016-07-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/11/Emacs-run-script-after-save/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/07/11/Emacs-run-script-after-save/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <p>I used Spacemacs, a popular Emacs distribution, for daily work. Recently, I faced an annoying situation. I got some projects that can only be compiled and executed on a remote server. Naturally, I think of TRAMP mode. However, the <code>ssh</code> latency to this remote server is so high that every operation in TRAMP mode tooks me about 20+ seconds on average. That is not acceptable.</p>
+<p>Therefore, I decided to write the code on my local laptop and then use <code>rsync</code> to upload only updated files to remote. It somehow solved my problem, only thing bothered me is I have to run <code>rsync</code> every time after modified some code. But hey, I’m a programmer and I’m using Emacs, so it should be quite easy to figure out a solution to this bothersome routine.</p>
+<p>Clarify my expectation:</p>
+<ol>
+<li>Being able to run a script after saving files.</li>
+<li>Only run this script in certain project.</li>
+</ol>
+<p>After doing some search, I found it is possible to</p>
+<ol>
+<li>Hook a elisp function after save.</li>
+<li>Utilize the projectile’s defined function for locating script.</li>
+</ol>
+<p>The solution I come up with is creating a <code>run_after_save</code> executable in the root of a project (the definition of a project is defined by projectile), and hook a function that checks for this file and executes it if exists on saving. Here is the resulted snippet:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">;; === After save hook function for projectile ===</span><br><span class="line">(defun pj-run-after-save ()</span><br><span class="line">  &quot;Run script to sync on save&quot;</span><br><span class="line">  (if (and (projectile-project-p)</span><br><span class="line">           (file-executable-p (projectile-file-truename &quot;run_after_save&quot;)))</span><br><span class="line">      (shell-command (projectile-file-truename &quot;run_after_save&quot;))</span><br><span class="line">    )</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line">(add-hook &apos;after-save-hook &apos;pj-run-after-save)</span><br><span class="line">;; ===============================================</span><br></pre></td></tr></table></figure>
+<p>Done!</p>
 
-      <h1 class="post-title">
+      
+    </div>
+    
+    <div>
+      
         
-            <a class="post-title-link" href="/2015/01/24/ChatOps-Hubot-Capistrano-Heaven/" itemprop="url">
-              
-                <span itemprop="name">ChatOps: Hubot Capistrano Heaven</span>
-              
-            </a>
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
+      
+    </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2015-01-24T13:57:00+08:00"
-              content="2015-01-24" >
-          01-24
-        </time>
-      </div>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/tools/" rel="tag">#tools</a>
+          
+            <a href="/tags/productivity/" rel="tag">#productivity</a>
+          
+            <a href="/tags/emacs/" rel="tag">#emacs</a>
+          
+        </div>
+      
 
-    </header>
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/12/iTerm-3-with-1Password/" rel="next" title="iTerm 3 with 1Password">
+                <i class="fa fa-chevron-left"></i> iTerm 3 with 1Password
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -264,6 +363,17 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -283,8 +393,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            本站概覽
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="https://graph.facebook.com/v2.5/1579404899/picture?type=square"
@@ -347,6 +466,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目錄</p>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -449,6 +579,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
@@ -465,9 +599,9 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'lazier';
-      var disqus_identifier = 'tags/devops/index.html';
-      var disqus_title = '';
-      var disqus_url = '';
+      var disqus_identifier = '2016/07/11/Emacs-run-script-after-save/';
+      var disqus_title = 'Emacs run script after save';
+      var disqus_url = 'http://lazier.cwchang.me/2016/07/11/Emacs-run-script-after-save/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');
@@ -478,6 +612,8 @@
       }
 
       run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
       
     </script>
   

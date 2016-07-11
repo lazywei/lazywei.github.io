@@ -241,6 +241,149 @@
             
               
                 
+                <a class="post-title-link" href="/2015/01/24/ChatOps-Hubot-Capistrano-Heaven/" itemprop="url">
+                  ChatOps: Hubot Capistrano Heaven
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">發表於</span>
+            <time itemprop="dateCreated" datetime="2015-01-24T13:57:00+08:00" content="2015-01-24">
+              2015-01-24
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/01/24/ChatOps-Hubot-Capistrano-Heaven/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/01/24/ChatOps-Hubot-Capistrano-Heaven/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>一直以來在 Rails 開發中，我都使用 <a href="https://github.com/capistrano/capistrano" target="_blank" rel="external">capistrano</a> 作爲自動化部署的工具，他幫我把所有繁雜而瑣碎的部署任務都一次處理好，例如在 <code>git pull</code> 最新的 repo 後，要跑個 <code>bundle install</code>、有時候還要跑 migration，接着要 precompile assets 等等，最後如果是使用 nginx 搭配 passenger 的方案，還要 <code>touch tmp/restart.txt</code> 來通知 web server。</p>
+<p>這一切都相當方便 – 在團隊中所有人都有完整開發環境的前提下（capistrano 是 ruby gem，理所當然需要 ruby environment）。然而事實上，並不是所有團隊成員都有完整的開發環境，例如當我們把前後端分離（透過 API 互相溝通）時，我們就不會希望 F2E 也要裝一份完整的 Rails 環境；再者，透過 capistrano 部署會造成沒有人知道現在有誰在部署、部署情況如何，除非在 capistrano 中再加上 notification to Slack or something else。這對於需要快速 iteration 的新創團隊來說是相當不利的，我們需要的是：</p>
+<ol>
+<li>所有人都有辦法 deploy，即使是 art</li>
+<li>任何 deploy 發生時，都應該要讓所有人知道這個 deploy 的狀態</li>
+<li>所有 deploy 應該都要被完整記錄</li>
+<li>deploy 應該要可以輕鬆指定要使用哪個 branch，哪個 environment</li>
+</ol>
+<p>幸運的，我在前團隊 <a href="http://icook.tw/" target="_blank" rel="external">iCook</a> 學到也見識到非常多這種 DevOps 相關的技術（不得不說，iCook CTO <a href="https://twitter.com/dlackty" target="_blank" rel="external">Richard</a> 把整個團隊的 DevOps 打造得相當強悍）。跟 Richard 討論及研究了一下後，決定使用如下配置及服務來完成整個部署流程：</p>
+<ol>
+<li><a href="https://hubot.github.com" target="_blank" rel="external">Hubot</a> 用於在 Slack 聊天室下指令，這樣只要能上聊天室就能部署，即使你是用手機</li>
+<li><a href="https://developer.github.com/v3/repos/deployments" target="_blank" rel="external">Github Deployment API</a> 用 RESTful 的方式來管理 deployment</li>
+<li><a href="https://github.com/atmos/hubot-deploy" target="_blank" rel="external">Hubot-deploy</a> + <a href="https://github.com/atmos/heaven" target="_blank" rel="external">Heaven</a> 前者讓 hubot 可以操作 Github Deployment API，後者會接受從 Github Deployment API 來的訊息，並負責執行 capistrano</li>
+</ol>
+<p>具體一點來說，Heaven 是一個 Rails application，他有一個 <code>POST /events</code> 這樣的 route 接收來自 Github Deployment API 的 event，接着利用 resque 來執行實際的 deployment。</p>
+<p>這次遇到最大的麻煩是 heaven 和 hubot-deploy 的文件寫得相當差，看了老半天看不出個所以然來，花了不少時間才搞懂這個架構的流程以及一些 tricks，所以在此記錄一下。</p>
+<hr>
+<p><strong>Heaven</strong><br>如同前面說的，Heaven 是一個 Rails application，所以需要自己 host，不過他其實也提供了直接放上 heroku 的方式，其中要設定一些環境變數，這邊說明一下他們的用途：</p>
+<ol>
+<li><code>GITHUB_TOKEN</code> Heaven 在 deploy 完後會利用 gist 作爲他的 STDOUT/STDERR，這個 token 就是讓 heaven 可以 create gist。我個人是另外開了一個 for bot 的 Github account，這樣我的 gist 才不會被塞爆</li>
+<li><code>GITHUB_CLIENT_ID</code> &amp; <code>GITHUB_CLIENT_SECRET</code> 老實說我現在還沒弄清楚他們要幹嘛，不過隨便去申請一個 Github Dev App，然後填上 client id &amp; secret 就好</li>
+<li><code>DEPLOYMENT_PRIVATE_KEY</code> 因爲執行 cap 的是 heaven，所以 heaven 會需要 ssh access to our server，這個就是他需要用的 private key</li>
+<li><code>SLACK_WEBHOOK_URL</code> 在 Slack 建立一個 incoming webhook 後填入這裏，這讓 heaven 可以發送 deployment notification 到聊天室，讓所有人都知道部署狀況</li>
+</ol>
+<p>大致上 Heaven 這樣丟上 heroku 就可以跑了。</p>
+<hr>
+<p><strong>Hubot Deploy</strong></p>
+<p>接下來我們設定 hubot deploy，這是一個 hubot script，用 npm 裝完後加入 hubot 的 <code>external-scripts</code>，接着比較重要的是建立一個 <code>apps.json</code> 在 hubot 的目錄底下，這讓 hubot 知道要怎麼部署哪些 applications，內容大致如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;hello&quot;: &#123;</span><br><span class="line">    &quot;provider&quot;: &quot;bundler_capistrano&quot;,</span><br><span class="line">    &quot;repository&quot;: &quot;lazywei/hello&quot;,</span><br><span class="line">    &quot;environments&quot;: [&quot;production&quot;, &quot;staging&quot;]</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  &quot;world&quot;: &#123;</span><br><span class="line">    &quot;provider&quot;: &quot;capistrano&quot;,</span><br><span class="line">    &quot;repository&quot;: &quot;lazywei/world&quot;,</span><br><span class="line">    &quot;environments&quot;: [&quot;production&quot;, &quot;staging&quot;]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>這其實就是讓之後我們可以透過 hubot 呼叫 <code>hubot deploy hello/master ...</code> 之類的，其中比較需要注意的是 provider，這個欄位的意思是 heaven 要用什麼方式去執行部署的動作，例如 Richard 在 iCook 使用的就是 AWS 的 OpsWorks。</p>
+<p>而注意到 provider 又分 capistrano 及 bundler_capistrano，這沒有被寫在文件上，是我折騰了好久才在 source code 中看到的。他們的區別是什麼？首先注意到，heaven 會做的動作是拉下最新的 repo，然後在 repo 中執行 <code>cap ...</code> 的指令，但是如果你使用的 cap 與 heaven 的版本不同，就完蛋了，又或者是你的部署需要其他額外的 gems，但是這些 gems 並不在 heaven 的 Gemfile 中，那也會爆炸。好險後來發現 bundler_capistrano，他會在執行 cap 之前建立一個乾淨的 Bundle 環境，然後在這個環境中，安裝「要被部署的 app 的 Gemfile 中被標註爲 heaven or deployment group」的那些 gems，所以我們可以直接把需要被用到的 gems 放進我們原本的 Gemfile 中，以我的例子來說，我就用了最新的 cap 而不是 heaven 預設的 cap 2.9。</p>
+<p>另外我的 hubot-deploy 也是放在 heroku 上，有幾個變數需要注意：</p>
+<ol>
+<li><code>HUBOT_SLACK_TOKEN</code> 這是讓 hubot 可以聽 slack 用的</li>
+<li><code>HUBOT_GITHUB_TOKEN</code> 這是判斷誰有 deploy 權限，不過建議不要設定這個，請使用 hubot-deploy 提供的指令 <code>deploy-token:set</code> 來設定，這個 token 請至你的 github 帳號中 application / personal access 中產生</li>
+</ol>
+<hr>
+<p><strong>Little Tricks</strong><br>雖然整體流程最後看似簡單，但其實中間藏了不少沒被寫在文件上的地雷，這裏記錄一下一些解決的方式或是小技巧：</p>
+<ol>
+<li>Heaven 放上 heroku 後除了 web dyno 外會開另外兩個 resque dyno，一下就讓你每個月噴 75 美金…但其實這可以透過 <code>spawn</code> 來繞過，請參考這篇<a href="https://coderwall.com/p/fprnhg/free-background-jobs-on-heroku" target="_blank" rel="external">黑暗大法</a>，感謝 Richard 提供</li>
+<li>Capistrano 3 會在第一次執行的時候問你要不要讓他們蒐集數據，這會直接讓 heaven 卡住…解法是把 project 底下應該有個 <code>.capistrano/metric</code> 寫進 source control (e.g. git)</li>
+<li>不知道爲什麼 heaven 在 document 中寫說 cap 的 repo_url 需要用 https 而不是 ssh/git，但是這樣會造成 heaven 在 pull 的時候無法使用 ssh key 來認證，需要寫死 github 的帳號密碼在 <code>deploy.rb</code> 中，但這實在太不合理了…結果事實證明用 <code>git@...</code> 好像也可以，但是不知道之後會不會突然爆炸就是了</li>
+</ol>
+<p>大致上就是這樣了</p>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/01/18/rime-dictionaries/" itemprop="url">
                   鼠鬚管擴充詞庫
                 </a>
@@ -366,7 +509,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
@@ -376,7 +519,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">標籤</span>
               </a>
             </div>
